@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ClassPulse — Teacher Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            CP
+        </div>
+
+        <div>
+            <h2>ClassPulse</h2>
+            <span>Teacher Dashboard</span>
+        </div>
+
+    </div>
+
+    <div class="anonymous-badge">
+        📊 Live Insights
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <section class="hero">
+
+        <p class="eyebrow">
+            TEACHER DASHBOARD
+        </p>
+
+        <h1>
+            Understanding, at a glance.
+        </h1>
+
+        <p class="hero-text">
+            See which concepts your class understands and where revision is needed.
+        </p>
+
+    </section>
+
+
+    <!-- Overall Stats -->
+
+    <section class="lesson-card">
+
+        <div class="lesson-info">
+
+            <span class="subject">
+                ENGINEERING MECHANICS
+            </span>
+
+            <h2>
+                Force &amp; Resultant
+            </h2>
+
+            <p>
+                Anonymous student understanding report
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-stats">
+
+            <div class="stat-card">
+
+                <span>Class Understanding</span>
+
+                <strong id="overallScore">
+                    0%
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>Responses</span>
+
+                <strong id="responseCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>Weakest Topic</span>
+
+                <strong id="weakestTopic">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Topic Understanding -->
+
+    <section class="dashboard-card">
+
+        <div class="dashboard-heading">
+
+            <div>
+                <p class="eyebrow">
+                    SUBTOPIC ANALYSIS
+                </p>
+
+                <h2>
+                    Understanding by concept
+                </h2>
+            </div>
+
+        </div>
+
+
+        <div id="topicResults">
+
+            <div class="dashboard-topic">
+
+                <div class="topic-title">
+
+                    <span>
+                        Force Components
+                    </span>
+
+                    <strong>
+                        0%
+                    </strong>
+
+                </div>
+
+                <div class="dashboard-bar">
+                    <div style="width: 0%"></div>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-topic">
+
+                <div class="topic-title">
+
+                    <span>
+                        Resultant Force
+                    </span>
+
+                    <strong>
+                        0%
+                    </strong>
+
+                </div>
+
+                <div class="dashboard-bar">
+                    <div style="width: 0%"></div>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-topic">
+
+                <div class="topic-title">
+
+                    <span>
+                        Parallelogram Law
+                    </span>
+
+                    <strong>
+                        0%
+                    </strong>
+
+                </div>
+
+                <div class="dashboard-bar">
+                    <div style="width: 0%"></div>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-topic">
+
+                <div class="topic-title">
+
+                    <span>
+                        Resolution of Forces
+                    </span>
+
+                    <strong>
+                        0%
+                    </strong>
+
+                </div>
+
+                <div class="dashboard-bar">
+                    <div style="width: 0%"></div>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-topic">
+
+                <div class="topic-title">
+
+                    <span>
+                        Equilibrium
+                    </span>
+
+                    <strong>
+                        0%
+                    </strong>
+
+                </div>
+
+                <div class="dashboard-bar">
+                    <div style="width: 0%"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Attention Required -->
+
+    <section class="dashboard-card attention-card">
+
+        <p class="eyebrow">
+            ATTENTION REQUIRED
+        </p>
+
+        <h2 id="attentionTitle">
+            Waiting for student feedback
+        </h2>
+
+        <p id="attentionText">
+            Once students submit their feedback, ClassPulse will identify the topic that needs the most attention.
+        </p>
+
+    </section>
+
+
+    <!-- Before After -->
+
+    <section class="dashboard-card">
+
+        <p class="eyebrow">
+            REVISION IMPACT
+        </p>
+
+        <h2>
+            Before → After Revision
+        </h2>
+
+        <p class="dashboard-description">
+            Track whether revision improved student understanding.
+        </p>
+
+
+        <div class="revision-box">
+
+            <div class="revision-item">
+
+                <span>
+                    Before Revision
+                </span>
+
+                <strong>
+                    43%
+                </strong>
+
+            </div>
+
+
+            <div class="revision-arrow">
+                →
+            </div>
+
+
+            <div class="revision-item">
+
+                <span>
+                    After Revision
+                </span>
+
+                <strong>
+                    79%
+                </strong>
+
+            </div>
+
+
+            <div class="improvement">
+                +36 percentage points
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="dashboard-actions">
+
+        <a href="index.html" class="submit-btn">
+            ← Student Feedback
+        </a>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <p>
+        ClassPulse © 2026
+    </p>
+
+    <span>
+        Anonymous • Privacy First
+    </span>
+
+</footer>
+
+
+<style>
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.stat-card {
+    background: rgba(2, 6, 23, 0.5);
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.stat-card span {
+    display: block;
+    color: var(--muted);
+    font-size: 10px;
+    margin-bottom: 5px;
+}
+
+.stat-card strong {
+    font-size: 22px;
+}
+
+.dashboard-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(18px);
+    border-radius: 22px;
+    padding: 25px;
+    margin-bottom: 16px;
+}
+
+.dashboard-card h2 {
+    margin-top: 5px;
+    font-size: 22px;
+}
+
+.dashboard-topic {
+    margin-top: 22px;
+}
+
+.topic-title {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    font-size: 13px;
+}
+
+.topic-title strong {
+    color: var(--blue);
+}
+
+.dashboard-bar {
+    height: 9px;
+    background: rgba(148, 163, 184, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.dashboard-bar div {
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--blue-dark), var(--blue));
+    transition: width 0.5s ease;
+}
+
+.attention-card {
+    border-color: rgba(234, 179, 8, 0.2);
+}
+
+.dashboard-description {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.revision-box {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.revision-item {
+    flex: 1;
+    min-width: 130px;
+    background: rgba(2, 6, 23, 0.5);
+    padding: 18px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.revision-item span {
+    display: block;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.revision-item strong {
+    display: block;
+    font-size: 30px;
+    margin-top: 4px;
+}
+
+.revision-arrow {
+    font-size: 25px;
+    color: var(--blue);
+}
+
+.improvement {
+    width: 100%;
+    text-align: center;
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.dashboard-actions {
+    margin-top: 20px;
+}
+
+.dashboard-actions a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .revision-arrow {
+        width: 100%;
+        text-align: center;
+    }
+
+}
+
+</style>
+
+
+<script>
+
+const savedFeedback =
+    localStorage.getItem("classpulseFeedback");
+
+
+if (savedFeedback) {
+
+    const feedback =
+        JSON.parse(savedFeedback);
+
+    const answers =
+        feedback.answers || {};
+
+
+    const topics = [
+        "Force Components",
+        "Resultant Force",
+        "Parallelogram Law",
+        "Resolution of Forces",
+        "Equilibrium"
+    ];
+
+
+    let total = 0;
+
+    let weakest = null;
+
+    let weakestScore = Infinity;
+
+
+    topics.forEach((topic, index) => {
+
+        const score =
+            Number(answers[topic] || 0);
+
+        total += score;
+
+
+        if (score < weakestScore) {
+
+            weakestScore = score;
+
+            weakest = topic;
+
+        }
+
+
+        const topicBlocks =
+            document.querySelectorAll(".dashboard-topic");
+
+
+        if (topicBlocks[index]) {
+
+            const scoreText =
+                topicBlocks[index].querySelector("strong");
+
+            const bar =
+                topicBlocks[index].querySelector(".dashboard-bar div");
+
+
+            scoreText.textContent =
+                `${score}%`;
+
+            bar.style.width =
+                `${score}%`;
+
+        }
+
+    });
+
+
+    const overall =
+        Math.round(total / topics.length);
+
+
+    document.getElementById("overallScore")
+        .textContent = `${overall}%`;
+
+
+    document.getElementById("responseCount")
+        .textContent = "1";
+
+
+    document.getElementById("weakestTopic")
+        .textContent = weakest;
+
+
+    document.getElementById("attentionTitle")
+        .textContent =
+        `${weakest} needs attention`;
+
+
+    document.getElementById("attentionText")
+        .textContent =
+        `Students reported ${weakestScore}% understanding of this concept. Consider revising this topic before moving ahead.`;
+
+}
+
+</script>
+
+
+</body>
+</html>
