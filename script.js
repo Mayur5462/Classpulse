@@ -1,115 +1,40 @@
-const ratingButtons = document.querySelectorAll(".rating-btn");
-const progressText = document.getElementById("progressText");
-const progressBar = document.getElementById("progressBar");
-const submitBtn = document.getElementById("submitBtn");
-const doubtBox = document.getElementById("doubt");
-const charCount = document.getElementById("charCount");
-
 const answers = {};
 
+document.querySelectorAll(".topic").forEach(topic => {
+    const topicName = topic.dataset.topic;
 
-// Rating buttons
-ratingButtons.forEach((button) => {
+    topic.querySelectorAll(".rating-btn").forEach(button => {
+        button.addEventListener("click", () => {
 
-    button.addEventListener("click", () => {
-
-        const topic = button.dataset.topic;
-        const value = Number(button.dataset.value);
-
-        answers[topic] = value;
-
-        // Remove selection from same topic
-        document
-            .querySelectorAll(`[data-topic="${topic}"]`)
-            .forEach((btn) => {
+            // Sirf isi topic ke buttons ko unselect karo
+            topic.querySelectorAll(".rating-btn").forEach(btn => {
                 btn.classList.remove("selected");
             });
 
-        // Select clicked button
-        button.classList.add("selected");
+            // Jo button click hua usko select karo
+            button.classList.add("selected");
 
-        updateProgress();
+            // Is topic ka answer save karo
+            answers[topicName] = button.dataset.value;
+
+            updateProgress();
+        });
     });
-
 });
 
-
-// Update progress
 function updateProgress() {
+    const totalTopics = document.querySelectorAll(".topic").length;
+    const completedTopics = Object.keys(answers).length;
 
-    const answered = Object.keys(answers).length;
-    const total = 5;
+    const progressText = document.querySelector(".progress-text");
+    const progressBar = document.querySelector(".progress-bar");
 
-    progressText.textContent = `${answered} / ${total}`;
-
-    const percentage = (answered / total) * 100;
-
-    progressBar.style.width = `${percentage}%`;
-}
-
-
-// Character counter
-doubtBox.addEventListener("input", () => {
-
-    const length = doubtBox.value.length;
-
-    charCount.textContent = `${length} / 250`;
-
-});
-
-
-// Submit feedback
-submitBtn.addEventListener("click", () => {
-
-    const answered = Object.keys(answers).length;
-
-    if (answered < 5) {
-
-        alert(
-            `Please rate all 5 topics first.\n\nYou have rated ${answered} out of 5 topics.`
-        );
-
-        return;
+    if (progressText) {
+        progressText.textContent = `${completedTopics} / ${totalTopics}`;
     }
 
-
-    const feedback = {
-
-        lesson: "Force & Resultant",
-
-        answers: answers,
-
-        doubt: doubtBox.value.trim(),
-
-        submittedAt: new Date().toISOString()
-
-    };
-
-
-    // Save feedback in browser
-    localStorage.setItem(
-        "classpulseFeedback",
-        JSON.stringify(feedback)
-    );
-
-
-    // Show success screen
-    document.querySelector(".feedback-section").innerHTML = `
-
-        <div class="success-screen">
-
-            <div class="success-icon">
-                ✅
-            </div>
-
-            <h2>Feedback Submitted!</h2>
-
-            <p>
-                Thank you. Your anonymous feedback will help improve the lesson.
-            </p>
-
-        </div>
-
-    `;
-
-});
+    if (progressBar) {
+        progressBar.style.width =
+            `${(completedTopics / totalTopics) * 100}%`;
+    }
+}
