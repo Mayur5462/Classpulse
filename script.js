@@ -35,15 +35,15 @@ function setupRatingButtons() {
 
             button.addEventListener("click", () => {
 
-                // Sirf current topic ke buttons unselect
+                // Sirf isi topic ke buttons unselect karo
                 topic.querySelectorAll(".rating-btn").forEach(btn => {
                     btn.classList.remove("selected");
                 });
 
-                // Clicked button select
+                // Clicked button select karo
                 button.classList.add("selected");
 
-                // Rating save
+                // Rating save karo
                 answers[topicName] =
                     Number(button.dataset.value);
 
@@ -162,10 +162,17 @@ async function submitFeedback() {
 
     try {
 
-        const { error } =
+        /*
+           IMPORTANT:
+           Tera actual Supabase table ka naam
+           "Reviews" hai.
+        */
+
+        const { data, error } =
             await supabaseClient
-                .from("feedback")
-                .insert(feedbackRows);
+                .from("Reviews")
+                .insert(feedbackRows)
+                .select();
 
 
         if (error) {
@@ -185,9 +192,15 @@ async function submitFeedback() {
         }
 
 
-        /*
-           Success
-        */
+        console.log(
+            "Feedback successfully saved:",
+            data
+        );
+
+
+        /* =========================
+           SUCCESS
+        ========================= */
 
         alert(
             "Feedback successfully submitted! ✅"
@@ -221,7 +234,8 @@ async function submitFeedback() {
         );
 
         alert(
-            "Supabase se connection nahi ho paaya."
+            "Supabase se connection nahi ho paaya.\n\n" +
+            error.message
         );
 
     }
