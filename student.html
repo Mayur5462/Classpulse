@@ -1,300 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>ClassPulse — Student Review</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
-
-  <style>
-
-    .student-form {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .student-input-group {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin-top: 25px;
-    }
-
-    .student-input {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .student-input label {
-      font-size: 14px;
-      font-weight: 600;
-      color: #aab4d0;
-    }
-
-    .student-input input {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 15px 16px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.035);
-      color: #fff;
-      font-size: 15px;
-      outline: none;
-    }
-
-    .student-input input:focus {
-      border-color: #4d8dff;
-      box-shadow: 0 0 0 3px rgba(77,141,255,0.12);
-    }
-
-    .student-subject {
-      width: 100%;
-      text-align: left;
-      cursor: pointer;
-      border: 1px solid rgba(255,255,255,0.08);
-      color: white;
-    }
-
-    .student-subject.selected {
-      border-color: #4d8dff !important;
-      background: rgba(50,100,220,0.16) !important;
-      box-shadow: 0 0 25px rgba(60,120,255,0.12);
-    }
-
-    .chapter-list {
-      display: grid;
-      gap: 12px;
-      margin-top: 25px;
-    }
-
-    .chapter-list button {
-      width: 100%;
-      display: grid;
-      grid-template-columns: 65px 1fr auto;
-      align-items: center;
-      gap: 15px;
-      padding: 20px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.025);
-      color: white;
-      text-align: left;
-      cursor: pointer;
-    }
-
-    .chapter-list button:hover,
-    .chapter-list button.selected {
-      border-color: #4d8dff;
-      background: rgba(50,100,220,0.13);
-    }
-
-    .chapter-number {
-      color: #6da0ff;
-      font-size: 18px;
-      font-weight: 800;
-    }
-
-    .chapter-name {
-      font-size: 16px;
-      font-weight: 700;
-    }
-
-    .chapter-count {
-      color: #7f8aa8;
-      font-size: 13px;
-    }
-
-    .topics-container {
-      display: none;
-    }
-
-    .topics-container.visible {
-      display: block;
-    }
-
-    .topic-rating {
-      padding: 22px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
-
-    .topic-rating:last-child {
-      border-bottom: none;
-    }
-
-    .topic-title h3 {
-      margin: 0 0 6px;
-    }
-
-    .topic-title p {
-      margin: 0;
-      color: #7f8aa8;
-      font-size: 14px;
-    }
-
-    .rating-options {
-      display: flex;
-      gap: 9px;
-      flex-wrap: wrap;
-      margin-top: 17px;
-    }
-
-    .rating-options label {
-      cursor: pointer;
-    }
-
-    .rating-options input {
-      display: none;
-    }
-
-    .rating-options span {
-      display: inline-block;
-      min-width: 58px;
-      padding: 10px 12px;
-      text-align: center;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.09);
-      background: rgba(255,255,255,0.035);
-      color: #aab4d0;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .rating-options input:checked + span {
-      background: #2563eb;
-      border-color: #5b96ff;
-      color: white;
-      box-shadow: 0 0 18px rgba(37,99,235,0.25);
-    }
-
-    .checkbox-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin: 18px 0 25px;
-    }
-
-    .checkbox-grid label {
-      padding: 13px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.035);
-      border: 1px solid rgba(255,255,255,0.07);
-      color: #c7cee1;
-      cursor: pointer;
-    }
-
-    .checkbox-grid input {
-      margin-right: 8px;
-    }
-
-    .review-label {
-      display: block;
-      margin-bottom: 9px;
-      color: #aab4d0;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .review-textarea {
-      width: 100%;
-      min-height: 130px;
-      box-sizing: border-box;
-      resize: vertical;
-      padding: 16px;
-      border-radius: 15px;
-      border: 1px solid rgba(255,255,255,0.09);
-      background: rgba(255,255,255,0.035);
-      color: white;
-      font-family: inherit;
-      outline: none;
-    }
-
-    .review-textarea:focus {
-      border-color: #4d8dff;
-    }
-
-    .privacy-note {
-      margin-top: 20px;
-      padding: 14px;
-      border-radius: 12px;
-      background: rgba(50,100,220,0.07);
-      color: #8995b3;
-      font-size: 13px;
-    }
-
-    .submit-review {
-      margin-top: 22px;
-      border: none;
-      cursor: pointer;
-    }
-
-    .empty-message {
-      padding: 20px;
-      border-radius: 15px;
-      background: rgba(255,255,255,0.025);
-      color: #7f8aa8;
-      text-align: center;
-    }
-
-    @media (max-width: 650px) {
-
-      .student-input-group {
-        grid-template-columns: 1fr;
-      }
-
-      .checkbox-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .chapter-list button {
-        grid-template-columns: 48px 1fr;
-      }
-
-      .chapter-count {
-        grid-column: 2;
-      }
-
-      .rating-options {
-        gap: 6px;
-      }
-
-      .rating-options span {
-        min-width: 48px;
-        padding: 9px 7px;
-      }
-
-    }
-
-  </style>
-
 </head>
-
 
 <body>
 
 <header class="navbar">
 
   <div class="brand">
-
     <div class="brand-icon">CP</div>
 
     <div>
       <h2>ClassPulse</h2>
       <span>Understand. Improve. Learn.</span>
     </div>
-
   </div>
 
   <nav>
@@ -315,21 +43,17 @@
   <div class="section-heading">
 
     <div>
-
-      <span class="eyebrow">
-        STUDENT LEARNING REVIEW
-      </span>
+      <span class="eyebrow">STUDENT LEARNING REVIEW</span>
 
       <h1>
         Tell us what you
         <span>understood.</span>
       </h1>
-
     </div>
 
     <p>
-      Your feedback helps teachers understand which topics
-      need more explanation or revision.
+      Your feedback helps teachers understand which topics need
+      more explanation or revision.
     </p>
 
   </div>
@@ -352,9 +76,7 @@
 
       <div class="student-input">
 
-        <label for="studentName">
-          Full Name
-        </label>
+        <label for="studentName">Full Name</label>
 
         <input
           type="text"
@@ -367,9 +89,7 @@
 
       <div class="student-input">
 
-        <label for="rollNumber">
-          Roll Number
-        </label>
+        <label for="rollNumber">Roll Number</label>
 
         <input
           type="text"
@@ -558,9 +278,7 @@
     </p>
 
 
-    <h3>
-      Which topics were difficult?
-    </h3>
+    <h3>Which topics were difficult?</h3>
 
     <div
       class="checkbox-grid"
@@ -584,9 +302,7 @@
 
 
     <div class="privacy-note">
-
       🔒 Your feedback is used for learning improvement.
-
     </div>
 
 
@@ -596,7 +312,6 @@
       onclick="submitReview()"
     >
       Submit Learning Review →
-
     </button>
 
   </div>
@@ -621,10 +336,6 @@
 
 
 <script>
-
-/* =====================================================
-   COURSE DATA
-===================================================== */
 
 const courseData = {
 
@@ -831,955 +542,18 @@ const courseData = {
 };
 
 
-/* =====================================================
-   VARIABLES
-===================================================== */
-
 let selectedSubject = "";
 let selectedChapter = "";
 let currentTopics = [];
 
 
-/* =====================================================
-   SUBJECT SELECTION
-===================================================== */
-
 function selectSubject(subject, button) {
 
-  selectedSubject = subject;
-  selectedChapter = "";
-  currentTopics = [];
-
-  document
-    .querySelectorAll(".student-subject")
-    .forEach(function(item) {
-      item.classList.remove("selected");
-    });
-
-  button.classList.add("selected");
-
-  const chapterList =
-    document.getElementById("chapterList");
-
-  chapterList.innerHTML = "";
-
-  const chapters =
-    courseData[subject].chapters;
-
-  let chapterNumber = 1;
-
-  Object.keys(chapters).forEach(function(chapter) {
-
-    const topics = chapters[chapter];
-
-    const chapterButton =
-      document.createElement("button");
-
-    chapterButton.type = "button";
-
-    chapterButton.innerHTML = `
-      <span class="chapter-number">
-        ${String(chapterNumber).padStart(2, "0")}
-      </span>
-
-      <strong class="chapter-name">
-        ${chapter}
-      </strong>
-
-      <small class="chapter-count">
-        ${topics.length} Subtopics
-      </small>
-    `;
-
-    chapterButton.addEventListener(
-      "click",
-      function() {
-        selectChapter(chapter, chapterButton);
-      }
-    );
-
-    chapterList.appendChild(chapterButton);
-
-    chapterNumber++;
-
-  });
-
-
-  document
-    .getElementById("chapterInstruction")
-    .innerText =
-      "Choose a chapter from " + subject + ".";
-
-
-  document
-    .getElementById("topicsSection")
-    .classList.remove("visible");
-
-
-  document
-    .getElementById("reviewSection")
-    .classList.remove("visible");
-
-}
-
-
-/* =====================================================
-   CHAPTER SELECTION
-===================================================== */
-
-function selectChapter(chapter, button) {
-
-  selectedChapter = chapter;
-
-  document
-    .quer<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>ClassPulse — Student Review</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
-
-  <link rel="stylesheet" href="style.css">
-
-  <style>
-
-    .student-form {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .student-input-group {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin-top: 25px;
-    }
-
-    .student-input {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .student-input label {
-      font-size: 14px;
-      font-weight: 600;
-      color: #aab4d0;
-    }
-
-    .student-input input {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 15px 16px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.035);
-      color: #fff;
-      font-size: 15px;
-      outline: none;
-    }
-
-    .student-input input:focus {
-      border-color: #4d8dff;
-      box-shadow: 0 0 0 3px rgba(77,141,255,0.12);
-    }
-
-    .student-subject {
-      width: 100%;
-      text-align: left;
-      cursor: pointer;
-      border: 1px solid rgba(255,255,255,0.08);
-      color: white;
-    }
-
-    .student-subject.selected {
-      border-color: #4d8dff !important;
-      background: rgba(50,100,220,0.16) !important;
-      box-shadow: 0 0 25px rgba(60,120,255,0.12);
-    }
-
-    .chapter-list {
-      display: grid;
-      gap: 12px;
-      margin-top: 25px;
-    }
-
-    .chapter-list button {
-      width: 100%;
-      display: grid;
-      grid-template-columns: 65px 1fr auto;
-      align-items: center;
-      gap: 15px;
-      padding: 20px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.025);
-      color: white;
-      text-align: left;
-      cursor: pointer;
-    }
-
-    .chapter-list button:hover,
-    .chapter-list button.selected {
-      border-color: #4d8dff;
-      background: rgba(50,100,220,0.13);
-    }
-
-    .chapter-number {
-      color: #6da0ff;
-      font-size: 18px;
-      font-weight: 800;
-    }
-
-    .chapter-name {
-      font-size: 16px;
-      font-weight: 700;
-    }
-
-    .chapter-count {
-      color: #7f8aa8;
-      font-size: 13px;
-    }
-
-    .topics-container {
-      display: none;
-    }
-
-    .topics-container.visible {
-      display: block;
-    }
-
-    .topic-rating {
-      padding: 22px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
-
-    .topic-rating:last-child {
-      border-bottom: none;
-    }
-
-    .topic-title h3 {
-      margin: 0 0 6px;
-    }
-
-    .topic-title p {
-      margin: 0;
-      color: #7f8aa8;
-      font-size: 14px;
-    }
-
-    .rating-options {
-      display: flex;
-      gap: 9px;
-      flex-wrap: wrap;
-      margin-top: 17px;
-    }
-
-    .rating-options label {
-      cursor: pointer;
-    }
-
-    .rating-options input {
-      display: none;
-    }
-
-    .rating-options span {
-      display: inline-block;
-      min-width: 58px;
-      padding: 10px 12px;
-      text-align: center;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.09);
-      background: rgba(255,255,255,0.035);
-      color: #aab4d0;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .rating-options input:checked + span {
-      background: #2563eb;
-      border-color: #5b96ff;
-      color: white;
-      box-shadow: 0 0 18px rgba(37,99,235,0.25);
-    }
-
-    .checkbox-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin: 18px 0 25px;
-    }
-
-    .checkbox-grid label {
-      padding: 13px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.035);
-      border: 1px solid rgba(255,255,255,0.07);
-      color: #c7cee1;
-      cursor: pointer;
-    }
-
-    .checkbox-grid input {
-      margin-right: 8px;
-    }
-
-    .review-label {
-      display: block;
-      margin-bottom: 9px;
-      color: #aab4d0;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .review-textarea {
-      width: 100%;
-      min-height: 130px;
-      box-sizing: border-box;
-      resize: vertical;
-      padding: 16px;
-      border-radius: 15px;
-      border: 1px solid rgba(255,255,255,0.09);
-      background: rgba(255,255,255,0.035);
-      color: white;
-      font-family: inherit;
-      outline: none;
-    }
-
-    .review-textarea:focus {
-      border-color: #4d8dff;
-    }
-
-    .privacy-note {
-      margin-top: 20px;
-      padding: 14px;
-      border-radius: 12px;
-      background: rgba(50,100,220,0.07);
-      color: #8995b3;
-      font-size: 13px;
-    }
-
-    .submit-review {
-      margin-top: 22px;
-      border: none;
-      cursor: pointer;
-    }
-
-    .empty-message {
-      padding: 20px;
-      border-radius: 15px;
-      background: rgba(255,255,255,0.025);
-      color: #7f8aa8;
-      text-align: center;
-    }
-
-    @media (max-width: 650px) {
-
-      .student-input-group {
-        grid-template-columns: 1fr;
-      }
-
-      .checkbox-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .chapter-list button {
-        grid-template-columns: 48px 1fr;
-      }
-
-      .chapter-count {
-        grid-column: 2;
-      }
-
-      .rating-options {
-        gap: 6px;
-      }
-
-      .rating-options span {
-        min-width: 48px;
-        padding: 9px 7px;
-      }
-
-    }
-
-  </style>
-
-</head>
-
-
-<body>
-
-<header class="navbar">
-
-  <div class="brand">
-
-    <div class="brand-icon">CP</div>
-
-    <div>
-      <h2>ClassPulse</h2>
-      <span>Understand. Improve. Learn.</span>
-    </div>
-
-  </div>
-
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="student.html" class="active">Student</a>
-    <a href="dashboard.html">Teacher</a>
-    <a href="analytics.html">Analytics</a>
-    <a href="about.html">About</a>
-  </nav>
-
-</header>
-
-
-<main>
-
-<section class="section student-form">
-
-  <div class="section-heading">
-
-    <div>
-
-      <span class="eyebrow">
-        STUDENT LEARNING REVIEW
-      </span>
-
-      <h1>
-        Tell us what you
-        <span>understood.</span>
-      </h1>
-
-    </div>
-
-    <p>
-      Your feedback helps teachers understand which topics
-      need more explanation or revision.
-    </p>
-
-  </div>
-
-
-  <!-- STEP 1 -->
-
-  <div class="step-card">
-
-    <div class="step-number">01</div>
-
-    <h2>Your Details</h2>
-
-    <p>
-      Enter your details so your submission can be associated
-      with your class record.
-    </p>
-
-    <div class="student-input-group">
-
-      <div class="student-input">
-
-        <label for="studentName">
-          Full Name
-        </label>
-
-        <input
-          type="text"
-          id="studentName"
-          placeholder="Enter your name"
-        >
-
-      </div>
-
-
-      <div class="student-input">
-
-        <label for="rollNumber">
-          Roll Number
-        </label>
-
-        <input
-          type="text"
-          id="rollNumber"
-          placeholder="Enter your roll number"
-        >
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- STEP 2 -->
-
-  <div class="step-card">
-
-    <div class="step-number">02</div>
-
-    <h2>Select Subject</h2>
-
-    <p>
-      Choose the engineering subject you want to review.
-    </p>
-
-
-    <div class="subjects-grid">
-
-      <button
-        type="button"
-        class="subject-card student-subject"
-        onclick="selectSubject('Engineering Mathematics I', this)"
-      >
-
-        <div class="subject-icon">M¹</div>
-
-        <div class="subject-info">
-          <h3>Engineering Mathematics I</h3>
-          <p>Mathematics</p>
-        </div>
-
-      </button>
-
-
-      <button
-        type="button"
-        class="subject-card student-subject"
-        onclick="selectSubject('Engineering Mechanics', this)"
-      >
-
-        <div class="subject-icon">EM</div>
-
-        <div class="subject-info">
-          <h3>Engineering Mechanics</h3>
-          <p>Mechanics</p>
-        </div>
-
-      </button>
-
-
-      <button
-        type="button"
-        class="subject-card student-subject"
-        onclick="selectSubject('Basic Electrical Engineering', this)"
-      >
-
-        <div class="subject-icon">BE</div>
-
-        <div class="subject-info">
-          <h3>Basic Electrical Engineering</h3>
-          <p>Electrical</p>
-        </div>
-
-      </button>
-
-
-      <button
-        type="button"
-        class="subject-card student-subject"
-        onclick="selectSubject('Engineering Chemistry', this)"
-      >
-
-        <div class="subject-icon">CH</div>
-
-        <div class="subject-info">
-          <h3>Engineering Chemistry</h3>
-          <p>Chemistry</p>
-        </div>
-
-      </button>
-
-
-      <button
-        type="button"
-        class="subject-card student-subject"
-        onclick="selectSubject('Fundamentals of Programming', this)"
-      >
-
-        <div class="subject-icon">FP</div>
-
-        <div class="subject-info">
-          <h3>Fundamentals of Programming</h3>
-          <p>Programming</p>
-        </div>
-
-      </button>
-
-
-      <button
-        type="button"
-        class="subject-card student-subject"
-        onclick="selectSubject('Professional Communication Skills', this)"
-      >
-
-        <div class="subject-icon">PCS</div>
-
-        <div class="subject-info">
-          <h3>Professional Communication Skills</h3>
-          <p>Communication</p>
-        </div>
-
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <!-- STEP 3 -->
-
-  <div class="step-card">
-
-    <div class="step-number">03</div>
-
-    <h2>Select Chapter / Lesson</h2>
-
-    <p id="chapterInstruction">
-      First select a subject above.
-    </p>
-
-    <div id="chapterList" class="chapter-list">
-
-      <div class="empty-message">
-        Select a subject to see its chapters.
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- STEP 4 -->
-
-  <div
-    class="step-card topics-container"
-    id="topicsSection"
-  >
-
-    <div class="step-number">04</div>
-
-    <h2>Rate Your Understanding</h2>
-
-    <p id="topicInstruction">
-      Select a chapter to see its subtopics.
-    </p>
-
-    <div id="topicsContainer"></div>
-
-  </div>
-
-
-  <!-- STEP 5 -->
-
-  <div
-    class="step-card topics-container"
-    id="reviewSection"
-  >
-
-    <div class="step-number">05</div>
-
-    <h2>Chapter Review</h2>
-
-    <p>
-      Tell your teacher what was difficult or confusing.
-    </p>
-
-
-    <h3>
-      Which topics were difficult?
-    </h3>
-
-    <div
-      class="checkbox-grid"
-      id="difficultTopics"
-    ></div>
-
-
-    <label
-      class="review-label"
-      for="reviewText"
-    >
-      Tell us what confused you (optional)
-    </label>
-
-
-    <textarea
-      class="review-textarea"
-      id="reviewText"
-      placeholder="Example: I understand the formula, but I get confused while choosing the correct angle..."
-    ></textarea>
-
-
-    <div class="privacy-note">
-
-      🔒 Your feedback is used for learning improvement.
-
-    </div>
-
-
-    <button
-      type="button"
-      class="primary-btn submit-review"
-      onclick="submitReview()"
-    >
-      Submit Learning Review →
-
-    </button>
-
-  </div>
-
-</section>
-
-</main>
-
-
-<footer>
-
-  <div>
-    <strong>ClassPulse</strong>
-    <span> · Understand. Improve. Learn.</span>
-  </div>
-
-  <p>
-    Learning feedback, made meaningful.
-  </p>
-
-</footer>
-
-
-<script>
-
-/* =====================================================
-   COURSE DATA
-===================================================== */
-
-const courseData = {
-
-  "Engineering Mathematics I": {
-
-    chapters: {
-
-      "Differential Calculus": [
-        ["Functions and Limits", "Understanding functions and limits"],
-        ["Continuity", "Understanding continuity of functions"],
-        ["Differentiation", "Rules and applications of differentiation"],
-        ["Partial Differentiation", "Understanding partial derivatives"],
-        ["Applications of Derivatives", "Applying derivatives to problems"]
-      ],
-
-      "Integral Calculus": [
-        ["Indefinite Integration", "Basic methods of integration"],
-        ["Definite Integration", "Understanding definite integrals"],
-        ["Properties of Integrals", "Important properties of integration"],
-        ["Applications of Integration", "Using integration in problems"]
-      ],
-
-      "Differential Equations": [
-        ["First Order Equations", "Basic differential equations"],
-        ["Variable Separable Equations", "Separating variables"],
-        ["Linear Differential Equations", "Solving linear equations"],
-        ["Applications", "Applying differential equations"]
-      ]
-
-    }
-
-  },
-
-
-  "Engineering Mechanics": {
-
-    chapters: {
-
-      "Force Systems": [
-        ["Force Components", "Resolving a force into components"],
-        ["Resultant Force", "Finding magnitude and direction of resultant"],
-        ["Parallelogram Law", "Understanding parallelogram law of forces"],
-        ["Resolution of Forces", "Horizontal and vertical components"],
-        ["Equilibrium", "Conditions required for equilibrium"]
-      ],
-
-      "Friction": [
-        ["Laws of Friction", "Basic laws of friction"],
-        ["Coefficient of Friction", "Understanding coefficient of friction"],
-        ["Limiting Friction", "Understanding limiting friction"],
-        ["Angle of Friction", "Relation between friction and angle"],
-        ["Applications of Friction", "Applying friction to problems"]
-      ],
-
-      "Centroid and Centre of Gravity": [
-        ["Centroid", "Understanding centroid"],
-        ["Centre of Gravity", "Understanding centre of gravity"],
-        ["Composite Areas", "Finding centroid of composite areas"],
-        ["Practical Applications", "Applications of centroid"]
-      ],
-
-      "Simple Lifting Machines": [
-        ["Mechanical Advantage", "Understanding mechanical advantage"],
-        ["Velocity Ratio", "Understanding velocity ratio"],
-        ["Efficiency", "Machine efficiency"],
-        ["Law of Machine", "Understanding the law of machine"]
-      ]
-
-    }
-
-  },
-
-
-  "Basic Electrical Engineering": {
-
-    chapters: {
-
-      "DC Circuits": [
-        ["Ohm's Law", "Relationship between voltage, current and resistance"],
-        ["Kirchhoff's Laws", "KCL and KVL"],
-        ["Series Circuits", "Understanding series connections"],
-        ["Parallel Circuits", "Understanding parallel connections"],
-        ["Network Analysis", "Solving basic electrical networks"]
-      ],
-
-      "AC Circuits": [
-        ["AC Voltage", "Understanding alternating voltage"],
-        ["RMS Value", "Understanding RMS quantities"],
-        ["Phase Difference", "Understanding phase relationship"],
-        ["Power Factor", "Understanding power factor"],
-        ["AC Power", "Real and reactive power"]
-      ],
-
-      "Transformers": [
-        ["Transformer Principle", "Working principle"],
-        ["EMF Equation", "Understanding transformer EMF"],
-        ["Transformer Ratio", "Voltage and turns ratio"],
-        ["Losses", "Transformer losses"]
-      ]
-
-    }
-
-  },
-
-
-  "Engineering Chemistry": {
-
-    chapters: {
-
-      "Water Technology": [
-        ["Hardness of Water", "Understanding water hardness"],
-        ["Types of Hardness", "Temporary and permanent hardness"],
-        ["Water Softening", "Methods of softening water"],
-        ["Boiler Problems", "Problems caused by hard water"]
-      ],
-
-      "Corrosion": [
-        ["Electrochemical Corrosion", "Understanding corrosion mechanism"],
-        ["Types of Corrosion", "Different forms of corrosion"],
-        ["Factors Affecting Corrosion", "Conditions affecting corrosion"],
-        ["Corrosion Prevention", "Methods of corrosion control"]
-      ],
-
-      "Fuels": [
-        ["Solid Fuels", "Types and properties"],
-        ["Liquid Fuels", "Petroleum based fuels"],
-        ["Gaseous Fuels", "Types of gaseous fuels"],
-        ["Calorific Value", "Understanding calorific value"]
-      ]
-
-    }
-
-  },
-
-
-  "Fundamentals of Programming": {
-
-    chapters: {
-
-      "Programming Basics": [
-        ["Algorithms", "Understanding algorithms"],
-        ["Flowcharts", "Representing program logic"],
-        ["Variables", "Understanding variables"],
-        ["Data Types", "Understanding basic data types"],
-        ["Operators", "Using programming operators"]
-      ],
-
-      "Control Statements": [
-        ["If Else", "Conditional statements"],
-        ["Nested Conditions", "Multiple conditions"],
-        ["Switch Case", "Multi-option selection"],
-        ["Loops", "Repeating instructions"],
-        ["Break and Continue", "Controlling loops"]
-      ],
-
-      "Functions": [
-        ["Function Basics", "Creating and using functions"],
-        ["Parameters", "Passing values to functions"],
-        ["Return Values", "Returning results"],
-        ["Scope", "Understanding variable scope"]
-      ],
-
-      "Arrays and Strings": [
-        ["One Dimensional Arrays", "Basic arrays"],
-        ["Two Dimensional Arrays", "Matrix-like arrays"],
-        ["Strings", "Working with text"],
-        ["Array Operations", "Searching and processing arrays"]
-      ]
-
-    }
-
-  },
-
-
-  "Professional Communication Skills": {
-
-    chapters: {
-
-      "Communication Basics": [
-        ["Communication Process", "Understanding the communication cycle"],
-        ["Types of Communication", "Verbal and non-verbal communication"],
-        ["Barriers", "Understanding communication barriers"],
-        ["Effective Communication", "Principles of effective communication"]
-      ],
-
-      "Presentation Skills": [
-        ["Presentation Structure", "Organising a presentation"],
-        ["Body Language", "Using effective body language"],
-        ["Voice Modulation", "Using voice effectively"],
-        ["Audience Interaction", "Engaging with an audience"]
-      ],
-
-      "Group Discussion": [
-        ["Introduction", "Understanding group discussions"],
-        ["Speaking Skills", "Expressing ideas clearly"],
-        ["Listening Skills", "Active listening"],
-        ["Team Participation", "Working effectively in a group"]
-      ]
-
-    }
-
+  if (!courseData[subject]) {
+    alert("Subject data not found.");
+    return;
   }
 
-};
-
-
-/* =====================================================
-   VARIABLES
-===================================================== */
-
-let selectedSubject = "";
-let selectedChapter = "";
-let currentTopics = [];
-
-
-/* =====================================================
-   SUBJECT SELECTION
-===================================================== */
-
-function selectSubject(subject, button) {
-
   selectedSubject = subject;
   selectedChapter = "";
   currentTopics = [];
@@ -1801,6 +575,7 @@ function selectSubject(subject, button) {
     courseData[subject].chapters;
 
   let chapterNumber = 1;
+
 
   Object.keys(chapters).forEach(function(chapter) {
 
@@ -1825,12 +600,14 @@ function selectSubject(subject, button) {
       </small>
     `;
 
+
     chapterButton.addEventListener(
       "click",
       function() {
         selectChapter(chapter, chapterButton);
       }
     );
+
 
     chapterList.appendChild(chapterButton);
 
@@ -1839,16 +616,15 @@ function selectSubject(subject, button) {
   });
 
 
-  document
-    .getElementById("chapterInstruction")
-    .innerText =
-      "Choose a chapter from " + subject + ".";
+  document.getElementById(
+    "chapterInstruction"
+  ).innerText =
+    "Choose a chapter from " + subject + ".";
 
 
   document
     .getElementById("topicsSection")
     .classList.remove("visible");
-
 
   document
     .getElementById("reviewSection")
@@ -1856,10 +632,6 @@ function selectSubject(subject, button) {
 
 }
 
-
-/* =====================================================
-   CHAPTER SELECTION
-===================================================== */
 
 function selectChapter(chapter, button) {
 
@@ -1871,20 +643,19 @@ function selectChapter(chapter, button) {
       item.classList.remove("selected");
     });
 
+
   button.classList.add("selected");
+
 
   currentTopics =
     courseData[selectedSubject]
       .chapters[selectedChapter];
 
+
   renderTopics();
 
 }
 
-
-/* =====================================================
-   RENDER TOPICS
-===================================================== */
 
 function renderTopics() {
 
@@ -1893,6 +664,7 @@ function renderTopics() {
 
   container.innerHTML = "";
 
+
   currentTopics.forEach(function(topic, index) {
 
     const topicName = topic[0];
@@ -1900,8 +672,10 @@ function renderTopics() {
 
     const topicId = "topic_" + index;
 
-    const html = `
 
+    container.insertAdjacentHTML(
+      "beforeend",
+      `
       <div class="topic-rating">
 
         <div class="topic-title">
@@ -1967,12 +741,7 @@ function renderTopics() {
         </div>
 
       </div>
-
-    `;
-
-    container.insertAdjacentHTML(
-      "beforeend",
-      html
+      `
     );
 
   });
@@ -1985,24 +754,19 @@ function renderTopics() {
     .getElementById("topicsSection")
     .classList.add("visible");
 
-
   document
     .getElementById("reviewSection")
     .classList.add("visible");
 
 
-  document
-    .getElementById("topicInstruction")
-    .innerText =
-      selectedChapter +
-      " — rate your understanding of each subtopic.";
+  document.getElementById(
+    "topicInstruction"
+  ).innerText =
+    selectedChapter +
+    " — rate your understanding of each subtopic.";
 
 }
 
-
-/* =====================================================
-   DIFFICULT TOPICS
-===================================================== */
 
 function renderDifficultTopics() {
 
@@ -2011,12 +775,14 @@ function renderDifficultTopics() {
 
   container.innerHTML = "";
 
+
   currentTopics.forEach(function(topic) {
 
     const topicName = topic[0];
 
     const label =
       document.createElement("label");
+
 
     label.innerHTML = `
       <input
@@ -2026,6 +792,7 @@ function renderDifficultTopics() {
       ${topicName}
     `;
 
+
     container.appendChild(label);
 
   });
@@ -2033,21 +800,16 @@ function renderDifficultTopics() {
 }
 
 
-/* =====================================================
-   SUBMIT REVIEW
-===================================================== */
-
 function submitReview() {
 
   const name =
-    document
-      .getElementById("studentName")
+    document.getElementById("studentName")
       .value
       .trim();
 
+
   const roll =
-    document
-      .getElementById("rollNumber")
+    document.getElementById("rollNumber")
       .value
       .trim();
 
@@ -2076,10 +838,7 @@ function submitReview() {
   }
 
 
-  if (
-    !currentTopics ||
-    currentTopics.length === 0
-  ) {
+  if (!currentTopics.length) {
     alert("No topics found for this chapter.");
     return;
   }
@@ -2097,6 +856,7 @@ function submitReview() {
     const topicName =
       currentTopics[index][0];
 
+
     const selected =
       document.querySelector(
         `input[name="topic_${index}"]:checked`
@@ -2110,7 +870,6 @@ function submitReview() {
       );
 
       return;
-
     }
 
 
@@ -2131,8 +890,7 @@ function submitReview() {
 
 
   const review =
-    document
-      .getElementById("reviewText")
+    document.getElementById("reviewText")
       .value
       .trim();
 
@@ -2164,8 +922,6 @@ function submitReview() {
 
   };
 
-
-  /* SAVE */
 
   try {
 
@@ -2207,8 +963,6 @@ function submitReview() {
     );
 
 
-    /* VERIFY THE ACTUAL REVIEW */
-
     const check =
       JSON.parse(
         localStorage.getItem(
@@ -2217,16 +971,16 @@ function submitReview() {
       );
 
 
-    const saved =
-      check.some(function(item) {
+    if (
+      !check.some(function(item) {
         return item.id === reviewData.id;
-      });
+      })
+    ) {
 
-
-    if (!saved) {
       throw new Error(
         "Review was not found after saving."
       );
+
     }
 
 
@@ -2242,6 +996,7 @@ function submitReview() {
       error
     );
 
+
     alert(
       "❌ Review could not be saved.\n\nPlease refresh the page and try again."
     );
@@ -2251,19 +1006,19 @@ function submitReview() {
   }
 
 
-  /* RESET */
+  document.getElementById(
+    "studentName"
+  ).value = "";
 
-  document
-    .getElementById("studentName")
-    .value = "";
 
-  document
-    .getElementById("rollNumber")
-    .value = "";
+  document.getElementById(
+    "rollNumber"
+  ).value = "";
 
-  document
-    .getElementById("reviewText")
-    .value = "";
+
+  document.getElementById(
+    "reviewText"
+  ).value = "";
 
 
   document
@@ -2278,13 +1033,13 @@ function submitReview() {
   currentTopics = [];
 
 
-  document
-    .getElementById("chapterList")
-    .innerHTML = `
-      <div class="empty-message">
-        Select a subject to see its chapters.
-      </div>
-    `;
+  document.getElementById(
+    "chapterList"
+  ).innerHTML = `
+    <div class="empty-message">
+      Select a subject to see its chapters.
+    </div>
+  `;
 
 
   document
