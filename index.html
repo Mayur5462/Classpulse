@@ -1,563 +1,447 @@
-                        </button>
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ClassPulse — Student Feedback</title>
+  <title>ClassPulse — Understand. Improve. Learn.</title>
 
-    <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <header class="topbar">
+  <!-- NAVBAR -->
+  <header class="navbar">
 
-        <div class="brand">
+    <div class="brand">
+      <div class="brand-icon">CP</div>
 
-            <div class="brand-icon">
-                CP
+      <div>
+        <h2>ClassPulse</h2>
+        <span>Understand. Improve. Learn.</span>
+      </div>
+    </div>
+
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="student.html">Student</a>
+      <a href="dashboard.html">Teacher</a>
+      <a href="analytics.html">Analytics</a>
+      <a href="about.html">About</a>
+    </nav>
+
+  </header>
+
+
+  <!-- HERO -->
+  <main>
+
+    <section class="hero">
+
+      <div class="hero-content">
+
+        <div class="badge">
+          <span class="pulse-dot"></span>
+          Learning Feedback Platform
+        </div>
+
+        <h1>
+          Turn student feedback
+          <span>into better learning.</span>
+        </h1>
+
+        <p>
+          ClassPulse helps teachers understand exactly what students
+          understood, what confused them, and what needs revision.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="student.html" class="primary-btn">
+            Give Your Review →
+          </a>
+
+          <a href="#teacher" class="secondary-btn">
+            Teacher Insights
+          </a>
+        </div>
+
+      </div>
+
+
+      <!-- HERO STAT CARD -->
+      <div class="hero-card">
+
+        <div class="card-top">
+          <span>Today's Class</span>
+          <span class="live">● LIVE</span>
+        </div>
+
+        <h3>Engineering Mechanics</h3>
+
+        <div class="overall">
+          <div>
+            <small>Overall Understanding</small>
+            <strong>72%</strong>
+          </div>
+
+          <div class="circle-score">
+            72
+          </div>
+        </div>
+
+        <div class="mini-progress">
+          <div style="width:72%"></div>
+        </div>
+
+        <div class="hero-card-footer">
+          <span>42 Reviews</span>
+          <span>5 Topics</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- HOW IT WORKS -->
+    <section class="section">
+
+      <div class="section-heading">
+
+        <div>
+          <span class="eyebrow">HOW IT WORKS</span>
+
+          <h2>
+            From feedback to insight.
+          </h2>
+        </div>
+
+        <p>
+          A simple way to understand where the class stands.
+        </p>
+
+      </div>
+
+
+      <div class="steps">
+
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <h3>Students Review</h3>
+          <p>
+            Students select their subject, lesson and subtopics
+            and rate how well they understood them.
+          </p>
+        </div>
+
+
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <h3>ClassPulse Analyses</h3>
+          <p>
+            Feedback is converted into clear topic-wise
+            understanding data.
+          </p>
+        </div>
+
+
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <h3>Teachers Improve</h3>
+          <p>
+            Teachers instantly see weak areas and decide
+            what should be revised next.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- TEACHER SECTION -->
+    <section class="teacher-section" id="teacher">
+
+      <div class="section-heading">
+
+        <div>
+          <span class="eyebrow">FOR TEACHERS</span>
+
+          <h2>
+            Understand your class
+            <span>at a glance.</span>
+          </h2>
+        </div>
+
+        <p>
+          Select a subject to explore student understanding,
+          reviews and difficult topics.
+        </p>
+
+      </div>
+
+
+      <!-- SUBJECTS -->
+      <div class="subjects-grid">
+
+
+        <a href="dashboard.html" class="subject-card">
+
+          <div class="subject-icon">M¹</div>
+
+          <div class="subject-info">
+            <h3>Engineering Mathematics I</h3>
+
+            <p>
+              8 Chapters · 36 Reviews
+            </p>
+
+            <div class="subject-progress">
+              <div style="width:74%"></div>
             </div>
 
-            <div>
-                <h2>ClassPulse</h2>
-                <span>Understand. Improve. Learn.</span>
+            <div class="subject-bottom">
+              <span>Overall Understanding</span>
+              <strong>74%</strong>
             </div>
+          </div>
+
+          <span class="arrow">→</span>
+
+        </a>
+
+
+
+        <a href="dashboard.html" class="subject-card">
+
+          <div class="subject-icon">EM</div>
+
+          <div class="subject-info">
+            <h3>Engineering Mechanics</h3>
+
+            <p>
+              7 Chapters · 42 Reviews
+            </p>
+
+            <div class="subject-progress">
+              <div style="width:68%"></div>
+            </div>
+
+            <div class="subject-bottom">
+              <span>Overall Understanding</span>
+              <strong>68%</strong>
+            </div>
+          </div>
+
+          <span class="arrow">→</span>
+
+        </a>
+
+
+
+        <a href="dashboard.html" class="subject-card">
+
+          <div class="subject-icon">BE</div>
+
+          <div class="subject-info">
+            <h3>Basic Electrical Engineering</h3>
+
+            <p>
+              6 Chapters · 29 Reviews
+            </p>
+
+            <div class="subject-progress">
+              <div style="width:71%"></div>
+            </div>
+
+            <div class="subject-bottom">
+              <span>Overall Understanding</span>
+              <strong>71%</strong>
+            </div>
+          </div>
+
+          <span class="arrow">→</span>
+
+        </a>
+
+
+
+        <a href="dashboard.html" class="subject-card">
+
+          <div class="subject-icon">CH</div>
+
+          <div class="subject-info">
+            <h3>Engineering Chemistry</h3>
+
+            <p>
+              6 Chapters · 31 Reviews
+            </p>
+
+            <div class="subject-progress">
+              <div style="width:79%"></div>
+            </div>
+
+            <div class="subject-bottom">
+              <span>Overall Understanding</span>
+              <strong>79%</strong>
+            </div>
+          </div>
+
+          <span class="arrow">→</span>
+
+        </a>
+
+
+
+        <a href="dashboard.html" class="subject-card">
+
+          <div class="subject-icon">FP</div>
+
+          <div class="subject-info">
+            <h3>Fundamentals of Programming</h3>
+
+            <p>
+              8 Chapters · 38 Reviews
+            </p>
+
+            <div class="subject-progress">
+              <div style="width:83%"></div>
+            </div>
+
+            <div class="subject-bottom">
+              <span>Overall Understanding</span>
+              <strong>83%</strong>
+            </div>
+          </div>
+
+          <span class="arrow">→</span>
+
+        </a>
+
+
+
+        <a href="dashboard.html" class="subject-card">
+
+          <div class="subject-icon">PCS</div>
+
+          <div class="subject-info">
+            <h3>Professional Communication Skills</h3>
+
+            <p>
+              5 Chapters · 24 Reviews
+            </p>
+
+            <div class="subject-progress">
+              <div style="width:76%"></div>
+            </div>
+
+            <div class="subject-bottom">
+              <span>Overall Understanding</span>
+              <strong>76%</strong>
+            </div>
+          </div>
+
+          <span class="arrow">→</span>
+
+        </a>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- INSIGHT -->
+    <section class="insight-section">
+
+      <div class="insight-card">
+
+        <div class="insight-icon">✦</div>
+
+        <div>
+
+          <span class="eyebrow">CLASSPULSE INSIGHT</span>
+
+          <h2>
+            Know what to teach next.
+          </h2>
+
+          <p>
+            ClassPulse identifies topics where students are
+            struggling and helps teachers focus their revision
+            where it matters most.
+          </p>
 
         </div>
 
-        <div class="anonymous-badge">
-            🔒 Anonymous Feedback
+        <div class="insight-result">
+
+          <span>Highest Priority</span>
+
+          <strong>
+            Resolution of Forces
+          </strong>
+
+          <small>
+            43% understanding
+          </small>
+
         </div>
 
-    </header>
+      </div>
 
+    </section>
 
-    <!-- MAIN CONTENT -->
-    <main class="container">
 
 
-        <!-- HERO SECTION -->
-        <section class="hero">
+    <!-- PRIVACY -->
+    <section class="privacy-section">
 
-            <p class="eyebrow">
-                STUDENT FEEDBACK
-            </p>
+      <div class="privacy-card">
 
-            <h1>
-                How well did you understand
-                today's lesson?
-            </h1>
+        <div class="privacy-icon">🔒</div>
 
-            <p class="hero-text">
-                Your feedback helps your teacher identify which concepts
-                need more explanation.
-            </p>
+        <div>
+          <h3>Student privacy comes first.</h3>
 
-        </section>
+          <p>
+            Feedback is designed to focus on learning,
+            not identity. Student information is kept separate
+            from normal classroom analytics.
+          </p>
+        </div>
 
+      </div>
 
-        <!-- LESSON CARD -->
-        <section class="lesson-card">
+    </section>
 
-            <div class="lesson-info">
+  </main>
 
-                <span class="subject">
-                    ENGINEERING MECHANICS
-                </span>
 
-                <h2>
-                    Force &amp; Resultant
-                </h2>
 
-                <p>
-                    Rate your understanding of each concept below.
-                </p>
+  <!-- FOOTER -->
+  <footer>
 
-            </div>
+    <div>
+      <strong>ClassPulse</strong>
+      <span> · Understand. Improve. Learn.</span>
+    </div>
 
+    <p>
+      Learning feedback, made meaningful.
+    </p>
 
-            <!-- PROGRESS -->
-            <div class="progress-section">
+  </footer>
 
-                <div class="progress-text">
 
-                    <span>
-                        Progress
-                    </span>
-
-                    <strong id="progressText">
-                        0 / 5
-                    </strong>
-
-                </div>
-
-                <div class="progress-track">
-
-                    <div
-                        class="progress-bar"
-                        id="progressBar">
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- FEEDBACK SECTION -->
-        <section class="feedback-section">
-
-
-            <!-- ================================= -->
-            <!-- TOPIC 1 -->
-            <!-- ================================= -->
-
-            <div class="topic-card">
-
-                <div class="topic-number">
-                    01
-                </div>
-
-                <div class="topic-content">
-
-                    <h3>
-                        Force Components
-                    </h3>
-
-                    <p>
-                        How well do you understand this concept?
-                    </p>
-
-
-                    <div class="rating-grid">
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Force Components"
-                            data-value="0">
-                            0%
-                        </button>
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Force Components"
-                            data-value="25">
-                            25%
-                        </button>
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Force Components"
-                            data-value="50">
-                            50%
-                        </button>
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Force Components"
-                            data-value="75">
-                            75%
-                        </button>
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Force Components"
-                            data-value="100">
-                            100%
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- ================================= -->
-            <!-- TOPIC 2 -->
-            <!-- ================================= -->
-
-            <div class="topic-card">
-
-                <div class="topic-number">
-                    02
-                </div>
-
-                <div class="topic-content">
-
-                    <h3>
-                        Resultant Force
-                    </h3>
-
-                    <p>
-                        How well do you understand this concept?
-                    </p>
-
-
-                    <div class="rating-grid">
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Resultant Force"
-                            data-value="0">
-                            0%
-                        </button>
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Resultant Force"
-                            data-value="25">
-                            25%
-                        </button>
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Resultant Force"
-                            data-value="50">
-                            50%
-                        </button>
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Resultant Force"
-                            data-value="75">
-                            75%
-                        </button>
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Resultant Force"
-                            data-value="100">
-                            100%
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- ================================= -->
-            <!-- TOPIC 3 -->
-            <!-- ================================= -->
-
-            <div class="topic-card">
-
-                <div class="topic-number">
-                    03
-                </div>
-
-                <div class="topic-content">
-
-                    <h3>
-                        Parallelogram Law
-                    </h3>
-
-                    <p>
-                        How well do you understand this concept?
-                    </p>
-
-
-                    <div class="rating-grid">
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Parallelogram Law"
-                            data-value="0">
-                            0%
-                        </button>
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Parallelogram Law"
-                            data-value="25">
-                            25%
-                        </button>
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Parallelogram Law"
-                            data-value="50">
-                            50%
-                        </button>
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Parallelogram Law"
-                            data-value="75">
-                            75%
-                        </button>
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Parallelogram Law"
-                            data-value="100">
-                            100%
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- ================================= -->
-            <!-- TOPIC 4 -->
-            <!-- ================================= -->
-
-            <div class="topic-card">
-
-                <div class="topic-number">
-                    04
-                </div>
-
-                <div class="topic-content">
-
-                    <h3>
-                        Resolution of Forces
-                    </h3>
-
-                    <p>
-                        How well do you understand this concept?
-                    </p>
-
-
-                    <div class="rating-grid">
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Resolution of Forces"
-                            data-value="0">
-                            0%
-                        </button>
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Resolution of Forces"
-                            data-value="25">
-                            25%
-                        </button>
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Resolution of Forces"
-                            data-value="50">
-                            50%
-                        </button>
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Resolution of Forces"
-                            data-value="75">
-                            75%
-                        </button>
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Resolution of Forces"
-                            data-value="100">
-                            100%
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- ================================= -->
-            <!-- TOPIC 5 -->
-            <!-- ================================= -->
-
-            <div class="topic-card">
-
-                <div class="topic-number">
-                    05
-                </div>
-
-                <div class="topic-content">
-
-                    <h3>
-                        Equilibrium
-                    </h3>
-
-                    <p>
-                        How well do you understand this concept?
-                    </p>
-
-
-                    <div class="rating-grid">
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Equilibrium"
-                            data-value="0">
-                            0%
-                        </button>
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Equilibrium"
-                            data-value="25">
-                            25%
-                        </button>
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Equilibrium"
-                            data-value="50">
-                            50%
-                        </button>
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Equilibrium"
-                            data-value="75">
-                            75%
-                        </button>
-
-                        <button
-                            type="button"
-                            class="rating-btn"
-                            data-topic="Equilibrium"
-                            data-value="100">
-                            100%
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- ================================= -->
-            <!-- DOUBT BOX -->
-            <!-- ================================= -->
-
-            <div class="doubt-card">
-
-                <div class="doubt-heading">
-
-                    <div>
-
-                        <span class="subject">
-                            OPTIONAL
-                        </span>
-
-                        <h3>
-                            What confused you?
-                        </h3>
-
-                    </div>
-
-                    <span id="charCount">
-                        0 / 250
-                    </span>
-
-                </div>
-
-
-                <p>
-                    Tell your teacher what needs more explanation.
-                </p>
-
-
-                <textarea
-                    id="doubt"
-                    maxlength="250"
-                    placeholder="Example: I understood the formula, but I was confused about how to solve the numerical...">
-                </textarea>
-
-            </div>
-
-
-            <!-- ================================= -->
-            <!-- SUBMIT -->
-            <!-- ================================= -->
-
-            <div class="submit-section">
-
-                <button
-                    type="button"
-                    id="submitBtn"
-                    class="submit-btn">
-
-                    Submit Anonymous Feedback
-                    <span>→</span>
-
-                </button>
-
-                <p class="privacy-note">
-                    🔒 Your response is anonymous. No name, roll number,
-                    or email is collected.
-                </p>
-
-            </div>
-
-
-        </section>
-
-
-        <!-- FOOTER -->
-        <footer>
-
-            <span>
-                ClassPulse • Student Understanding System
-            </span>
-
-            <a href="dashboard.html">
-                Teacher Dashboard →
-            </a>
-
-        </footer>
-
-
-    </main>
-
-
-    <!-- JAVASCRIPT -->
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 
 </body>
-
-    </html>
+  </html>
