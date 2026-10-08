@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ClassPulse — Student Review</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+
+    <div class="brand">
+      <div class="brand-icon">CP</div>
+
+      <div>
+        <h2>ClassPulse</h2>
+        <span>Understand. Improve. Learn.</span>
+      </div>
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="student.html" class="active">Student</a>
+      <a href="dashboard.html">Teacher</a>
+      <a href="analytics.html">Analytics</a>
+      <a href="about.html">About</a>
+    </nav>
+
+  </header>
+
+
+  <main>
+
+    <!-- PAGE HEADER -->
+    <section class="section">
+
+      <div class="section-heading">
+
+        <div>
+          <span class="eyebrow">STUDENT LEARNING REVIEW</span>
+
+          <h1>
+            Tell us what you
+            <span>understood.</span>
+          </h1>
+        </div>
+
+        <p>
+          Your feedback helps teachers understand which topics
+          need more explanation or revision.
+        </p>
+
+      </div>
+
+
+      <!-- SUBJECT SELECTION -->
+      <div class="step-card">
+
+        <div class="step-number">01</div>
+
+        <h2>Select Subject</h2>
+
+        <p>Choose the engineering subject you want to review.</p>
+
+        <div class="subjects-grid">
+
+          <button class="subject-card student-subject" onclick="selectSubject('Engineering Mathematics I', this)">
+            <div class="subject-icon">M¹</div>
+
+            <div class="subject-info">
+              <h3>Engineering Mathematics I</h3>
+              <p>Mathematics</p>
+            </div>
+          </button>
+
+
+          <button class="subject-card student-subject" onclick="selectSubject('Engineering Mechanics', this)">
+            <div class="subject-icon">EM</div>
+
+            <div class="subject-info">
+              <h3>Engineering Mechanics</h3>
+              <p>Mechanics</p>
+            </div>
+          </button>
+
+
+          <button class="subject-card student-subject" onclick="selectSubject('Basic Electrical Engineering', this)">
+            <div class="subject-icon">BE</div>
+
+            <div class="subject-info">
+              <h3>Basic Electrical Engineering</h3>
+              <p>Electrical</p>
+            </div>
+          </button>
+
+
+          <button class="subject-card student-subject" onclick="selectSubject('Engineering Chemistry', this)">
+            <div class="subject-icon">CH</div>
+
+            <div class="subject-info">
+              <h3>Engineering Chemistry</h3>
+              <p>Chemistry</p>
+            </div>
+          </button>
+
+
+          <button class="subject-card student-subject" onclick="selectSubject('Fundamentals of Programming', this)">
+            <div class="subject-icon">FP</div>
+
+            <div class="subject-info">
+              <h3>Fundamentals of Programming</h3>
+              <p>Programming</p>
+            </div>
+          </button>
+
+
+          <button class="subject-card student-subject" onclick="selectSubject('Professional Communication Skills', this)">
+            <div class="subject-icon">PCS</div>
+
+            <div class="subject-info">
+              <h3>Professional Communication Skills</h3>
+              <p>Communication</p>
+            </div>
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- CHAPTER SELECTION -->
+      <div class="step-card">
+
+        <div class="step-number">02</div>
+
+        <h2>Select Chapter / Lesson</h2>
+
+        <p>Choose the chapter you want to give feedback about.</p>
+
+        <div class="chapter-list">
+
+          <button onclick="selectChapter('Force Systems', this)">
+            <span>01</span>
+            <strong>Force Systems</strong>
+            <small>5 Subtopics</small>
+          </button>
+
+          <button onclick="selectChapter('Resultant of Forces', this)">
+            <span>02</span>
+            <strong>Resultant of Forces</strong>
+            <small>5 Subtopics</small>
+          </button>
+
+          <button onclick="selectChapter('Equilibrium', this)">
+            <span>03</span>
+            <strong>Equilibrium</strong>
+            <small>4 Subtopics</small>
+          </button>
+
+          <button onclick="selectChapter('Friction', this)">
+            <span>04</span>
+            <strong>Friction</strong>
+            <small>5 Subtopics</small>
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- SUBTOPIC RATINGS -->
+      <div class="step-card">
+
+        <div class="step-number">03</div>
+
+        <h2>Rate Your Understanding</h2>
+
+        <p>
+          Rate each subtopic honestly. Your response can be anonymous.
+        </p>
+
+
+        <!-- SUBTOPIC 1 -->
+        <div class="topic-rating">
+
+          <div class="topic-title">
+            <div>
+              <h3>Force Components</h3>
+              <p>Understanding of resolving a force into components.</p>
+            </div>
+          </div>
+
+          <div class="rating-options">
+
+            <label>
+              <input type="radio" name="force_components" value="0">
+              <span>0%</span>
+            </label>
+
+            <label>
+              <input type="radio" name="force_components" value="25">
+              <span>25%</span>
+            </label>
+
+            <label>
+              <input type="radio" name="force_components" value="50">
+              <span>50%</span>
+            </label>
+
+            <label>
+              <input type="radio" name="force_components" value="75">
+              <span>75%</span>
+            </label>
+
+            <label>
+              <input type="radio" name="force_components" value="100">
+              <span>100%</span>
+            </label>
+
+          </div>
+
+        </div>
+
+
+        <!-- SUBTOPIC 2 -->
+        <div class="topic-rating">
+
+          <div class="topic-title">
+            <div>
+              <h3>Resultant Force</h3>
+              <p>Finding the magnitude and direction of resultant force.</p>
+            </div>
+          </div>
+
+          <div class="rating-options">
+
+            <label>
+              <input type="radio" name="resultant_force" value="0">
+              <span>0%</span>
+            </label>
+
+            <label>
+              <input type="radio" name="resultant_force" value="25">
+              <span>25%</span>
+            </label>
+
+            <label>
+              <input type="radio" name="resultant_force" value="50">
+              <span>50%</span>
+            </label>
+
+            <label>
+              <input type="radio" name="resultant_force" value="75">
+              <span>75%</span>
+            </label>
+
+            <label>
+              <input type="radio" name="resultant_force" value="100">
+              <span>100%</span>
+            </label>
+
+          </div>
+
+        </div>
+
+
+        <!-- SUBTOPIC 3 -->
+        <div class="topic-rating">
+
+          <div class="topic-title">
+            <div>
+              <h3>Parallelogram Law</h3>
+              <p>Understanding the parallelogram law of forces.</p>
+            </div>
+          </div>
+
+          <div class="rating-options">
+
+            <label>
+              <input type="radio" name="parallelogram_law" value="0">
+              <span>0%</span>
+            </label>
+
+            <label>
+              <input type="radio" name="parallelogram_law" value="25">
+              <span>25%</span>
+            </label>
+
+            <label>
+              <input type="radio" name="parallelogram_law" value="50">
+              <span>50%</span>
+            </label>
+
+            <label>
+              <input type="radio" name="parallelogram_law" value="75">
+              <span>75%</span>
+            </label>
+
+            <label>
+              <input type="radio" name="parallelogram_law" value="100">
+              <span>100%</span>
+            </label>
+
+          </div>
+
+        </div>
+
+
+        <!-- SUBTOPIC 4 -->
+        <div class="topic-rating">
+
+          <div class="topic-title">
+            <div>
+              <h3>Resolution of Forces</h3>
+              <p>Breaking a force into horizontal and vertical components.</p>
+            </div>
+          </div>
+
+          <div class="rating-options">
+
+            <label>
+              <input type="radio" name="resolution_of_forces" value="0">
+              <span>0%</span>
+            </label>
+
+            <label>
+              <input type="radio" name="resolution_of_forces" value="25">
+              <span>25%</span>
+            </label>
+
+            <label>
+              <input type="radio" name="resolution_of_forces" value="50">
+              <span>50%</span>
+            </label>
+
+            <label>
+              <input type="radio" name="resolution_of_forces" value="75">
+              <span>75%</span>
+            </label>
+
+            <label>
+              <input type="radio" name="resolution_of_forces" value="100">
+              <span>100%</span>
+            </label>
+
+          </div>
+
+        </div>
+
+
+        <!-- SUBTOPIC 5 -->
+        <div class="topic-rating">
+
+          <div class="topic-title">
+            <div>
+              <h3>Equilibrium</h3>
+              <p>Understanding conditions required for equilibrium.</p>
+            </div>
+          </div>
+
+          <div class="rating-options">
+
+            <label>
+              <input type="radio" name="equilibrium" value="0">
+              <span>0%</span>
+            </label>
+
+            <label>
+              <input type="radio" name="equilibrium" value="25">
+              <span>25%</span>
+            </label>
+
+            <label>
+              <input type="radio" name="equilibrium" value="50">
+              <span>50%</span>
+            </label>
+
+            <label>
+              <input type="radio" name="equilibrium" value="75">
+              <span>75%</span>
+            </label>
+
+            <label>
+              <input type="radio" name="equilibrium" value="100">
+              <span>100%</span>
+            </label>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- REVIEW -->
+      <div class="step-card">
+
+        <div class="step-number">04</div>
+
+        <h2>Chapter Review</h2>
+
+        <p>Tell your teacher what was difficult or confusing.</p>
+
+
+        <h3>Which topics were difficult?</h3>
+
+        <div class="checkbox-grid">
+
+          <label>
+            <input type="checkbox">
+            Force Components
+          </label>
+
+          <label>
+            <input type="checkbox">
+            Resultant Force
+          </label>
+
+          <label>
+            <input type="checkbox">
+            Parallelogram Law
+          </label>
+
+          <label>
+            <input type="checkbox">
+            Resolution of Forces
+          </label>
+
+          <label>
+            <input type="checkbox">
+            Equilibrium
+          </label>
+
+        </div>
+
+
+        <label class="review-label" for="review">
+          Tell us what confused you (optional)
+        </label>
+
+        <textarea
+          id="review"
+          placeholder="Example: I understand the formula, but I get confused while choosing the correct angle..."
+        ></textarea>
+
+
+        <div class="privacy-note">
+          🔒 Your feedback is used for learning improvement and is normally shown anonymously.
+        </div>
+
+
+        <button class="primary-btn submit-review" onclick="submitReview()">
+          Submit Learning Review →
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+
+    <div>
+      <strong>ClassPulse</strong>
+      <span> · Understand. Improve. Learn.</span>
+    </div>
+
+    <p>Learning feedback, made meaningful.</p>
+
+  </footer>
+
+
+  <script src="script.js"></script>
+
+  <script>
+
+    let selectedSubject = "";
+    let selectedChapter = "";
+
+
+    function selectSubject(subject, button) {
+
+      selectedSubject = subject;
+
+      document
+        .querySelectorAll(".student-subject")
+        .forEach(item => item.classList.remove("selected"));
+
+      button.classList.add("selected");
+
+    }
+
+
+    function selectChapter(chapter, button) {
+
+      selectedChapter = chapter;
+
+      document
+        .querySelectorAll(".chapter-list button")
+        .forEach(item => item.classList.remove("selected"));
+
+      button.classList.add("selected");
+
+    }
+
+
+    function submitReview() {
+
+      if (!selectedSubject) {
+        alert("Please select a subject first.");
+        return;
+      }
+
+      if (!selectedChapter) {
+        alert("Please select a chapter first.");
+        return;
+      }
+
+      alert(
+        "Review submitted successfully! Thank you for helping your teacher understand the class better."
+      );
+
+    }
+
+  </script>
+
+</body>
+                                 </html>
