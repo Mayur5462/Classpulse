@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ClassPulse — Analytics</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+
+  <header class="navbar">
+
+    <div class="brand">
+
+      <div class="brand-icon">CP</div>
+
+      <div>
+        <h2>ClassPulse</h2>
+        <span>Understand. Improve. Learn.</span>
+      </div>
+
+    </div>
+
+
+    <nav>
+
+      <a href="index.html">Home</a>
+
+      <a href="student.html">Student</a>
+
+      <a href="dashboard.html">Teacher</a>
+
+      <a href="analytics.html" class="active">Analytics</a>
+
+      <a href="about.html">About</a>
+
+    </nav>
+
+  </header>
+
+
+
+  <main>
+
+    <!-- ================= PAGE HEADER ================= -->
+
+    <section class="section analytics-header">
+
+      <div class="section-heading">
+
+        <div>
+
+          <span class="eyebrow">CLASS ANALYTICS</span>
+
+          <h1>
+            See how your
+            <span>class is learning.</span>
+          </h1>
+
+        </div>
+
+        <p>
+          Turn student feedback into clear trends,
+          comparisons and actionable teaching insights.
+        </p>
+
+      </div>
+
+
+      <div class="analytics-filters">
+
+        <select id="subjectFilter" onchange="changeSubject()">
+
+          <option value="all">
+            All Subjects
+          </option>
+
+          <option value="maths">
+            Engineering Mathematics I
+          </option>
+
+          <option value="mechanics">
+            Engineering Mechanics
+          </option>
+
+          <option value="electrical">
+            Basic Electrical Engineering
+          </option>
+
+          <option value="chemistry">
+            Engineering Chemistry
+          </option>
+
+          <option value="programming">
+            Fundamentals of Programming
+          </option>
+
+          <option value="pcs">
+            Professional Communication Skills
+          </option>
+
+        </select>
+
+
+        <select>
+
+          <option>
+            Last 30 Days
+          </option>
+
+          <option>
+            Last 7 Days
+          </option>
+
+          <option>
+            This Semester
+          </option>
+
+        </select>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ================= MAIN STATS ================= -->
+
+    <section class="dashboard-grid">
+
+      <div class="stat-card">
+
+        <span class="stat-label">
+          Class Understanding
+        </span>
+
+        <strong>
+          72%
+        </strong>
+
+        <div class="stat-progress">
+          <div style="width:72%"></div>
+        </div>
+
+        <small class="positive">
+          ↑ 11% improvement
+        </small>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <span class="stat-label">
+          Reviews Received
+        </span>
+
+        <strong>
+          184
+        </strong>
+
+        <small>
+          27 this week
+        </small>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <span class="stat-label">
+          Strongest Area
+        </span>
+
+        <strong class="small-stat">
+          Programming
+        </strong>
+
+        <small>
+          83% understanding
+        </small>
+
+      </div>
+
+
+      <div class="stat-card danger-stat">
+
+        <span class="stat-label">
+          Weakest Area
+        </span>
+
+        <strong class="small-stat">
+          Mechanics
+        </strong>
+
+        <small>
+          58% understanding
+        </small>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ================= TREND ================= -->
+
+    <section class="dashboard-panel">
+
+      <div class="panel-header">
+
+        <div>
+
+          <span class="eyebrow">
+            IMPROVEMENT TREND
+          </span>
+
+          <h2>
+            Understanding over time
+          </h2>
+
+        </div>
+
+        <span class="trend-badge">
+          +18% overall
+        </span>
+
+      </div>
+
+
+      <div class="chart-card">
+
+        <div class="chart-y-axis">
+
+          <span>100%</span>
+          <span>80%</span>
+          <span>60%</span>
+          <span>40%</span>
+          <span>20%</span>
+          <span>0%</span>
+
+        </div>
+
+
+        <div class="chart-area">
+
+          <div class="chart-grid-lines">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+          </div>
+
+
+          <div class="chart-line">
+
+            <div class="chart-point" style="left:5%; bottom:35%;">
+              <span>52%</span>
+            </div>
+
+            <div class="chart-point" style="left:22%; bottom:42%;">
+              <span>58%</span>
+            </div>
+
+            <div class="chart-point" style="left:39%; bottom:50%;">
+              <span>64%</span>
+            </div>
+
+            <div class="chart-point" style="left:56%; bottom:57%;">
+              <span>69%</span>
+            </div>
+
+            <div class="chart-point" style="left:73%; bottom:64%;">
+              <span>74%</span>
+            </div>
+
+            <div class="chart-point" style="left:90%; bottom:70%;">
+              <span>78%</span>
+            </div>
+
+          </div>
+
+
+          <div class="chart-labels">
+
+            <span>Week 1</span>
+            <span>Week 2</span>
+            <span>Week 3</span>
+            <span>Week 4</span>
+            <span>Week 5</span>
+            <span>Week 6</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ================= TOPIC COMPARISON ================= -->
+
+    <section class="dashboard-panel">
+
+      <div class="panel-header">
+
+        <div>
+
+          <span class="eyebrow">
+            TOPIC COMPARISON
+          </span>
+
+          <h2>
+            Strong vs weak areas
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="comparison-list">
+
+
+        <div class="comparison-row">
+
+          <div class="comparison-info">
+
+            <strong>
+              Equilibrium
+            </strong>
+
+            <span>
+              Engineering Mechanics
+            </span>
+
+          </div>
+
+          <div class="comparison-bar">
+
+            <div style="width:84%"></div>
+
+          </div>
+
+          <strong>
+            84%
+          </strong>
+
+        </div>
+
+
+
+        <div class="comparison-row">
+
+          <div class="comparison-info">
+
+            <strong>
+              Force Components
+            </strong>
+
+            <span>
+              Engineering Mechanics
+            </span>
+
+          </div>
+
+          <div class="comparison-bar">
+
+            <div style="width:76%"></div>
+
+          </div>
+
+          <strong>
+            76%
+          </strong>
+
+        </div>
+
+
+
+        <div class="comparison-row">
+
+          <div class="comparison-info">
+
+            <strong>
+              Resultant Force
+            </strong>
+
+            <span>
+              Engineering Mechanics
+            </span>
+
+          </div>
+
+          <div class="comparison-bar">
+
+            <div style="width:64%"></div>
+
+          </div>
+
+          <strong>
+            64%
+          </strong>
+
+        </div>
+
+
+
+        <div class="comparison-row">
+
+          <div class="comparison-info">
+
+            <strong>
+              Friction
+            </strong>
+
+            <span>
+              Engineering Mechanics
+            </span>
+
+          </div>
+
+          <div class="comparison-bar">
+
+            <div style="width:59%"></div>
+
+          </div>
+
+          <strong>
+            59%
+          </strong>
+
+        </div>
+
+
+
+        <div class="comparison-row">
+
+          <div class="comparison-info">
+
+            <strong>
+              Resolution of Forces
+            </strong>
+
+            <span>
+              Engineering Mechanics
+            </span>
+
+          </div>
+
+          <div class="comparison-bar">
+
+            <div style="width:43%"></div>
+
+          </div>
+
+          <strong>
+            43%
+          </strong>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ================= BEFORE AFTER ================= -->
+
+    <section class="dashboard-panel">
+
+      <div class="panel-header">
+
+        <div>
+
+          <span class="eyebrow">
+            REVISION IMPACT
+          </span>
+
+          <h2>
+            Did revision actually help?
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="comparison-grid">
+
+
+        <div class="comparison-card">
+
+          <span>
+            Before Revision
+          </span>
+
+          <strong>
+            48%
+          </strong>
+
+          <small>
+            Average understanding
+          </small>
+
+        </div>
+
+
+        <div class="comparison-arrow">
+          →
+        </div>
+
+
+        <div class="comparison-card improved">
+
+          <span>
+            After Revision
+          </span>
+
+          <strong>
+            71%
+          </strong>
+
+          <small>
+            +23% improvement
+          </small>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ================= COMMON DOUBTS ================= -->
+
+    <section class="dashboard-panel">
+
+      <div class="panel-header">
+
+        <div>
+
+          <span class="eyebrow">
+            STUDENT FEEDBACK
+          </span>
+
+          <h2>
+            Common confusion areas
+          </h2>
+
+        </div>
+
+        <span class="new-badge">
+          64 RESPONSES
+        </span>
+
+      </div>
+
+
+      <div class="doubt-grid">
+
+
+        <div class="doubt-card">
+
+          <div class="doubt-number">
+            01
+          </div>
+
+          <h3>
+            Choosing the correct angle
+          </h3>
+
+          <p>
+            Students are confused about which angle
+            should be used while resolving forces.
+          </p>
+
+          <span>
+            28 students
+          </span>
+
+        </div>
+
+
+
+        <div class="doubt-card">
+
+          <div class="doubt-number">
+            02
+          </div>
+
+          <h3>
+            Sign convention
+          </h3>
+
+          <p>
+            Students frequently make mistakes while
+            assigning positive and negative directions.
+          </p>
+
+          <span>
+            21 students
+          </span>
+
+        </div>
+
+
+
+        <div class="doubt-card">
+
+          <div class="doubt-number">
+            03
+          </div>
+
+          <h3>
+            Numerical application
+          </h3>
+
+          <p>
+            Students understand the theory but struggle
+            when applying formulas to numerical problems.
+          </p>
+
+          <span>
+            15 students
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ================= RECOMMENDATION ================= -->
+
+    <section class="insight-section">
+
+      <div class="insight-card">
+
+        <div class="insight-icon">
+          ✦
+        </div>
+
+
+        <div>
+
+          <span class="eyebrow">
+            RECOMMENDED ACTION
+          </span>
+
+          <h2>
+            Revise Resolution of Forces.
+          </h2>
+
+          <p>
+            Start with angle selection and sign convention,
+            then solve 2–3 numerical examples with the class.
+          </p>
+
+        </div>
+
+
+        <div class="insight-result">
+
+          <span>
+            EXPECTED IMPACT
+          </span>
+
+          <strong>
+            High
+          </strong>
+
+          <small>
+            43% → target 70%
+          </small>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ================= PRIVACY ================= -->
+
+    <section class="privacy-section">
+
+      <div class="privacy-card">
+
+        <div class="privacy-icon">
+          🔒
+        </div>
+
+        <div>
+
+          <h3>
+            Analytics protect student privacy.
+          </h3>
+
+          <p>
+            ClassPulse focuses on aggregate learning patterns.
+            Individual identities are not displayed in normal analytics.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <div>
+
+      <strong>
+        ClassPulse
+      </strong>
+
+      <span>
+        · Understand. Improve. Learn.
+      </span>
+
+    </div>
+
+    <p>
+      Learning feedback, made meaningful.
+    </p>
+
+  </footer>
+
+
+
+  <!-- ================= SCRIPT ================= -->
+
+  <script src="script.js"></script>
+
+
+  <script>
+
+    function changeSubject() {
+
+      const subject =
+        document.getElementById("subjectFilter").value;
+
+
+      if (subject === "all") {
+
+        alert(
+          "Showing analytics for all subjects."
+        );
+
+        return;
+
+      }
+
+
+      const names = {
+
+        maths:
+          "Engineering Mathematics I",
+
+        mechanics:
+          "Engineering Mechanics",
+
+        electrical:
+          "Basic Electrical Engineering",
+
+        chemistry:
+          "Engineering Chemistry",
+
+        programming:
+          "Fundamentals of Programming",
+
+        pcs:
+          "Professional Communication Skills"
+
+      };
+
+
+      alert(
+        "Analytics selected for " +
+        names[subject] +
+        "."
+      );
+
+    }
+
+  </script>
+
+
+</body>
+
+            </html>
