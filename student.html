@@ -882,4 +882,446 @@
       };
 
 
-      chapterList.appen
+      chapterList.appendChild(button);
+
+      chapterNumber++;
+
+    });
+
+
+    document.getElementById("chapterInstruction").innerText =
+      "Choose a chapter from " + subject + ".";
+
+
+    /* Hide old topic section */
+
+    document
+      .getElementById("topicsSection")
+      .classList.remove("visible");
+
+
+    document
+      .getElementById("reviewSection")
+      .classList.remove("visible");
+
+  }
+
+
+  /* =====================================================
+     CHAPTER SELECTION
+     ===================================================== */
+
+  function selectChapter(chapter, button) {
+
+    selectedChapter = chapter;
+
+
+    document
+      .querySelectorAll(".chapter-list button")
+      .forEach(function(item) {
+        item.classList.remove("selected");
+      });
+
+
+    button.classList.add("selected");
+
+
+    currentTopics =
+      courseData[selectedSubject].chapters[selectedChapter];
+
+
+    renderTopics();
+
+  }
+
+
+  /* =====================================================
+     RENDER SUBTOPICS
+     ===================================================== */
+
+  function renderTopics() {
+
+    const container =
+      document.getElementById("topicsContainer");
+
+
+    container.innerHTML = "";
+
+
+    currentTopics.forEach(function(topic, index) {
+
+      const topicName = topic[0];
+      const topicDescription = topic[1];
+
+      const topicId =
+        "topic_" + index;
+
+
+      const html = `
+
+        <div class="topic-rating">
+
+          <div class="topic-title">
+
+            <div>
+
+              <h3>
+                ${topicName}
+              </h3>
+
+              <p>
+                ${topicDescription}
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="rating-options">
+
+            <label>
+              <input
+                type="radio"
+                name="${topicId}"
+                value="0"
+              >
+              <span>0%</span>
+            </label>
+
+
+            <label>
+              <input
+                type="radio"
+                name="${topicId}"
+                value="25"
+              >
+              <span>25%</span>
+            </label>
+
+
+            <label>
+              <input
+                type="radio"
+                name="${topicId}"
+                value="50"
+              >
+              <span>50%</span>
+            </label>
+
+
+            <label>
+              <input
+                type="radio"
+                name="${topicId}"
+                value="75"
+              >
+              <span>75%</span>
+            </label>
+
+
+            <label>
+              <input
+                type="radio"
+                name="${topicId}"
+                value="100"
+              >
+              <span>100%</span>
+            </label>
+
+          </div>
+
+        </div>
+
+      `;
+
+
+      container.insertAdjacentHTML(
+        "beforeend",
+        html
+      );
+
+    });
+
+
+    renderDifficultTopics();
+
+
+    document
+      .getElementById("topicsSection")
+      .classList.add("visible");
+
+
+    document
+      .getElementById("reviewSection")
+      .classList.add("visible");
+
+
+    document.getElementById("topicInstruction").innerText =
+      selectedChapter +
+      " — rate your understanding of each subtopic.";
+
+  }
+
+
+  /* =====================================================
+     DIFFICULT TOPICS
+     ===================================================== */
+
+  function renderDifficultTopics() {
+
+    const container =
+      document.getElementById("difficultTopics");
+
+
+    container.innerHTML = "";
+
+
+    currentTopics.forEach(function(topic, index) {
+
+      const topicName = topic[0];
+
+
+      const label =
+        document.createElement("label");
+
+
+      label.innerHTML = `
+        <input
+          type="checkbox"
+          value="${topicName}"
+        >
+        ${topicName}
+      `;
+
+
+      container.appendChild(label);
+
+    });
+
+  }
+
+
+  /* =====================================================
+     SUBMIT REVIEW
+     ===================================================== */
+
+  function submitReview() {
+
+    const name =
+      document
+        .getElementById("studentName")
+        .value
+        .trim();
+
+
+    const roll =
+      document
+        .getElementById("rollNumber")
+        .value
+        .trim();
+
+
+    if (!name) {
+      alert("Please enter your name.");
+      return;
+    }
+
+
+    if (!roll) {
+      alert("Please enter your roll number.");
+      return;
+    }
+
+
+    if (!selectedSubject) {
+      alert("Please select a subject.");
+      return;
+    }
+
+
+    if (!selectedChapter) {
+      alert("Please select a chapter.");
+      return;
+    }
+
+
+    /* Collect ratings */
+
+    const ratings = {};
+
+
+    let allRated = true;
+
+
+    currentTopics.forEach(function(topic, index) {
+
+      const topicName = topic[0];
+
+      const selected =
+        document.querySelector(
+          `input[name="topic_${index}"]:checked`
+        );
+
+
+      if (!selected) {
+
+        allRated = false;
+
+      } else {
+
+        ratings[topicName] =
+          Number(selected.value);
+
+      }
+
+    });
+
+
+    if (!allRated) {
+
+      alert(
+        "Please rate every subtopic before submitting."
+      );
+
+      return;
+
+    }
+
+
+    /* Difficult topics */
+
+    const difficultTopics =
+      Array.from(
+        document.querySelectorAll(
+          "#difficultTopics input:checked"
+        )
+      ).map(function(input) {
+        return input.value;
+      });
+
+
+    const review =
+      document
+        .getElementById("reviewText")
+        .value
+        .trim();
+
+
+    /* Create review object */
+
+    const reviewData = {
+
+      id:
+        "CP-" +
+        Math.random()
+          .toString(16)
+          .substring(2, 6)
+          .toUpperCase(),
+
+      name: name,
+
+      rollNumber: roll,
+
+      subject: selectedSubject,
+
+      chapter: selectedChapter,
+
+      ratings: ratings,
+
+      difficultTopics: difficultTopics,
+
+      review: review,
+
+      submittedAt:
+        new Date().toISOString()
+
+    };
+
+
+    /* Temporary local storage */
+
+    const existingReviews =
+      JSON.parse(
+        localStorage.getItem("classpulse_reviews") || "[]"
+      );
+
+
+    existingReviews.push(reviewData);
+
+
+    localStorage.setItem(
+      "classpulse_reviews",
+      JSON.stringify(existingReviews)
+    );
+
+
+    alert(
+      "Review submitted successfully! Thank you for helping your teacher understand the class better."
+    );
+
+
+    /* Reset form */
+
+    document
+      .getElementById("studentName")
+      .value = "";
+
+
+    document
+      .getElementById("rollNumber")
+      .value = "";
+
+
+    document
+      .getElementById("reviewText")
+      .value = "";
+
+
+    document
+      .querySelectorAll(
+        ".student-subject"
+      )
+      .forEach(function(item) {
+        item.classList.remove("selected");
+      });
+
+
+    document
+      .querySelectorAll(
+        ".chapter-list button"
+      )
+      .forEach(function(item) {
+        item.classList.remove("selected");
+      });
+
+
+    selectedSubject = "";
+    selectedChapter = "";
+    currentTopics = [];
+
+
+    document
+      .getElementById("chapterList")
+      .innerHTML = `
+        <div class="empty-message">
+          Select a subject to see its chapters.
+        </div>
+      `;
+
+
+    document
+      .getElementById("topicsSection")
+      .classList.remove("visible");
+
+
+    document
+      .getElementById("reviewSection")
+      .classList.remove("visible");
+
+  }
+
+</script>
+
+</body>
+</html>
