@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,14 +8,19 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
+  <!-- ================= NAVBAR ================= -->
+
   <header class="navbar">
 
     <div class="brand">
@@ -38,69 +43,81 @@
   </header>
 
 
-  <!-- HERO -->
   <main>
+
+    <!-- ================= HERO ================= -->
 
     <section class="hero">
 
       <div class="hero-content">
 
-        <div class="badge">
-          <span class="pulse-dot"></span>
-          Learning Feedback Platform
-        </div>
+        <span class="eyebrow">SMART CLASSROOM FEEDBACK</span>
 
         <h1>
-          Turn student feedback
-          <span>into better learning.</span>
+          Understand what your
+          <span>class actually understands.</span>
         </h1>
 
         <p>
-          ClassPulse helps teachers understand exactly what students
-          understood, what confused them, and what needs revision.
+          ClassPulse helps teachers collect topic-wise student feedback
+          and turn classroom understanding into meaningful teaching insights.
         </p>
 
         <div class="hero-buttons">
+
           <a href="student.html" class="primary-btn">
-            Give Your Review →
+            Give Learning Review →
           </a>
 
-          <a href="#teacher" class="secondary-btn">
-            Teacher Insights
+          <a href="dashboard.html" class="secondary-btn">
+            Teacher Dashboard
           </a>
+
         </div>
 
       </div>
 
 
-      <!-- HERO STAT CARD -->
       <div class="hero-card">
 
-        <div class="card-top">
-          <span>Today's Class</span>
-          <span class="live">● LIVE</span>
+        <div class="hero-card-top">
+          <span>CLASS UNDERSTANDING</span>
+          <strong>Live Feedback</strong>
         </div>
 
-        <h3>Engineering Mechanics</h3>
+        <div class="hero-score">
+          <span>—</span>
+          <small>Waiting for responses</small>
+        </div>
 
-        <div class="overall">
+        <div class="hero-bars">
+
           <div>
-            <small>Overall Understanding</small>
-            <strong>72%</strong>
+            <span>Strong Topics</span>
+            <div class="mini-bar">
+              <i style="width:70%"></i>
+            </div>
           </div>
 
-          <div class="circle-score">
-            72
+          <div>
+            <span>Needs Revision</span>
+            <div class="mini-bar">
+              <i style="width:35%"></i>
+            </div>
           </div>
-        </div>
 
-        <div class="mini-progress">
-          <div style="width:72%"></div>
+          <div>
+            <span>Feedback Coverage</span>
+            <div class="mini-bar">
+              <i style="width:55%"></i>
+            </div>
+          </div>
+
         </div>
 
         <div class="hero-card-footer">
-          <span>42 Reviews</span>
-          <span>5 Topics</span>
+          <span>●</span>
+          No student data displayed publicly
         </div>
 
       </div>
@@ -108,8 +125,8 @@
     </section>
 
 
+    <!-- ================= HOW IT WORKS ================= -->
 
-    <!-- HOW IT WORKS -->
     <section class="section">
 
       <div class="section-heading">
@@ -118,46 +135,74 @@
           <span class="eyebrow">HOW IT WORKS</span>
 
           <h2>
-            From feedback to insight.
+            From classroom feedback
+            <span>to better teaching.</span>
           </h2>
         </div>
 
         <p>
-          A simple way to understand where the class stands.
+          ClassPulse creates a simple feedback loop between students
+          and teachers without interrupting the learning process.
         </p>
 
       </div>
 
 
-      <div class="steps">
+      <div class="steps-grid">
 
         <div class="step-card">
+
           <div class="step-number">01</div>
-          <h3>Students Review</h3>
+
+          <h3>Student Responds</h3>
+
           <p>
-            Students select their subject, lesson and subtopics
-            and rate how well they understood them.
+            Students select their subject, chapter and subtopics,
+            then rate how well they understood each concept.
           </p>
+
         </div>
 
 
         <div class="step-card">
+
           <div class="step-number">02</div>
-          <h3>ClassPulse Analyses</h3>
+
+          <h3>Feedback Gets Collected</h3>
+
           <p>
-            Feedback is converted into clear topic-wise
-            understanding data.
+            Responses are organised topic-wise so teachers can
+            quickly identify common learning difficulties.
           </p>
+
         </div>
 
 
         <div class="step-card">
+
           <div class="step-number">03</div>
-          <h3>Teachers Improve</h3>
+
+          <h3>Teacher Gets Insight</h3>
+
           <p>
-            Teachers instantly see weak areas and decide
-            what should be revised next.
+            The dashboard highlights strong topics, weak topics
+            and areas that may require revision.
           </p>
+
+        </div>
+
+
+        <div class="step-card">
+
+          <div class="step-number">04</div>
+
+          <h3>Teaching Improves</h3>
+
+          <p>
+            Teachers can use the feedback to decide what should
+            be explained, revised or practised next.
+          </p>
+
         </div>
 
       </div>
@@ -165,9 +210,50 @@
     </section>
 
 
+    <!-- ================= STUDENT SECTION ================= -->
 
-    <!-- TEACHER SECTION -->
-    <section class="teacher-section" id="teacher">
+    <section class="section split-section">
+
+      <div>
+
+        <span class="eyebrow">FOR STUDENTS</span>
+
+        <h2>
+          Your feedback can
+          <span>change the next class.</span>
+        </h2>
+
+        <p>
+          You don't need to write a long answer. Simply tell ClassPulse
+          which topics you understood and which ones need more explanation.
+        </p>
+
+        <a href="student.html" class="primary-btn">
+          Start Student Review →
+        </a>
+
+      </div>
+
+
+      <div class="feature-card">
+
+        <div class="feature-icon">01</div>
+
+        <h3>Topic-Level Feedback</h3>
+
+        <p>
+          Rate individual subtopics instead of giving one general
+          rating for the entire chapter.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= TEACHER SECTION ================= -->
+
+    <section class="section">
 
       <div class="section-heading">
 
@@ -175,42 +261,28 @@
           <span class="eyebrow">FOR TEACHERS</span>
 
           <h2>
-            Understand your class
-            <span>at a glance.</span>
+            See where your class
+            <span>needs attention.</span>
           </h2>
         </div>
 
         <p>
-          Select a subject to explore student understanding,
-          reviews and difficult topics.
+          ClassPulse turns student responses into an easy-to-read
+          classroom understanding dashboard.
         </p>
 
       </div>
 
 
-      <!-- SUBJECTS -->
-      <div class="subjects-grid">
+      <div class="teacher-subjects">
 
+        <a href="dashboard.html" class="teacher-subject-card">
 
-        <a href="dashboard.html" class="subject-card">
+          <span class="subject-code">M1</span>
 
-          <div class="subject-icon">M¹</div>
-
-          <div class="subject-info">
+          <div>
             <h3>Engineering Mathematics I</h3>
-
-            <p>
-              8 Chapters · 36 Reviews
-            </p>
-
-            <div class="subject-progress">
-              <div style="width:74%"></div>
-            </div>
-
-            <div class="subject-bottom">
-              <span>Overall Understanding</span>
-              <strong>74%</strong>
-            </div>
+            <p>View class understanding</p>
           </div>
 
           <span class="arrow">→</span>
@@ -218,26 +290,13 @@
         </a>
 
 
+        <a href="dashboard.html" class="teacher-subject-card">
 
-        <a href="dashboard.html" class="subject-card">
+          <span class="subject-code">EM</span>
 
-          <div class="subject-icon">EM</div>
-
-          <div class="subject-info">
+          <div>
             <h3>Engineering Mechanics</h3>
-
-            <p>
-              7 Chapters · 42 Reviews
-            </p>
-
-            <div class="subject-progress">
-              <div style="width:68%"></div>
-            </div>
-
-            <div class="subject-bottom">
-              <span>Overall Understanding</span>
-              <strong>68%</strong>
-            </div>
+            <p>View class understanding</p>
           </div>
 
           <span class="arrow">→</span>
@@ -245,26 +304,13 @@
         </a>
 
 
+        <a href="dashboard.html" class="teacher-subject-card">
 
-        <a href="dashboard.html" class="subject-card">
+          <span class="subject-code">BE</span>
 
-          <div class="subject-icon">BE</div>
-
-          <div class="subject-info">
+          <div>
             <h3>Basic Electrical Engineering</h3>
-
-            <p>
-              6 Chapters · 29 Reviews
-            </p>
-
-            <div class="subject-progress">
-              <div style="width:71%"></div>
-            </div>
-
-            <div class="subject-bottom">
-              <span>Overall Understanding</span>
-              <strong>71%</strong>
-            </div>
+            <p>View class understanding</p>
           </div>
 
           <span class="arrow">→</span>
@@ -272,26 +318,13 @@
         </a>
 
 
+        <a href="dashboard.html" class="teacher-subject-card">
 
-        <a href="dashboard.html" class="subject-card">
+          <span class="subject-code">CH</span>
 
-          <div class="subject-icon">CH</div>
-
-          <div class="subject-info">
+          <div>
             <h3>Engineering Chemistry</h3>
-
-            <p>
-              6 Chapters · 31 Reviews
-            </p>
-
-            <div class="subject-progress">
-              <div style="width:79%"></div>
-            </div>
-
-            <div class="subject-bottom">
-              <span>Overall Understanding</span>
-              <strong>79%</strong>
-            </div>
+            <p>View class understanding</p>
           </div>
 
           <span class="arrow">→</span>
@@ -299,26 +332,13 @@
         </a>
 
 
+        <a href="dashboard.html" class="teacher-subject-card">
 
-        <a href="dashboard.html" class="subject-card">
+          <span class="subject-code">FP</span>
 
-          <div class="subject-icon">FP</div>
-
-          <div class="subject-info">
+          <div>
             <h3>Fundamentals of Programming</h3>
-
-            <p>
-              8 Chapters · 38 Reviews
-            </p>
-
-            <div class="subject-progress">
-              <div style="width:83%"></div>
-            </div>
-
-            <div class="subject-bottom">
-              <span>Overall Understanding</span>
-              <strong>83%</strong>
-            </div>
+            <p>View class understanding</p>
           </div>
 
           <span class="arrow">→</span>
@@ -326,26 +346,13 @@
         </a>
 
 
+        <a href="dashboard.html" class="teacher-subject-card">
 
-        <a href="dashboard.html" class="subject-card">
+          <span class="subject-code">PCS</span>
 
-          <div class="subject-icon">PCS</div>
-
-          <div class="subject-info">
+          <div>
             <h3>Professional Communication Skills</h3>
-
-            <p>
-              5 Chapters · 24 Reviews
-            </p>
-
-            <div class="subject-progress">
-              <div style="width:76%"></div>
-            </div>
-
-            <div class="subject-bottom">
-              <span>Overall Understanding</span>
-              <strong>76%</strong>
-            </div>
+            <p>View class understanding</p>
           </div>
 
           <span class="arrow">→</span>
@@ -357,41 +364,43 @@
     </section>
 
 
+    <!-- ================= INSIGHT ================= -->
 
-    <!-- INSIGHT -->
-    <section class="insight-section">
+    <section class="section">
 
       <div class="insight-card">
 
-        <div class="insight-icon">✦</div>
-
-        <div>
-
-          <span class="eyebrow">CLASSPULSE INSIGHT</span>
-
-          <h2>
-            Know what to teach next.
-          </h2>
-
-          <p>
-            ClassPulse identifies topics where students are
-            struggling and helps teachers focus their revision
-            where it matters most.
-          </p>
-
+        <div class="insight-label">
+          CLASSPULSE INSIGHT
         </div>
 
-        <div class="insight-result">
+        <h2>
+          Turn feedback into
+          <span>your next teaching decision.</span>
+        </h2>
 
-          <span>Highest Priority</span>
+        <p>
+          Instead of simply showing numbers, ClassPulse helps identify
+          topics that deserve attention and suggests where revision
+          may be useful.
+        </p>
 
-          <strong>
-            Resolution of Forces
-          </strong>
+        <div class="insight-points">
 
-          <small>
-            43% understanding
-          </small>
+          <div>
+            <strong>01</strong>
+            <span>Identify difficult topics</span>
+          </div>
+
+          <div>
+            <strong>02</strong>
+            <span>Compare topic understanding</span>
+          </div>
+
+          <div>
+            <strong>03</strong>
+            <span>Plan targeted revision</span>
+          </div>
 
         </div>
 
@@ -400,38 +409,69 @@
     </section>
 
 
+    <!-- ================= PRIVACY ================= -->
 
-    <!-- PRIVACY -->
-    <section class="privacy-section">
+    <section class="section">
 
       <div class="privacy-card">
 
         <div class="privacy-icon">🔒</div>
 
         <div>
-          <h3>Student privacy comes first.</h3>
+
+          <span class="eyebrow">PRIVACY FIRST</span>
+
+          <h2>Feedback should feel safe.</h2>
 
           <p>
-            Feedback is designed to focus on learning,
-            not identity. Student information is kept separate
-            from normal classroom analytics.
+            ClassPulse is designed to focus on learning patterns rather
+            than publicly exposing individual student responses.
+            Teacher analytics can use aggregated classroom feedback.
           </p>
+
         </div>
 
       </div>
 
     </section>
 
+
+    <!-- ================= CTA ================= -->
+
+    <section class="section final-cta">
+
+      <span class="eyebrow">READY TO BEGIN?</span>
+
+      <h2>
+        Understand the class.
+        <span>Improve the learning.</span>
+      </h2>
+
+      <p>
+        Start with a simple student learning review.
+      </p>
+
+      <a href="student.html" class="primary-btn">
+        Open ClassPulse →
+      </a>
+
+    </section>
+
   </main>
 
 
+  <!-- ================= FOOTER ================= -->
 
-  <!-- FOOTER -->
   <footer>
 
     <div>
+
       <strong>ClassPulse</strong>
-      <span> · Understand. Improve. Learn.</span>
+
+      <span>
+        · Understand. Improve. Learn.
+      </span>
+
     </div>
 
     <p>
@@ -440,8 +480,5 @@
 
   </footer>
 
-
-  <script src="script.js"></script>
-
 </body>
-  </html>
+        </html>
