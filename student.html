@@ -10,7 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
@@ -338,6 +339,27 @@
 
 <script>
 
+/* =========================================
+   SUPABASE CONNECTION
+========================================= */
+
+const SUPABASE_URL =
+  "https://ucetnfdqkzoexqnijmel.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_H_HBQJHKBgEDHtIGym167w_dbDxX3GL";
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
+
+/* =========================================
+   COURSE DATA
+========================================= */
+
 const courseData = {
 
   "Engineering Mathematics I": {
@@ -548,6 +570,10 @@ let selectedChapter = "";
 let currentTopics = [];
 
 
+/* =========================================
+   SELECT SUBJECT
+========================================= */
+
 function selectSubject(subject, button) {
 
   if (!courseData[subject]) {
@@ -634,6 +660,10 @@ function selectSubject(subject, button) {
 }
 
 
+/* =========================================
+   SELECT CHAPTER
+========================================= */
+
 function selectChapter(chapter, button) {
 
   selectedChapter = chapter;
@@ -657,6 +687,10 @@ function selectChapter(chapter, button) {
 
 }
 
+
+/* =========================================
+   RENDER TOPICS
+========================================= */
 
 function renderTopics() {
 
@@ -769,6 +803,10 @@ function renderTopics() {
 }
 
 
+/* =========================================
+   DIFFICULT TOPICS
+========================================= */
+
 function renderDifficultTopics() {
 
   const container =
@@ -801,7 +839,11 @@ function renderDifficultTopics() {
 }
 
 
-function submitReview() {
+/* =========================================
+   SUBMIT REVIEW TO SUPABASE
+========================================= */
+
+async function submitReview() {
 
   const name =
     document.getElementById("studentName")
@@ -845,7 +887,22 @@ function submitReview() {
   }
 
 
-  const ratings = {};
+  const feedbackRows = [];
+
+  const difficultTopics =
+    Array.from(
+      document.querySelectorAll(
+        "#difficultTopics input:checked"
+      )
+    ).map(function(input) {
+      return input.value;
+    });
+
+
+  const review =
+    document.getElementById("reviewText")
+      .value
+      .trim();
 
 
   for (
@@ -874,183 +931,152 @@ function submitReview() {
     }
 
 
-    ratings[topicName] =
-      Number(selected.value);
+    feedbackRows.push({
+
+      subject: selectedSubject,
+
+      chapter: selectedChapter,
+
+      subtopic: topicName,
+
+      rating: Number(selected.value),
+
+      doubt:
+        difficultTopics.length > 0
+          ? difficultTopics.join(", ") +
+            (review
+              ? " | " + review
+              : "")
+          : review,
+
+      submitted_at:
+        new Date().toISOString()
+
+    });
 
   }
 
 
-  const difficultTopics =
-    Array.from(
-      document.querySelectorAll(
-        "#difficultTopics input:checked"
-      )
-    ).map(function(input) {
-      return input.value;
-    });
-
-
-  const review =
-    document.getElementById("reviewText")
-      .value
-      .trim();
-
-
-  const reviewData = {
-
-    id:
-      "CP-" +
-      Date.now()
-        .toString(36)
-        .toUpperCase(),
-
-    name: name,
-
-    rollNumber: roll,
-
-    subject: selectedSubject,
-
-    chapter: selectedChapter,
-
-    ratings: ratings,
-
-    difficultTopics: difficultTopics,
-
-    review: review,
-
-    submittedAt:
-      new Date().toISOString()
-
-  };
+  console.log(
+    "Sending to Supabase:",
+    feedbackRows
+  );
 
 
   try {
 
-    let existingReviews = [];
+    const { error } =
+      await supabaseClient
+        .from("Reviews")
+        .insert(feedbackRows);
 
-    const savedData =
-      localStorage.getItem(
-        "classpulse_reviews"
+
+    if (error) {
+
+      console.error(
+        "Supabase Error:",
+        error
       );
 
+      alert(
+        "❌ Feedback save nahi hua.\n\n" +
+        error.message
+      );
 
-    if (savedData) {
-
-      try {
-
-        existingReviews =
-          JSON.parse(savedData);
-
-      } catch (error) {
-
-        existingReviews = [];
-
-      }
-
+      return;
     }
 
 
-    if (!Array.isArray(existingReviews)) {
-      existingReviews = [];
-    }
-
-
-    existingReviews.push(reviewData);
-
-
-    localStorage.setItem(
-      "classpulse_reviews",
-      JSON.stringify(existingReviews)
+    console.log(
+      "Supabase insert successful."
     );
-
-
-    const check =
-      JSON.parse(
-        localStorage.getItem(
-          "classpulse_reviews"
-        ) || "[]"
-      );
-
-
-    if (
-      !check.some(function(item) {
-        return item.id === reviewData.id;
-      })
-    ) {
-
-      throw new Error(
-        "Review was not found after saving."
-      );
-
-    }
 
 
     alert(
-      "✅ Review submitted successfully!\n\nYour feedback has been saved."
+      "✅ Review submitted successfully!\n\n" +
+      "Your feedback has been saved."
     );
+
+
+    /* =========================
+       RESET FORM
+    ========================= */
+
+    document.getElementById(
+      "studentName"
+    ).value = "";
+
+    document.getElementById(
+      "rollNumber"
+    ).value = "";
+
+    document.getElementById(
+      "reviewText"
+    ).value = "";
+
+
+    document
+      .querySelectorAll(
+        'input[type="radio"]'
+      )
+      .forEach(function(input) {
+        input.checked = false;
+      });
+
+
+    document
+      .querySelectorAll(
+        '#difficultTopics input[type="checkbox"]'
+      )
+      .forEach(function(input) {
+        input.checked = false;
+      });
+
+
+    document
+      .querySelectorAll(".student-subject")
+      .forEach(function(item) {
+        item.classList.remove("selected");
+      });
+
+
+    selectedSubject = "";
+    selectedChapter = "";
+    currentTopics = [];
+
+
+    document.getElementById(
+      "chapterList"
+    ).innerHTML = `
+      <div class="empty-message">
+        Select a subject to see its chapters.
+      </div>
+    `;
+
+
+    document
+      .getElementById("topicsSection")
+      .classList.remove("visible");
+
+
+    document
+      .getElementById("reviewSection")
+      .classList.remove("visible");
 
 
   } catch (error) {
 
     console.error(
-      "ClassPulse error:",
+      "Supabase connection error:",
       error
     );
 
-
     alert(
-      "❌ Review could not be saved.\n\nPlease refresh the page and try again."
+      "❌ Supabase connection error.\n\n" +
+      error.message
     );
 
-    return;
-
   }
-
-
-  document.getElementById(
-    "studentName"
-  ).value = "";
-
-
-  document.getElementById(
-    "rollNumber"
-  ).value = "";
-
-
-  document.getElementById(
-    "reviewText"
-  ).value = "";
-
-
-  document
-    .querySelectorAll(".student-subject")
-    .forEach(function(item) {
-      item.classList.remove("selected");
-    });
-
-
-  selectedSubject = "";
-  selectedChapter = "";
-  currentTopics = [];
-
-
-  document.getElementById(
-    "chapterList"
-  ).innerHTML = `
-    <div class="empty-message">
-      Select a subject to see its chapters.
-    </div>
-  `;
-
-
-  document
-    .getElementById("topicsSection")
-    .classList.remove("visible");
-
-
-  document
-    .getElementById("reviewSection")
-    .classList.remove("visible");
 
 }
 
