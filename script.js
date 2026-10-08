@@ -1,3 +1,14 @@
+const SUPABASE_URL = "https://ucetnfdqkzoexqnijmel.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_H_HBQJHKBgEDHtIGym167w_dbDxX3GL";
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+
+console.log("Supabase connected:", supabaseClient);
 const answers = {};
 
 document.querySelectorAll(".topic").forEach(topic => {
