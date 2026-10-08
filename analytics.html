@@ -11,757 +11,679 @@
 
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar">
-
-  <div class="nav-brand">
-    <span class="brand-mark">CP</span>
-    <span>ClassPulse</span>
-  </div>
-
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="student.html">Student</a>
-    <a href="dashboard.html">Teacher</a>
-    <a href="analytics.html" class="active">Analytics</a>
-    <a href="about.html">About</a>
-  </div>
-
-</nav>
-
-
-<!-- HEADER -->
-<section class="analytics-header">
-
-  <div>
-    <span class="eyebrow">CLASSPULSE ANALYTICS</span>
-
-    <h1>Understand the bigger picture.</h1>
-
-    <p>
-      Turn student feedback into clear insights about
-      learning, difficult topics and revision priorities.
-    </p>
-  </div>
-
-</section>
-
-
-<!-- FILTERS -->
-<section class="dashboard-panel analytics-filters">
-
-  <div class="filter-group">
-
-    <label for="subjectFilter">
-      Subject
-    </label>
-
-    <select id="subjectFilter" onchange="updateAnalytics()">
-
-      <option value="ALL">
-        All Subjects
-      </option>
-
-      <option value="Engineering Mathematics I">
-        Engineering Mathematics I
-      </option>
-
-      <option value="Engineering Mechanics">
-        Engineering Mechanics
-      </option>
-
-      <option value="Basic Electrical Engineering">
-        Basic Electrical Engineering
-      </option>
-
-      <option value="Engineering Chemistry">
-        Engineering Chemistry
-      </option>
-
-      <option value="Fundamentals of Programming">
-        Fundamentals of Programming
-      </option>
-
-      <option value="Professional Communication Skills">
-        Professional Communication Skills
-      </option>
-
-    </select>
-
-  </div>
-
-
-  <div class="filter-group">
-
-    <label for="chapterFilter">
-      Chapter
-    </label>
-
-    <select id="chapterFilter" onchange="updateAnalytics()">
-
-      <option value="ALL">
-        All Chapters
-      </option>
-
-    </select>
-
-  </div>
-
-</section>
-
-
-<!-- MAIN STATS -->
-<section class="dashboard-grid">
-
-  <div class="stat-card">
-
-    <span class="stat-label">
-      Class Understanding
-    </span>
-
-    <strong id="overallScore">
-      —
-    </strong>
-
-    <p id="overallDescription">
-      Waiting for feedback
-    </p>
-
-  </div>
-
-
-  <div class="stat-card">
-
-    <span class="stat-label">
-      Reviews Received
-    </span>
-
-    <strong id="reviewCount">
-      0
-    </strong>
-
-    <p>
-      Student submissions
-    </p>
-
-  </div>
-
-
-  <div class="stat-card">
-
-    <span class="stat-label">
-      Strongest Topic
-    </span>
-
-    <strong id="strongestTopic">
-      —
-    </strong>
-
-    <p id="strongestScore">
-      No data yet
-    </p>
-
-  </div>
-
-
-  <div class="stat-card">
-
-    <span class="stat-label">
-      Weakest Topic
-    </span>
-
-    <strong id="weakestTopic">
-      —
-    </strong>
-
-    <p id="weakestScore">
-      No data yet
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- CLASS INSIGHT -->
-<section class="dashboard-panel insight-panel">
-
-  <div>
-
-    <span class="eyebrow">
-      CLASSPULSE INSIGHT
-    </span>
-
-    <h2 id="insightTitle">
-      Waiting for student feedback
-    </h2>
-
-    <p id="insightText">
-      Analytics will appear after students submit
-      their first reviews.
-    </p>
-
-  </div>
-
-  <div class="insight-icon">
-    ✦
-  </div>
-
-</section>
-
-
-<!-- TOPIC COMPARISON -->
-<section class="dashboard-panel chart-card">
-
-  <div class="panel-header">
-
-    <div>
-
-      <span class="eyebrow">
-        TOPIC COMPARISON
-      </span>
-
-      <h2>
-        Understanding by Topic
-      </h2>
-
+  <!-- NAVBAR -->
+  <nav class="navbar">
+
+    <div class="logo">
+      <span class="logo-mark">CP</span>
+      <span>ClassPulse</span>
     </div>
 
-  </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="student.html">Student</a>
+      <a href="dashboard.html">Teacher</a>
+      <a href="analytics.html" class="active">Analytics</a>
+      <a href="about.html">About</a>
+    </div>
+
+  </nav>
 
 
-  <div id="topicComparison">
+  <!-- ANALYTICS HEADER -->
+  <section class="analytics-header">
 
-    <div class="empty-state">
+    <div>
+      <p class="eyebrow">CLASS ANALYTICS</p>
 
-      <div class="empty-icon">
-        ◌
-      </div>
-
-      <h3>
-        No Topic Data Yet
-      </h3>
+      <h1>
+        Turn feedback into
+        <span>better teaching.</span>
+      </h1>
 
       <p>
-        Topic analytics will appear after student reviews.
+        Analyze topic-wise understanding, identify learning gaps,
+        and decide what your class needs next.
       </p>
+    </div>
+
+    <div class="analytics-filters">
+
+      <label>
+        Subject
+
+        <select id="subjectFilter">
+          <option value="all">All Subjects</option>
+          <option value="Engineering Mathematics I">
+            Engineering Mathematics I
+          </option>
+          <option value="Engineering Mechanics">
+            Engineering Mechanics
+          </option>
+          <option value="Basic Electrical Engineering">
+            Basic Electrical Engineering
+          </option>
+          <option value="Engineering Chemistry">
+            Engineering Chemistry
+          </option>
+          <option value="Fundamentals of Programming">
+            Fundamentals of Programming
+          </option>
+          <option value="Professional Communication Skills">
+            Professional Communication Skills
+          </option>
+        </select>
+      </label>
+
+      <label>
+        Chapter
+
+        <select id="chapterFilter">
+          <option value="all">All Chapters</option>
+        </select>
+      </label>
 
     </div>
 
-  </div>
-
-</section>
+  </section>
 
 
-<!-- UNDERSTANDING DISTRIBUTION -->
-<section class="dashboard-panel chart-card">
+  <!-- MAIN STATS -->
+  <section class="analytics-stats">
 
-  <div class="panel-header">
+    <div class="stat-card">
 
-    <div>
-
-      <span class="eyebrow">
-        UNDERSTANDING DISTRIBUTION
+      <span class="stat-label">
+        Class Understanding
       </span>
 
-      <h2>
-        How the class is doing
-      </h2>
-
-    </div>
-
-  </div>
-
-
-  <div id="distributionChart" class="analytics-bars">
-
-    <div class="empty-state">
-
-      <div class="empty-icon">
-        ◌
-      </div>
-
-      <h3>
-        No Data Yet
-      </h3>
-
-      <p>
-        Submit student feedback to generate analytics.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- DIFFICULT TOPICS -->
-<section class="dashboard-panel">
-
-  <div class="panel-header">
-
-    <div>
-
-      <span class="eyebrow">
-        STUDENT DIFFICULTIES
-      </span>
-
-      <h2>
-        Most Reported Difficult Topics
-      </h2>
-
-    </div>
-
-  </div>
-
-
-  <div id="difficultTopics" class="comparison-list">
-
-    <div class="empty-state">
-
-      <div class="empty-icon">
-        ◌
-      </div>
-
-      <h3>
-        No Difficult Topics Reported
-      </h3>
-
-      <p>
-        Student-selected difficult topics will appear here.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- REVISION IMPACT -->
-<section class="dashboard-panel">
-
-  <div class="panel-header">
-
-    <div>
-
-      <span class="eyebrow">
-        REVISION IMPACT
-      </span>
-
-      <h2>
-        Before → After Revision
-      </h2>
-
-    </div>
-
-  </div>
-
-
-  <div class="comparison-grid">
-
-    <div class="comparison-card">
-
-      <span>
-        Before Revision
-      </span>
-
-      <strong id="beforeScore">
+      <strong id="overallScore">
         —
       </strong>
 
-      <small>
-        First review session
+      <small id="overallMessage">
+        Waiting for responses
       </small>
 
     </div>
 
 
-    <div class="comparison-arrow">
-      →
-    </div>
+    <div class="stat-card">
 
-
-    <div class="comparison-card">
-
-      <span>
-        After Revision
+      <span class="stat-label">
+        Reviews Received
       </span>
 
-      <strong id="afterScore">
-        —
+      <strong id="reviewCount">
+        0
       </strong>
 
       <small>
-        Later review session
+        Student responses
       </small>
 
     </div>
 
-  </div>
+
+    <div class="stat-card">
+
+      <span class="stat-label">
+        Strongest Topic
+      </span>
+
+      <strong id="strongestTopic">
+        —
+      </strong>
+
+      <small id="strongestScore">
+        No data yet
+      </small>
+
+    </div>
 
 
-  <p class="comparison-note">
-    Revision comparison will appear when the same topic
-    receives feedback across multiple review sessions.
-  </p>
+    <div class="stat-card">
 
-</section>
+      <span class="stat-label">
+        Needs Revision
+      </span>
 
+      <strong id="weakestTopic">
+        —
+      </strong>
 
-<!-- RECOMMENDED ACTION -->
-<section class="dashboard-panel insight-panel">
+      <small id="weakestScore">
+        No data yet
+      </small>
 
-  <div>
+    </div>
 
-    <span class="eyebrow">
-      RECOMMENDED ACTION
-    </span>
-
-    <h2 id="actionTitle">
-      No recommendation yet
-    </h2>
-
-    <p id="actionText">
-      Once enough feedback is collected, ClassPulse will
-      suggest what the teacher should focus on next.
-    </p>
-
-  </div>
-
-  <div class="insight-icon">
-    →
-  </div>
-
-</section>
+  </section>
 
 
-<!-- PRIVACY -->
-<section class="dashboard-panel privacy-panel">
+  <!-- INSIGHT -->
+  <section class="analytics-section">
 
-  <div>
+    <div class="insight-card">
 
-    <span class="eyebrow">
-      PRIVACY
-    </span>
+      <div class="insight-icon">
+        ✦
+      </div>
 
-    <h2>
-      Analytics stay focused on learning.
-    </h2>
+      <div>
+
+        <p class="eyebrow">
+          CLASSPULSE INSIGHT
+        </p>
+
+        <h2 id="insightTitle">
+          Waiting for enough feedback
+        </h2>
+
+        <p id="insightText">
+          Once students submit their understanding,
+          ClassPulse will identify important learning patterns.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TOPIC COMPARISON -->
+  <section class="analytics-section">
+
+    <div class="section-heading">
+
+      <div>
+        <p class="eyebrow">
+          TOPIC ANALYSIS
+        </p>
+
+        <h2>
+          Understanding by topic
+        </h2>
+
+        <p>
+          Compare how well students understand individual topics.
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="chart-card">
+
+      <div id="topicComparison" class="analytics-topic-list">
+
+        <div class="empty-state">
+          <h3>No reviews yet</h3>
+
+          <p>
+            Student feedback will appear here once responses are submitted.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- DISTRIBUTION -->
+  <section class="analytics-section">
+
+    <div class="section-heading">
+
+      <div>
+        <p class="eyebrow">
+          UNDERSTANDING DISTRIBUTION
+        </p>
+
+        <h2>
+          How students are understanding
+        </h2>
+
+        <p>
+          Responses grouped according to understanding level.
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="chart-card">
+
+      <div class="distribution-grid">
+
+        <div class="distribution-item">
+
+          <div class="distribution-top">
+            <span>0–25%</span>
+            <strong id="dist0">0</strong>
+          </div>
+
+          <div class="mini-bar">
+            <span id="bar0"></span>
+          </div>
+
+          <small>
+            Need significant support
+          </small>
+
+        </div>
+
+
+        <div class="distribution-item">
+
+          <div class="distribution-top">
+            <span>26–50%</span>
+            <strong id="dist1">0</strong>
+          </div>
+
+          <div class="mini-bar">
+            <span id="bar1"></span>
+          </div>
+
+          <small>
+            Partial understanding
+          </small>
+
+        </div>
+
+
+        <div class="distribution-item">
+
+          <div class="distribution-top">
+            <span>51–75%</span>
+            <strong id="dist2">0</strong>
+          </div>
+
+          <div class="mini-bar">
+            <span id="bar2"></span>
+          </div>
+
+          <small>
+            Good understanding
+          </small>
+
+        </div>
+
+
+        <div class="distribution-item">
+
+          <div class="distribution-top">
+            <span>76–100%</span>
+            <strong id="dist3">0</strong>
+          </div>
+
+          <div class="mini-bar">
+            <span id="bar3"></span>
+          </div>
+
+          <small>
+            Strong understanding
+          </small>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- DIFFICULT TOPICS -->
+  <section class="analytics-section">
+
+    <div class="section-heading">
+
+      <div>
+        <p class="eyebrow">
+          LEARNING GAPS
+        </p>
+
+        <h2>
+          Most reported difficult topics
+        </h2>
+
+        <p>
+          Topics that students themselves identified as difficult.
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="chart-card">
+
+      <div id="difficultTopics">
+
+        <div class="empty-state">
+
+          <h3>No difficult topics reported</h3>
+
+          <p>
+            Student-selected difficult topics will appear here.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- REVISION IMPACT -->
+  <section class="analytics-section">
+
+    <div class="section-heading">
+
+      <div>
+
+        <p class="eyebrow">
+          REVISION IMPACT
+        </p>
+
+        <h2>
+          Before vs After Revision
+        </h2>
+
+        <p>
+          Track whether revision sessions actually improve
+          topic understanding.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="comparison-grid">
+
+      <div class="comparison-card">
+
+        <span>
+          Before Revision
+        </span>
+
+        <strong>
+          —
+        </strong>
+
+        <small>
+          Data will appear after revision tracking is enabled.
+        </small>
+
+      </div>
+
+
+      <div class="comparison-card">
+
+        <span>
+          After Revision
+        </span>
+
+        <strong>
+          —
+        </strong>
+
+        <small>
+          Submit another review after revision.
+        </small>
+
+      </div>
+
+
+      <div class="comparison-card">
+
+        <span>
+          Improvement
+        </span>
+
+        <strong>
+          —
+        </strong>
+
+        <small>
+          ClassPulse will calculate the change.
+        </small>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- RECOMMENDED ACTION -->
+  <section class="analytics-section">
+
+    <div class="action-card">
+
+      <div>
+
+        <p class="eyebrow">
+          RECOMMENDED ACTION
+        </p>
+
+        <h2 id="recommendedTitle">
+          No action recommended yet
+        </h2>
+
+        <p id="recommendedText">
+          Submit student reviews to generate
+          a teaching recommendation.
+        </p>
+
+      </div>
+
+      <div class="action-icon">
+        →
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PRIVACY -->
+  <section class="analytics-section">
+
+    <div class="privacy-card">
+
+      <div class="privacy-icon">
+        🔒
+      </div>
+
+      <div>
+
+        <p class="eyebrow">
+          PRIVACY FIRST
+        </p>
+
+        <h2>
+          Student identities stay out of analytics.
+        </h2>
+
+        <p>
+          ClassPulse focuses on learning patterns rather than
+          individual students. Analytics use aggregated topic
+          understanding instead of displaying names or roll numbers.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+
+    <div>
+
+      <strong>
+        ClassPulse
+      </strong>
+
+      <p>
+        Understand. Improve. Learn.
+      </p>
+
+    </div>
 
     <p>
-      This dashboard uses aggregated feedback.
-      Student names and roll numbers are not displayed.
+      Designed for better classroom feedback.
     </p>
 
-  </div>
-
-  <div class="privacy-lock">
-    🔒
-  </div>
-
-</section>
-
-
-<!-- FOOTER -->
-<footer class="footer">
-
-  <div>
-
-    <strong>
-      ClassPulse
-    </strong>
-
-    <p>
-      Understand the class. Teach smarter.
-    </p>
-
-  </div>
-
-  <p>
-    Design Thinking Project • Engineering
-  </p>
-
-</footer>
+  </footer>
 
 
 <script>
 
-/* ==========================================
-   CLASSPULSE ANALYTICS
-========================================== */
+const subjectFilter =
+  document.getElementById("subjectFilter");
 
-const STORAGE_KEY = "classpulse_reviews";
-
-let reviews = [];
+const chapterFilter =
+  document.getElementById("chapterFilter");
 
 
-/* ==========================================
+const reviewStorageKey =
+  "classpulse_reviews";
+
+
+/* --------------------------------
+   COURSE DATA
+-------------------------------- */
+
+const courseData = {
+
+  "Engineering Mathematics I": [
+
+    "Differential Calculus",
+    "Integral Calculus",
+    "Differential Equations"
+
+  ],
+
+  "Engineering Mechanics": [
+
+    "Force Systems",
+    "Friction",
+    "Centroid and Centre of Gravity",
+    "Simple Lifting Machines"
+
+  ],
+
+  "Basic Electrical Engineering": [
+
+    "DC Circuits",
+    "AC Circuits",
+    "Transformers"
+
+  ],
+
+  "Engineering Chemistry": [
+
+    "Water Technology",
+    "Corrosion",
+    "Fuels"
+
+  ],
+
+  "Fundamentals of Programming": [
+
+    "Programming Basics",
+    "Control Statements",
+    "Functions",
+    "Arrays and Strings"
+
+  ],
+
+  "Professional Communication Skills": [
+
+    "Communication Basics",
+    "Presentation Skills",
+    "Group Discussion"
+
+  ]
+
+};
+
+
+/* --------------------------------
    LOAD REVIEWS
-========================================== */
+-------------------------------- */
 
 function loadReviews() {
 
   try {
 
-    const stored =
-      localStorage.getItem(STORAGE_KEY);
+    const data =
+      localStorage.getItem(reviewStorageKey);
 
-    reviews =
-      stored
-        ? JSON.parse(stored)
-        : [];
-
-    if (!Array.isArray(reviews)) {
-      reviews = [];
+    if (!data) {
+      return [];
     }
+
+    const parsed =
+      JSON.parse(data);
+
+    return Array.isArray(parsed)
+      ? parsed
+      : [];
 
   } catch (error) {
 
     console.error(
-      "Could not load reviews:",
+      "Unable to load reviews:",
       error
     );
 
-    reviews = [];
+    return [];
 
   }
 
 }
 
 
-/* ==========================================
+/* --------------------------------
    CHAPTER FILTER
-========================================== */
+-------------------------------- */
 
-function updateChapterOptions() {
+function updateChapterFilter() {
 
-  const subject =
-    document.getElementById(
-      "subjectFilter"
-    ).value;
-
-
-  const chapterFilter =
-    document.getElementById(
-      "chapterFilter"
-    );
-
-
-  const chapters = [
-    ...new Set(
-
-      reviews
-        .filter(review => {
-
-          return (
-            subject === "ALL" ||
-            review.subject === subject
-          );
-
-        })
-
-        .map(review => review.chapter)
-
-        .filter(Boolean)
-
-    )
-  ];
-
-
-  const oldValue =
-    chapterFilter.value;
-
+  const selectedSubject =
+    subjectFilter.value;
 
   chapterFilter.innerHTML =
-    `<option value="ALL">
-      All Chapters
-    </option>`;
-
-
-  chapters
-    .sort()
-    .forEach(chapter => {
-
-      const option =
-        document.createElement(
-          "option"
-        );
-
-      option.value =
-        chapter;
-
-      option.textContent =
-        chapter;
-
-      chapterFilter.appendChild(
-        option
-      );
-
-    });
-
+    '<option value="all">All Chapters</option>';
 
   if (
-    chapters.includes(oldValue)
+    selectedSubject === "all" ||
+    !courseData[selectedSubject]
   ) {
-
-    chapterFilter.value =
-      oldValue;
-
-  } else {
-
-    chapterFilter.value =
-      "ALL";
-
+    return;
   }
 
-}
+  courseData[selectedSubject].forEach(
+    chapter => {
 
+      const option =
+        document.createElement("option");
 
-/* ==========================================
-   FILTER REVIEWS
-========================================== */
+      option.value = chapter;
+      option.textContent = chapter;
 
-function getFilteredReviews() {
-
-  const subject =
-    document.getElementById(
-      "subjectFilter"
-    ).value;
-
-
-  const chapter =
-    document.getElementById(
-      "chapterFilter"
-    ).value;
-
-
-  return reviews.filter(review => {
-
-    const subjectMatch =
-      subject === "ALL" ||
-      review.subject === subject;
-
-
-    const chapterMatch =
-      chapter === "ALL" ||
-      review.chapter === chapter;
-
-
-    return (
-      subjectMatch &&
-      chapterMatch
-    );
-
-  });
-
-}
-
-
-/* ==========================================
-   TOPIC DATA
-========================================== */
-
-function getTopicData() {
-
-  const filtered =
-    getFilteredReviews();
-
-
-  const topics = {};
-
-
-  filtered.forEach(review => {
-
-    if (!review.ratings) return;
-
-
-    Object.entries(
-      review.ratings
-    ).forEach(
-      ([topic, rating]) => {
-
-        const score =
-          Number(rating);
-
-
-        if (
-          !Number.isFinite(score)
-        ) {
-          return;
-        }
-
-
-        if (!topics[topic]) {
-
-          topics[topic] = {
-
-            total: 0,
-
-            count: 0,
-
-            latest: null
-
-          };
-
-        }
-
-
-        topics[topic].total +=
-          score;
-
-
-        topics[topic].count +=
-          1;
-
-
-        const date =
-          new Date(
-            review.submittedAt || 0
-          );
-
-
-        if (
-          !topics[topic].latest ||
-          date >
-          topics[topic].latest
-        ) {
-
-          topics[topic].latest =
-            date;
-
-        }
-
-      }
-
-    );
-
-  });
-
-
-  return Object.entries(
-    topics
-  ).map(
-    ([topic, data]) => {
-
-      return {
-
-        topic,
-
-        score:
-          Math.round(
-            data.total /
-            data.count
-          ),
-
-        count:
-          data.count,
-
-        latest:
-          data.latest
-
-      };
+      chapterFilter.appendChild(option);
 
     }
   );
@@ -769,312 +691,275 @@ function getTopicData() {
 }
 
 
-/* ==========================================
-   OVERALL SCORE
-========================================== */
+/* --------------------------------
+   FILTER REVIEWS
+-------------------------------- */
 
-function calculateOverall() {
+function getFilteredReviews() {
 
-  const filtered =
-    getFilteredReviews();
+  const reviews =
+    loadReviews();
+
+  const subject =
+    subjectFilter.value;
+
+  const chapter =
+    chapterFilter.value;
+
+  return reviews.filter(review => {
+
+    const subjectMatch =
+      subject === "all" ||
+      review.subject === subject;
+
+    const chapterMatch =
+      chapter === "all" ||
+      review.chapter === chapter;
+
+    return subjectMatch && chapterMatch;
+
+  });
+
+}
 
 
-  const values = [];
+/* --------------------------------
+   TOPIC DATA
+-------------------------------- */
 
+function buildTopicData(reviews) {
 
-  filtered.forEach(review => {
+  const topicMap = {};
 
-    if (!review.ratings) return;
+  reviews.forEach(review => {
 
+    if (!review.ratings) {
+      return;
+    }
 
-    Object.values(
-      review.ratings
-    ).forEach(value => {
+    Object.entries(review.ratings)
+      .forEach(([topic, score]) => {
 
-      const score =
-        Number(value);
+        const numericScore =
+          Number(score);
 
+        if (
+          Number.isNaN(numericScore)
+        ) {
+          return;
+        }
 
-      if (
-        Number.isFinite(score)
-      ) {
+        if (!topicMap[topic]) {
 
-        values.push(score);
+          topicMap[topic] = {
+            total: 0,
+            count: 0
+          };
 
-      }
+        }
 
-    });
+        topicMap[topic].total +=
+          numericScore;
+
+        topicMap[topic].count +=
+          1;
+
+      });
 
   });
 
 
-  if (!values.length) {
-    return null;
-  }
+  return Object.entries(topicMap)
+    .map(([topic, data]) => {
 
+      const average =
+        data.total / data.count;
 
-  return Math.round(
+      return {
+        topic: topic,
+        score: Math.round(average),
+        count: data.count
+      };
 
-    values.reduce(
-      (sum, value) =>
-        sum + value,
-      0
-    ) / values.length
-
-  );
+    });
 
 }
 
 
-/* ==========================================
-   UPDATE MAIN STATS
-========================================== */
+/* --------------------------------
+   PRIORITY
+-------------------------------- */
 
-function updateStats() {
+function getPriority(score) {
 
-  const filtered =
-    getFilteredReviews();
+  if (score <= 25) {
 
-
-  const topics =
-    getTopicData();
-
-
-  const overall =
-    calculateOverall();
-
-
-  document.getElementById(
-    "reviewCount"
-  ).textContent =
-    filtered.length;
-
-
-  if (overall === null) {
-
-    document.getElementById(
-      "overallScore"
-    ).textContent =
-      "—";
-
-
-    document.getElementById(
-      "overallDescription"
-    ).textContent =
-      "Waiting for feedback";
-
-
-    document.getElementById(
-      "strongestTopic"
-    ).textContent =
-      "—";
-
-
-    document.getElementById(
-      "weakestTopic"
-    ).textContent =
-      "—";
-
-
-    document.getElementById(
-      "strongestScore"
-    ).textContent =
-      "No data yet";
-
-
-    document.getElementById(
-      "weakestScore"
-    ).textContent =
-      "No data yet";
-
-
-    return;
+    return {
+      label: "Critical",
+      className: "priority-high"
+    };
 
   }
 
+  if (score <= 50) {
 
-  document.getElementById(
-    "overallScore"
-  ).textContent =
-    overall + "%";
+    return {
+      label: "Needs Revision",
+      className: "priority-medium"
+    };
+
+  }
+
+  if (score <= 75) {
+
+    return {
+      label: "Good",
+      className: "priority-good"
+    };
+
+  }
+
+  return {
+    label: "Strong",
+    className: "priority-strong"
+  };
+
+}
 
 
-  document.getElementById(
-    "overallDescription"
-  ).textContent =
-    scoreDescription(overall);
+/* --------------------------------
+   OVERALL STATS
+-------------------------------- */
+
+function renderStats(reviews, topics) {
+
+  const overallScore =
+    document.getElementById("overallScore");
+
+  const reviewCount =
+    document.getElementById("reviewCount");
+
+  const strongestTopic =
+    document.getElementById("strongestTopic");
+
+  const weakestTopic =
+    document.getElementById("weakestTopic");
+
+  const strongestScore =
+    document.getElementById("strongestScore");
+
+  const weakestScore =
+    document.getElementById("weakestScore");
+
+  const overallMessage =
+    document.getElementById("overallMessage");
+
+
+  reviewCount.textContent =
+    reviews.length;
 
 
   if (!topics.length) {
+
+    overallScore.textContent =
+      "—";
+
+    strongestTopic.textContent =
+      "—";
+
+    weakestTopic.textContent =
+      "—";
+
+    strongestScore.textContent =
+      "No data yet";
+
+    weakestScore.textContent =
+      "No data yet";
+
+    overallMessage.textContent =
+      "Waiting for responses";
+
     return;
+
   }
 
 
-  const strongest =
+  const total =
+    topics.reduce(
+      (sum, item) =>
+        sum + item.score,
+      0
+    );
+
+
+  const average =
+    Math.round(
+      total / topics.length
+    );
+
+
+  overallScore.textContent =
+    average + "%";
+
+
+  if (average <= 25) {
+
+    overallMessage.textContent =
+      "Class needs significant support";
+
+  } else if (average <= 50) {
+
+    overallMessage.textContent =
+      "Several topics need revision";
+
+  } else if (average <= 75) {
+
+    overallMessage.textContent =
+      "Class has a good foundation";
+
+  } else {
+
+    overallMessage.textContent =
+      "Strong overall understanding";
+
+  }
+
+
+  const sorted =
     [...topics].sort(
       (a, b) =>
         b.score - a.score
-    )[0];
+    );
 
+
+  const strongest =
+    sorted[0];
 
   const weakest =
-    [...topics].sort(
-      (a, b) =>
-        a.score - b.score
-    )[0];
+    sorted[sorted.length - 1];
 
 
-  document.getElementById(
-    "strongestTopic"
-  ).textContent =
+  strongestTopic.textContent =
     strongest.topic;
 
-
-  document.getElementById(
-    "strongestScore"
-  ).textContent =
-    strongest.score +
-    "% understanding";
+  strongestScore.textContent =
+    strongest.score + "% understanding";
 
 
-  document.getElementById(
-    "weakestTopic"
-  ).textContent =
+  weakestTopic.textContent =
     weakest.topic;
 
-
-  document.getElementById(
-    "weakestScore"
-  ).textContent =
-    weakest.score +
-    "% understanding";
+  weakestScore.textContent =
+    weakest.score + "% understanding";
 
 }
 
 
-/* ==========================================
-   SCORE DESCRIPTION
-========================================== */
-
-function scoreDescription(score) {
-
-  if (score < 50) {
-
-    return "High revision priority";
-
-  }
-
-
-  if (score < 70) {
-
-    return "Some concepts need attention";
-
-  }
-
-
-  if (score < 85) {
-
-    return "Good understanding";
-
-  }
-
-
-  return "Strong class understanding";
-
-}
-
-
-/* ==========================================
-   INSIGHT
-========================================== */
-
-function updateInsight() {
-
-  const topics =
-    getTopicData();
-
-
-  const title =
-    document.getElementById(
-      "insightTitle"
-    );
-
-
-  const text =
-    document.getElementById(
-      "insightText"
-    );
-
-
-  if (!topics.length) {
-
-    title.textContent =
-      "Waiting for student feedback";
-
-
-    text.textContent =
-      "Analytics will appear after students submit their first reviews.";
-
-    return;
-
-  }
-
-
-  const weakest =
-    [...topics].sort(
-      (a, b) =>
-        a.score - b.score
-    )[0];
-
-
-  const strongest =
-    [...topics].sort(
-      (a, b) =>
-        b.score - a.score
-    )[0];
-
-
-  if (weakest.score < 50) {
-
-    title.textContent =
-      "Immediate revision recommended";
-
-
-    text.textContent =
-      `"${weakest.topic}" has ${weakest.score}% understanding and should be prioritised.`;
-
-  }
-
-  else if (weakest.score < 70) {
-
-    title.textContent =
-      "A topic needs more attention";
-
-
-    text.textContent =
-      `"${weakest.topic}" currently has the lowest understanding at ${weakest.score}%.`;
-
-  }
-
-  else {
-
-    title.textContent =
-      "Class is progressing well";
-
-
-    text.textContent =
-      `The strongest topic is "${strongest.topic}" at ${strongest.score}%. Keep monitoring lower-scoring topics.`;
-
-  }
-
-}
-
-
-/* ==========================================
+/* --------------------------------
    TOPIC COMPARISON
-========================================== */
+-------------------------------- */
 
-function renderTopicComparison() {
+function renderTopicComparison(topics) {
 
   const container =
     document.getElementById(
@@ -1082,30 +967,16 @@ function renderTopicComparison() {
     );
 
 
-  const topics =
-    getTopicData()
-      .sort(
-        (a, b) =>
-          a.score - b.score
-      );
-
-
   if (!topics.length) {
 
     container.innerHTML = `
 
       <div class="empty-state">
 
-        <div class="empty-icon">
-          ◌
-        </div>
-
-        <h3>
-          No Topic Data Yet
-        </h3>
+        <h3>No reviews yet</h3>
 
         <p>
-          Topic analytics will appear after student reviews.
+          Student feedback will appear here once responses are submitted.
         </p>
 
       </div>
@@ -1117,232 +988,145 @@ function renderTopicComparison() {
   }
 
 
-  container.innerHTML = "";
+  const sorted =
+    [...topics].sort(
+      (a, b) =>
+        b.score - a.score
+    );
 
 
-  topics.forEach(item => {
+  container.innerHTML =
+    sorted.map(item => {
 
-    const row =
-      document.createElement(
-        "div"
-      );
+      const priority =
+        getPriority(item.score);
 
+      return `
 
-    row.className =
-      "comparison-item";
+        <div class="topic-row">
 
+          <div class="topic-main">
 
-    row.innerHTML = `
+            <strong>
+              ${escapeHTML(item.topic)}
+            </strong>
 
-      <div>
+            <span class="${priority.className}">
+              ${priority.label}
+            </span>
 
-        <strong>
-          ${escapeHTML(item.topic)}
-        </strong>
-
-        <small>
-          ${item.count}
-          ${item.count === 1
-            ? "rating"
-            : "ratings"}
-        </small>
-
-      </div>
+          </div>
 
 
-      <div class="comparison-score">
+          <div class="topic-score">
 
-        <strong>
-          ${item.score}%
-        </strong>
+            <strong>
+              ${item.score}%
+            </strong>
 
-        <div class="topic-bar">
+            <div class="topic-bar">
 
-          <span
-            style="width:${item.score}%"
-          ></span>
+              <span
+                style="width:${item.score}%"
+              ></span>
+
+            </div>
+
+          </div>
 
         </div>
 
-      </div>
+      `;
 
-    `;
-
-
-    container.appendChild(row);
-
-  });
+    }).join("");
 
 }
 
 
-/* ==========================================
+/* --------------------------------
    DISTRIBUTION
-========================================== */
+-------------------------------- */
 
-function renderDistribution() {
+function renderDistribution(reviews) {
 
-  const container =
-    document.getElementById(
-      "distributionChart"
-    );
+  const distribution =
+    [0, 0, 0, 0];
 
 
-  const filtered =
-    getFilteredReviews();
+  reviews.forEach(review => {
 
+    if (!review.ratings) {
+      return;
+    }
 
-  const buckets = {
+    Object.values(review.ratings)
+      .forEach(value => {
 
-    "0–25%": 0,
+        const score =
+          Number(value);
 
-    "26–50%": 0,
+        if (Number.isNaN(score)) {
+          return;
+        }
 
-    "51–75%": 0,
+        if (score <= 25) {
 
-    "76–100%": 0
+          distribution[0]++;
 
-  };
+        } else if (score <= 50) {
 
+          distribution[1]++;
 
-  filtered.forEach(review => {
+        } else if (score <= 75) {
 
-    if (!review.ratings) return;
+          distribution[2]++;
 
+        } else {
 
-    Object.values(
-      review.ratings
-    ).forEach(value => {
+          distribution[3]++;
 
-      const score =
-        Number(value);
+        }
 
-
-      if (!Number.isFinite(score))
-        return;
-
-
-      if (score <= 25) {
-
-        buckets["0–25%"]++;
-
-      }
-
-      else if (score <= 50) {
-
-        buckets["26–50%"]++;
-
-      }
-
-      else if (score <= 75) {
-
-        buckets["51–75%"]++;
-
-      }
-
-      else {
-
-        buckets["76–100%"]++;
-
-      }
-
-    });
+      });
 
   });
 
 
   const total =
-    Object.values(buckets)
-      .reduce(
-        (sum, value) =>
-          sum + value,
-        0
-      );
+    distribution.reduce(
+      (a, b) => a + b,
+      0
+    );
 
 
-  if (!total) {
+  distribution.forEach(
+    (count, index) => {
 
-    container.innerHTML = `
+      const number =
+        document.getElementById(
+          "dist" + index
+        );
 
-      <div class="empty-state">
-
-        <div class="empty-icon">
-          ◌
-        </div>
-
-        <h3>
-          No Data Yet
-        </h3>
-
-        <p>
-          Submit student feedback to generate analytics.
-        </p>
-
-      </div>
-
-    `;
-
-    return;
-
-  }
+      const bar =
+        document.getElementById(
+          "bar" + index
+        );
 
 
-  container.innerHTML = "";
+      number.textContent =
+        count;
 
-
-  Object.entries(
-    buckets
-  ).forEach(
-    ([label, count]) => {
 
       const percentage =
-        Math.round(
-          (count / total) * 100
-        );
+        total
+          ? Math.round(
+              count / total * 100
+            )
+          : 0;
 
 
-      const row =
-        document.createElement(
-          "div"
-        );
-
-
-      row.className =
-        "analytics-bar-row";
-
-
-      row.innerHTML = `
-
-        <div class="analytics-bar-label">
-
-          <span>
-            ${label}
-          </span>
-
-          <strong>
-            ${count}
-          </strong>
-
-        </div>
-
-
-        <div class="analytics-bar">
-
-          <span
-            style="width:${percentage}%"
-          ></span>
-
-        </div>
-
-
-        <small>
-          ${percentage}% of ratings
-        </small>
-
-      `;
-
-
-      container.appendChild(row);
+      bar.style.width =
+        percentage + "%";
 
     }
   );
@@ -1350,11 +1134,11 @@ function renderDistribution() {
 }
 
 
-/* ==========================================
+/* --------------------------------
    DIFFICULT TOPICS
-========================================== */
+-------------------------------- */
 
-function renderDifficultTopics() {
+function renderDifficultTopics(reviews) {
 
   const container =
     document.getElementById(
@@ -1362,46 +1146,37 @@ function renderDifficultTopics() {
     );
 
 
-  const filtered =
-    getFilteredReviews();
+  const topicCounts = {};
 
 
-  const topicCount = {};
-
-
-  filtered.forEach(review => {
+  reviews.forEach(review => {
 
     if (
       !Array.isArray(
         review.difficultTopics
       )
     ) {
-
       return;
-
     }
 
 
-    review.difficultTopics
-      .forEach(topic => {
+    review.difficultTopics.forEach(
+      topic => {
 
-        if (!topicCount[topic]) {
-
-          topicCount[topic] =
-            0;
-
+        if (!topicCounts[topic]) {
+          topicCounts[topic] = 0;
         }
 
+        topicCounts[topic]++;
 
-        topicCount[topic]++;
-
-      });
+      }
+    );
 
   });
 
 
   const topics =
-    Object.entries(topicCount)
+    Object.entries(topicCounts)
       .sort(
         (a, b) =>
           b[1] - a[1]
@@ -1414,13 +1189,7 @@ function renderDifficultTopics() {
 
       <div class="empty-state">
 
-        <div class="empty-icon">
-          ◌
-        </div>
-
-        <h3>
-          No Difficult Topics Reported
-        </h3>
+        <h3>No difficult topics reported</h3>
 
         <p>
           Student-selected difficult topics will appear here.
@@ -1435,1030 +1204,58 @@ function renderDifficultTopics() {
   }
 
 
-  container.innerHTML = "";
+  container.innerHTML =
+    topics.map(
+      ([topic, count], index) => {
 
+        return `
 
-  topics.forEach(
-    ([topic, count], index) => {
+          <div class="topic-row">
 
-      const item =
-        document.createElement(
-          "div"
-        );
+            <div class="topic-main">
 
+              <strong>
+                ${index + 1}.
+                ${escapeHTML(topic)}
+              </strong>
 
-      item.className =
-        "comparison-item";
+              <span>
+                ${count}
+                ${count === 1
+                  ? "student"
+                  : "students"}
+              </span>
 
+            </div>
 
-      item.innerHTML = `
+            <div class="topic-score">
 
-        <div>
+              <strong>
+                ${count}
+              </strong>
 
-          <strong>
-            ${index + 1}.
-            ${escapeHTML(topic)}
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            </div>
 
-  <title>ClassPulse — Analytics</title>
+          </div>
 
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<!-- NAVBAR -->
-<nav class="navbar">
-
-  <div class="nav-brand">
-    <span class="brand-mark">CP</span>
-    <span>ClassPulse</span>
-  </div>
-
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="student.html">Student</a>
-    <a href="dashboard.html">Teacher</a>
-    <a href="analytics.html" class="active">Analytics</a>
-    <a href="about.html">About</a>
-  </div>
-
-</nav>
-
-
-<!-- HEADER -->
-<section class="analytics-header">
-
-  <div>
-    <span class="eyebrow">CLASSPULSE ANALYTICS</span>
-
-    <h1>Understand the bigger picture.</h1>
-
-    <p>
-      Turn student feedback into clear insights about
-      learning, difficult topics and revision priorities.
-    </p>
-  </div>
-
-</section>
-
-
-<!-- FILTERS -->
-<section class="dashboard-panel analytics-filters">
-
-  <div class="filter-group">
-
-    <label for="subjectFilter">
-      Subject
-    </label>
-
-    <select id="subjectFilter" onchange="updateAnalytics()">
-
-      <option value="ALL">
-        All Subjects
-      </option>
-
-      <option value="Engineering Mathematics I">
-        Engineering Mathematics I
-      </option>
-
-      <option value="Engineering Mechanics">
-        Engineering Mechanics
-      </option>
-
-      <option value="Basic Electrical Engineering">
-        Basic Electrical Engineering
-      </option>
-
-      <option value="Engineering Chemistry">
-        Engineering Chemistry
-      </option>
-
-      <option value="Fundamentals of Programming">
-        Fundamentals of Programming
-      </option>
-
-      <option value="Professional Communication Skills">
-        Professional Communication Skills
-      </option>
-
-    </select>
-
-  </div>
-
-
-  <div class="filter-group">
-
-    <label for="chapterFilter">
-      Chapter
-    </label>
-
-    <select id="chapterFilter" onchange="updateAnalytics()">
-
-      <option value="ALL">
-        All Chapters
-      </option>
-
-    </select>
-
-  </div>
-
-</section>
-
-
-<!-- MAIN STATS -->
-<section class="dashboard-grid">
-
-  <div class="stat-card">
-
-    <span class="stat-label">
-      Class Understanding
-    </span>
-
-    <strong id="overallScore">
-      —
-    </strong>
-
-    <p id="overallDescription">
-      Waiting for feedback
-    </p>
-
-  </div>
-
-
-  <div class="stat-card">
-
-    <span class="stat-label">
-      Reviews Received
-    </span>
-
-    <strong id="reviewCount">
-      0
-    </strong>
-
-    <p>
-      Student submissions
-    </p>
-
-  </div>
-
-
-  <div class="stat-card">
-
-    <span class="stat-label">
-      Strongest Topic
-    </span>
-
-    <strong id="strongestTopic">
-      —
-    </strong>
-
-    <p id="strongestScore">
-      No data yet
-    </p>
-
-  </div>
-
-
-  <div class="stat-card">
-
-    <span class="stat-label">
-      Weakest Topic
-    </span>
-
-    <strong id="weakestTopic">
-      —
-    </strong>
-
-    <p id="weakestScore">
-      No data yet
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- CLASS INSIGHT -->
-<section class="dashboard-panel insight-panel">
-
-  <div>
-
-    <span class="eyebrow">
-      CLASSPULSE INSIGHT
-    </span>
-
-    <h2 id="insightTitle">
-      Waiting for student feedback
-    </h2>
-
-    <p id="insightText">
-      Analytics will appear after students submit
-      their first reviews.
-    </p>
-
-  </div>
-
-  <div class="insight-icon">
-    ✦
-  </div>
-
-</section>
-
-
-<!-- TOPIC COMPARISON -->
-<section class="dashboard-panel chart-card">
-
-  <div class="panel-header">
-
-    <div>
-
-      <span class="eyebrow">
-        TOPIC COMPARISON
-      </span>
-
-      <h2>
-        Understanding by Topic
-      </h2>
-
-    </div>
-
-  </div>
-
-
-  <div id="topicComparison">
-
-    <div class="empty-state">
-
-      <div class="empty-icon">
-        ◌
-      </div>
-
-      <h3>
-        No Topic Data Yet
-      </h3>
-
-      <p>
-        Topic analytics will appear after student reviews.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- UNDERSTANDING DISTRIBUTION -->
-<section class="dashboard-panel chart-card">
-
-  <div class="panel-header">
-
-    <div>
-
-      <span class="eyebrow">
-        UNDERSTANDING DISTRIBUTION
-      </span>
-
-      <h2>
-        How the class is doing
-      </h2>
-
-    </div>
-
-  </div>
-
-
-  <div id="distributionChart" class="analytics-bars">
-
-    <div class="empty-state">
-
-      <div class="empty-icon">
-        ◌
-      </div>
-
-      <h3>
-        No Data Yet
-      </h3>
-
-      <p>
-        Submit student feedback to generate analytics.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- DIFFICULT TOPICS -->
-<section class="dashboard-panel">
-
-  <div class="panel-header">
-
-    <div>
-
-      <span class="eyebrow">
-        STUDENT DIFFICULTIES
-      </span>
-
-      <h2>
-        Most Reported Difficult Topics
-      </h2>
-
-    </div>
-
-  </div>
-
-
-  <div id="difficultTopics" class="comparison-list">
-
-    <div class="empty-state">
-
-      <div class="empty-icon">
-        ◌
-      </div>
-
-      <h3>
-        No Difficult Topics Reported
-      </h3>
-
-      <p>
-        Student-selected difficult topics will appear here.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- REVISION IMPACT -->
-<section class="dashboard-panel">
-
-  <div class="panel-header">
-
-    <div>
-
-      <span class="eyebrow">
-        REVISION IMPACT
-      </span>
-
-      <h2>
-        Before → After Revision
-      </h2>
-
-    </div>
-
-  </div>
-
-
-  <div class="comparison-grid">
-
-    <div class="comparison-card">
-
-      <span>
-        Before Revision
-      </span>
-
-      <strong id="beforeScore">
-        —
-      </strong>
-
-      <small>
-        First review session
-      </small>
-
-    </div>
-
-
-    <div class="comparison-arrow">
-      →
-    </div>
-
-
-    <div class="comparison-card">
-
-      <span>
-        After Revision
-      </span>
-
-      <strong id="afterScore">
-        —
-      </strong>
-
-      <small>
-        Later review session
-      </small>
-
-    </div>
-
-  </div>
-
-
-  <p class="comparison-note">
-    Revision comparison will appear when the same topic
-    receives feedback across multiple review sessions.
-  </p>
-
-</section>
-
-
-<!-- RECOMMENDED ACTION -->
-<section class="dashboard-panel insight-panel">
-
-  <div>
-
-    <span class="eyebrow">
-      RECOMMENDED ACTION
-    </span>
-
-    <h2 id="actionTitle">
-      No recommendation yet
-    </h2>
-
-    <p id="actionText">
-      Once enough feedback is collected, ClassPulse will
-      suggest what the teacher should focus on next.
-    </p>
-
-  </div>
-
-  <div class="insight-icon">
-    →
-  </div>
-
-</section>
-
-
-<!-- PRIVACY -->
-<section class="dashboard-panel privacy-panel">
-
-  <div>
-
-    <span class="eyebrow">
-      PRIVACY
-    </span>
-
-    <h2>
-      Analytics stay focused on learning.
-    </h2>
-
-    <p>
-      This dashboard uses aggregated feedback.
-      Student names and roll numbers are not displayed.
-    </p>
-
-  </div>
-
-  <div class="privacy-lock">
-    🔒
-  </div>
-
-</section>
-
-
-<!-- FOOTER -->
-<footer class="footer">
-
-  <div>
-
-    <strong>
-      ClassPulse
-    </strong>
-
-    <p>
-      Understand the class. Teach smarter.
-    </p>
-
-  </div>
-
-  <p>
-    Design Thinking Project • Engineering
-  </p>
-
-</footer>
-
-
-<script>
-
-/* ==========================================
-   CLASSPULSE ANALYTICS
-========================================== */
-
-const STORAGE_KEY = "classpulse_reviews";
-
-let reviews = [];
-
-
-/* ==========================================
-   LOAD REVIEWS
-========================================== */
-
-function loadReviews() {
-
-  try {
-
-    const stored =
-      localStorage.getItem(STORAGE_KEY);
-
-    reviews =
-      stored
-        ? JSON.parse(stored)
-        : [];
-
-    if (!Array.isArray(reviews)) {
-      reviews = [];
-    }
-
-  } catch (error) {
-
-    console.error(
-      "Could not load reviews:",
-      error
-    );
-
-    reviews = [];
-
-  }
-
-}
-
-
-/* ==========================================
-   CHAPTER FILTER
-========================================== */
-
-function updateChapterOptions() {
-
-  const subject =
-    document.getElementById(
-      "subjectFilter"
-    ).value;
-
-
-  const chapterFilter =
-    document.getElementById(
-      "chapterFilter"
-    );
-
-
-  const chapters = [
-    ...new Set(
-
-      reviews
-        .filter(review => {
-
-          return (
-            subject === "ALL" ||
-            review.subject === subject
-          );
-
-        })
-
-        .map(review => review.chapter)
-
-        .filter(Boolean)
-
-    )
-  ];
-
-
-  const oldValue =
-    chapterFilter.value;
-
-
-  chapterFilter.innerHTML =
-    `<option value="ALL">
-      All Chapters
-    </option>`;
-
-
-  chapters
-    .sort()
-    .forEach(chapter => {
-
-      const option =
-        document.createElement(
-          "option"
-        );
-
-      option.value =
-        chapter;
-
-      option.textContent =
-        chapter;
-
-      chapterFilter.appendChild(
-        option
-      );
-
-    });
-
-
-  if (
-    chapters.includes(oldValue)
-  ) {
-
-    chapterFilter.value =
-      oldValue;
-
-  } else {
-
-    chapterFilter.value =
-      "ALL";
-
-  }
-
-}
-
-
-/* ==========================================
-   FILTER REVIEWS
-========================================== */
-
-function getFilteredReviews() {
-
-  const subject =
-    document.getElementById(
-      "subjectFilter"
-    ).value;
-
-
-  const chapter =
-    document.getElementById(
-      "chapterFilter"
-    ).value;
-
-
-  return reviews.filter(review => {
-
-    const subjectMatch =
-      subject === "ALL" ||
-      review.subject === subject;
-
-
-    const chapterMatch =
-      chapter === "ALL" ||
-      review.chapter === chapter;
-
-
-    return (
-      subjectMatch &&
-      chapterMatch
-    );
-
-  });
-
-}
-
-
-/* ==========================================
-   TOPIC DATA
-========================================== */
-
-function getTopicData() {
-
-  const filtered =
-    getFilteredReviews();
-
-
-  const topics = {};
-
-
-  filtered.forEach(review => {
-
-    if (!review.ratings) return;
-
-
-    Object.entries(
-      review.ratings
-    ).forEach(
-      ([topic, rating]) => {
-
-        const score =
-          Number(rating);
-
-
-        if (
-          !Number.isFinite(score)
-        ) {
-          return;
-        }
-
-
-        if (!topics[topic]) {
-
-          topics[topic] = {
-
-            total: 0,
-
-            count: 0,
-
-            latest: null
-
-          };
-
-        }
-
-
-        topics[topic].total +=
-          score;
-
-
-        topics[topic].count +=
-          1;
-
-
-        const date =
-          new Date(
-            review.submittedAt || 0
-          );
-
-
-        if (
-          !topics[topic].latest ||
-          date >
-          topics[topic].latest
-        ) {
-
-          topics[topic].latest =
-            date;
-
-        }
+        `;
 
       }
-
-    );
-
-  });
-
-
-  return Object.entries(
-    topics
-  ).map(
-    ([topic, data]) => {
-
-      return {
-
-        topic,
-
-        score:
-          Math.round(
-            data.total /
-            data.count
-          ),
-
-        count:
-          data.count,
-
-        latest:
-          data.latest
-
-      };
-
-    }
-  );
+    ).join("");
 
 }
 
 
-/* ==========================================
-   OVERALL SCORE
-========================================== */
-
-function calculateOverall() {
-
-  const filtered =
-    getFilteredReviews();
-
-
-  const values = [];
-
-
-  filtered.forEach(review => {
-
-    if (!review.ratings) return;
-
-
-    Object.values(
-      review.ratings
-    ).forEach(value => {
-
-      const score =
-        Number(value);
-
-
-      if (
-        Number.isFinite(score)
-      ) {
-
-        values.push(score);
-
-      }
-
-    });
-
-  });
-
-
-  if (!values.length) {
-    return null;
-  }
-
-
-  return Math.round(
-
-    values.reduce(
-      (sum, value) =>
-        sum + value,
-      0
-    ) / values.length
-
-  );
-
-}
-
-
-/* ==========================================
-   UPDATE MAIN STATS
-========================================== */
-
-function updateStats() {
-
-  const filtered =
-    getFilteredReviews();
-
-
-  const topics =
-    getTopicData();
-
-
-  const overall =
-    calculateOverall();
-
-
-  document.getElementById(
-    "reviewCount"
-  ).textContent =
-    filtered.length;
-
-
-  if (overall === null) {
-
-    document.getElementById(
-      "overallScore"
-    ).textContent =
-      "—";
-
-
-    document.getElementById(
-      "overallDescription"
-    ).textContent =
-      "Waiting for feedback";
-
-
-    document.getElementById(
-      "strongestTopic"
-    ).textContent =
-      "—";
-
-
-    document.getElementById(
-      "weakestTopic"
-    ).textContent =
-      "—";
-
-
-    document.getElementById(
-      "strongestScore"
-    ).textContent =
-      "No data yet";
-
-
-    document.getElementById(
-      "weakestScore"
-    ).textContent =
-      "No data yet";
-
-
-    return;
-
-  }
-
-
-  document.getElementById(
-    "overallScore"
-  ).textContent =
-    overall + "%";
-
-
-  document.getElementById(
-    "overallDescription"
-  ).textContent =
-    scoreDescription(overall);
-
-
-  if (!topics.length) {
-    return;
-  }
-
-
-  const strongest =
-    [...topics].sort(
-      (a, b) =>
-        b.score - a.score
-    )[0];
-
-
-  const weakest =
-    [...topics].sort(
-      (a, b) =>
-        a.score - b.score
-    )[0];
-
-
-  document.getElementById(
-    "strongestTopic"
-  ).textContent =
-    strongest.topic;
-
-
-  document.getElementById(
-    "strongestScore"
-  ).textContent =
-    strongest.score +
-    "% understanding";
-
-
-  document.getElementById(
-    "weakestTopic"
-  ).textContent =
-    weakest.topic;
-
-
-  document.getElementById(
-    "weakestScore"
-  ).textContent =
-    weakest.score +
-    "% understanding";
-
-}
-
-
-/* ==========================================
-   SCORE DESCRIPTION
-========================================== */
-
-function scoreDescription(score) {
-
-  if (score < 50) {
-
-    return "High revision priority";
-
-  }
-
-
-  if (score < 70) {
-
-    return "Some concepts need attention";
-
-  }
-
-
-  if (score < 85) {
-
-    return "Good understanding";
-
-  }
-
-
-  return "Strong class understanding";
-
-}
-
-
-/* ==========================================
+/* --------------------------------
    INSIGHT
-========================================== */
+-------------------------------- */
 
-function updateInsight() {
-
-  const topics =
-    getTopicData();
-
+function renderInsight(topics) {
 
   const title =
     document.getElementById(
       "insightTitle"
     );
-
 
   const text =
     document.getElementById(
@@ -2469,11 +1266,10 @@ function updateInsight() {
   if (!topics.length) {
 
     title.textContent =
-      "Waiting for student feedback";
-
+      "Waiting for enough feedback";
 
     text.textContent =
-      "Analytics will appear after students submit their first reviews.";
+      "Once students submit their understanding, ClassPulse will identify important learning patterns.";
 
     return;
 
@@ -2494,494 +1290,41 @@ function updateInsight() {
     )[0];
 
 
-  if (weakest.score < 50) {
-
-    title.textContent =
-      "Immediate revision recommended";
-
-
-    text.textContent =
-      `"${weakest.topic}" has ${weakest.score}% understanding and should be prioritised.`;
-
-  }
-
-  else if (weakest.score < 70) {
-
-    title.textContent =
-      "A topic needs more attention";
+  title.textContent =
+    weakest.topic +
+    " may need more attention";
 
 
-    text.textContent =
-      `"${weakest.topic}" currently has the lowest understanding at ${weakest.score}%.`;
-
-  }
-
-  else {
-
-    title.textContent =
-      "Class is progressing well";
-
-
-    text.textContent =
-      `The strongest topic is "${strongest.topic}" at ${strongest.score}%. Keep monitoring lower-scoring topics.`;
-
-  }
+  text.textContent =
+    `${weakest.topic} currently has ${weakest.score}% average understanding, while ${strongest.topic} is strongest at ${strongest.score}%. Consider revising the weaker topic first.`;
 
 }
 
 
-/* ==========================================
-   TOPIC COMPARISON
-========================================== */
-
-function renderTopicComparison() {
-
-  const container =
-    document.getElementById(
-      "topicComparison"
-    );
-
-
-  const topics =
-    getTopicData()
-      .sort(
-        (a, b) =>
-          a.score - b.score
-      );
-
-
-  if (!topics.length) {
-
-    container.innerHTML = `
-
-      <div class="empty-state">
-
-        <div class="empty-icon">
-          ◌
-        </div>
-
-        <h3>
-          No Topic Data Yet
-        </h3>
-
-        <p>
-          Topic analytics will appear after student reviews.
-        </p>
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  container.innerHTML = "";
-
-
-  topics.forEach(item => {
-
-    const row =
-      document.createElement(
-        "div"
-      );
-
-
-    row.className =
-      "comparison-item";
-
-
-    row.innerHTML = `
-
-      <div>
-
-        <strong>
-          ${escapeHTML(item.topic)}
-        </strong>
-
-        <small>
-          ${item.count}
-          ${item.count === 1
-            ? "rating"
-            : "ratings"}
-        </small>
-
-      </div>
-
-
-      <div class="comparison-score">
-
-        <strong>
-          ${item.score}%
-        </strong>
-
-        <div class="topic-bar">
-
-          <span
-            style="width:${item.score}%"
-          ></span>
-
-        </div>
-
-      </div>
-
-    `;
-
-
-    container.appendChild(row);
-
-  });
-
-}
-
-
-/* ==========================================
-   DISTRIBUTION
-========================================== */
-
-function renderDistribution() {
-
-  const container =
-    document.getElementById(
-      "distributionChart"
-    );
-
-
-  const filtered =
-    getFilteredReviews();
-
-
-  const buckets = {
-
-    "0–25%": 0,
-
-    "26–50%": 0,
-
-    "51–75%": 0,
-
-    "76–100%": 0
-
-  };
-
-
-  filtered.forEach(review => {
-
-    if (!review.ratings) return;
-
-
-    Object.values(
-      review.ratings
-    ).forEach(value => {
-
-      const score =
-        Number(value);
-
-
-      if (!Number.isFinite(score))
-        return;
-
-
-      if (score <= 25) {
-
-        buckets["0–25%"]++;
-
-      }
-
-      else if (score <= 50) {
-
-        buckets["26–50%"]++;
-
-      }
-
-      else if (score <= 75) {
-
-        buckets["51–75%"]++;
-
-      }
-
-      else {
-
-        buckets["76–100%"]++;
-
-      }
-
-    });
-
-  });
-
-
-  const total =
-    Object.values(buckets)
-      .reduce(
-        (sum, value) =>
-          sum + value,
-        0
-      );
-
-
-  if (!total) {
-
-    container.innerHTML = `
-
-      <div class="empty-state">
-
-        <div class="empty-icon">
-          ◌
-        </div>
-
-        <h3>
-          No Data Yet
-        </h3>
-
-        <p>
-          Submit student feedback to generate analytics.
-        </p>
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  container.innerHTML = "";
-
-
-  Object.entries(
-    buckets
-  ).forEach(
-    ([label, count]) => {
-
-      const percentage =
-        Math.round(
-          (count / total) * 100
-        );
-
-
-      const row =
-        document.createElement(
-          "div"
-        );
-
-
-      row.className =
-        "analytics-bar-row";
-
-
-      row.innerHTML = `
-
-        <div class="analytics-bar-label">
-
-          <span>
-            ${label}
-          </span>
-
-          <strong>
-            ${count}
-          </strong>
-
-        </div>
-
-
-        <div class="analytics-bar">
-
-          <span
-            style="width:${percentage}%"
-          ></span>
-
-        </div>
-
-
-        <small>
-          ${percentage}% of ratings
-        </small>
-
-      `;
-
-
-      container.appendChild(row);
-
-    }
-  );
-
-}
-
-
-/* ==========================================
-   DIFFICULT TOPICS
-========================================== */
-
-function renderDifficultTopics() {
-
-  const container =
-    document.getElementById(
-      "difficultTopics"
-    );
-
-
-  const filtered =
-    getFilteredReviews();
-
-
-  const topicCount = {};
-
-
-  filtered.forEach(review => {
-
-    if (
-      !Array.isArray(
-        review.difficultTopics
-      )
-    ) {
-
-      return;
-
-    }
-
-
-    review.difficultTopics
-      .forEach(topic => {
-
-        if (!topicCount[topic]) {
-
-          topicCount[topic] =
-            0;
-
-        }
-
-
-        topicCount[topic]++;
-
-      });
-
-  });
-
-
-  const topics =
-    Object.entries(topicCount)
-      .sort(
-        (a, b) =>
-          b[1] - a[1]
-      );
-
-
-  if (!topics.length) {
-
-    container.innerHTML = `
-
-      <div class="empty-state">
-
-        <div class="empty-icon">
-          ◌
-        </div>
-
-        <h3>
-          No Difficult Topics Reported
-        </h3>
-
-        <p>
-          Student-selected difficult topics will appear here.
-        </p>
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  container.innerHTML = "";
-
-
-  topics.forEach(
-    ([topic, count], index) => {
-
-      const item =
-        document.createElement(
-          "div"
-        );
-
-
-      item.className =
-        "comparison-item";
-
-
-      item.innerHTML = `
-
-        <div>
-
-          <strong>
-            ${index + 1}.
-            ${escapeHTML(topic)}
-          </strong>
-
-          <small>
-            Reported by students
-          </small>
-
-        </div>
-
-
-        <div>
-
-          <strong>
-            ${count}
-          </strong>
-
-          <small>
-            ${count === 1
-              ? "report"
-              : "reports"}
-          </small>
-
-        </div>
-
-      `;
-
-
-      container.appendChild(item);
-
-    }
-  );
-
-}
-
-
-/* ==========================================
+/* --------------------------------
    RECOMMENDED ACTION
-========================================== */
+-------------------------------- */
 
-function updateRecommendation() {
-
-  const topics =
-    getTopicData();
-
+function renderRecommendation(topics) {
 
   const title =
     document.getElementById(
-      "actionTitle"
+      "recommendedTitle"
     );
-
 
   const text =
     document.getElementById(
-      "actionText"
+      "recommendedText"
     );
 
 
   if (!topics.length) {
 
     title.textContent =
-      "No recommendation yet";
-
+      "No action recommended yet";
 
     text.textContent =
-      "Collect student feedback first. ClassPulse will then recommend the next teaching focus.";
+      "Submit student reviews to generate a teaching recommendation.";
 
     return;
 
@@ -2995,156 +1338,132 @@ function updateRecommendation() {
     )[0];
 
 
-  if (weakest.score < 50) {
+  if (weakest.score <= 50) {
 
     title.textContent =
-      `Revise "${weakest.topic}" first`;
+      "Revise " + weakest.topic;
 
 
     text.textContent =
-      `This topic has only ${weakest.score}% understanding. Consider spending additional class time on its core concepts and examples.`;
+      `Students are showing ${weakest.score}% average understanding. Consider a short revision session, examples, and another review afterward.`;
 
-  }
-
-  else if (weakest.score < 70) {
+  } else {
 
     title.textContent =
-      `Review "${weakest.topic}"`;
+      "Continue with the planned lesson";
 
 
     text.textContent =
-      `Student understanding is ${weakest.score}%. A short revision or practice activity could help strengthen the concept.`;
-
-  }
-
-  else {
-
-    title.textContent =
-      "Continue monitoring the class";
-
-
-    text.textContent =
-      `The lowest topic is still at ${weakest.score}%. Continue collecting feedback and watch for changes after revision.`;
+      `The weakest topic is ${weakest.topic} at ${weakest.score}%. Overall understanding is currently healthy, but a quick recap may help.`;
 
   }
 
 }
 
 
-/* ==========================================
-   REVISION PLACEHOLDER
-========================================== */
-
-function updateRevisionComparison() {
-
-  /*
-    The current Student page stores one rating
-    per review session.
-
-    Therefore we do NOT invent a fake
-    Before/After number.
-
-    This section will become meaningful when
-    multiple sessions are connected.
-  */
-
-  document.getElementById(
-    "beforeScore"
-  ).textContent =
-    "—";
-
-
-  document.getElementById(
-    "afterScore"
-  ).textContent =
-    "—";
-
-}
-
-
-/* ==========================================
-   MAIN UPDATE
-========================================== */
+/* --------------------------------
+   UPDATE ANALYTICS
+-------------------------------- */
 
 function updateAnalytics() {
 
-  updateChapterOptions();
+  const reviews =
+    getFilteredReviews();
 
-  updateStats();
+  const topics =
+    buildTopicData(reviews);
 
-  updateInsight();
 
-  renderTopicComparison();
+  renderStats(
+    reviews,
+    topics
+  );
 
-  renderDistribution();
 
-  renderDifficultTopics();
+  renderTopicComparison(
+    topics
+  );
 
-  updateRecommendation();
 
-  updateRevisionComparison();
+  renderDistribution(
+    reviews
+  );
+
+
+  renderDifficultTopics(
+    reviews
+  );
+
+
+  renderInsight(
+    topics
+  );
+
+
+  renderRecommendation(
+    topics
+  );
 
 }
 
 
-/* ==========================================
+/* --------------------------------
    ESCAPE HTML
-========================================== */
+-------------------------------- */
 
 function escapeHTML(value) {
 
-  return String(value ?? "")
-
-    .replace(
-      /&/g,
-      "&amp;"
-    )
-
-    .replace(
-      /</g,
-      "&lt;"
-    )
-
-    .replace(
-      />/g,
-      "&gt;"
-    )
-
-    .replace(
-      /"/g,
-      "&quot;"
-    )
-
-    .replace(
-      /'/g,
-      "&#039;"
-    );
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 
 }
 
 
-/* ==========================================
-   INITIAL LOAD
-========================================== */
+/* --------------------------------
+   FILTER EVENTS
+-------------------------------- */
 
-loadReviews();
+subjectFilter.addEventListener(
+  "change",
+  () => {
 
-updateChapterOptions();
+    updateChapterFilter();
+    updateAnalytics();
 
-updateAnalytics();
+  }
+);
 
 
-/* ==========================================
+chapterFilter.addEventListener(
+  "change",
+  () => {
+
+    updateAnalytics();
+
+  }
+);
+
+
+/* --------------------------------
    AUTO REFRESH
-========================================== */
+-------------------------------- */
 
-setInterval(() => {
+setInterval(
+  updateAnalytics,
+  3000
+);
 
-  loadReviews();
 
-  updateAnalytics();
+/* --------------------------------
+   INITIAL LOAD
+-------------------------------- */
 
-}, 3000);
+updateChapterFilter();
+updateAnalytics();
 
 </script>
 
