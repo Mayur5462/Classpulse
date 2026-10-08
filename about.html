@@ -1,783 +1,622 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>ClassPulse — About the Project</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
+  <title>ClassPulse — About</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
 
-  <!-- ================= NAVBAR ================= -->
+<!-- NAVBAR -->
+<nav class="navbar">
 
-  <header class="navbar">
+  <div class="nav-brand">
+    <span class="brand-mark">CP</span>
+    <span>ClassPulse</span>
+  </div>
 
-    <div class="brand">
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="student.html">Student</a>
+    <a href="dashboard.html">Teacher</a>
+    <a href="analytics.html">Analytics</a>
+    <a href="about.html" class="active">About</a>
+  </div>
 
-      <div class="brand-icon">CP</div>
+</nav>
 
-      <div>
-        <h2>ClassPulse</h2>
-        <span>Understand. Improve. Learn.</span>
-      </div>
 
-    </div>
+<!-- HERO -->
+<section class="about-hero">
 
+  <span class="eyebrow">
+    ABOUT CLASSPULSE
+  </span>
 
-    <nav>
+  <h1>
+    A classroom that
+    <span>listens.</span>
+  </h1>
 
-      <a href="index.html">Home</a>
+  <p>
+    ClassPulse is a student learning feedback system designed
+    to help teachers understand what students actually understand
+    — before moving to the next concept.
+  </p>
 
-      <a href="student.html">Student</a>
+</section>
 
-      <a href="dashboard.html">Teacher</a>
 
-      <a href="analytics.html">Analytics</a>
+<!-- PROBLEM -->
+<section class="about-grid">
 
-      <a href="about.html" class="active">About</a>
+  <div class="about-card">
 
-    </nav>
+    <span class="eyebrow">
+      THE PROBLEM
+    </span>
 
-  </header>
-
-
-
-  <main>
-
-
-    <!-- ================= HERO ================= -->
-
-    <section class="section">
-
-      <div class="about-hero">
-
-        <span class="eyebrow">
-          ABOUT CLASSPULSE
-        </span>
-
-        <h1>
-          Feedback that turns into
-          <span>better learning.</span>
-        </h1>
-
-        <p>
-          ClassPulse is a student learning feedback platform designed
-          to help teachers understand what their class actually
-          understands — not just what was taught.
-        </p>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ================= PROBLEM ================= -->
-
-    <section class="dashboard-panel">
-
-      <div class="panel-header">
-
-        <div>
-
-          <span class="eyebrow">
-            THE PROBLEM
-          </span>
-
-          <h2>
-            What happens in a normal classroom?
-          </h2>
-
-        </div>
-
-      </div>
-
-
-      <div class="about-grid">
-
-
-        <div class="about-card">
-
-          <div class="about-number">
-            01
-          </div>
-
-          <h3>
-            Students stay silent
-          </h3>
-
-          <p>
-            Many students hesitate to ask questions even when
-            they have not understood a topic completely.
-          </p>
-
-        </div>
-
-
-
-        <div class="about-card">
-
-          <div class="about-number">
-            02
-          </div>
-
-          <h3>
-            Teachers cannot see everyone
-          </h3>
-
-          <p>
-            A teacher may explain a topic clearly, but it is
-            difficult to know how every student understood it.
-          </p>
-
-        </div>
-
-
-
-        <div class="about-card">
-
-          <div class="about-number">
-            03
-          </div>
-
-          <h3>
-            Weak topics remain hidden
-          </h3>
-
-          <p>
-            Without regular feedback, difficult concepts can
-            remain unnoticed until examinations.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ================= SOLUTION ================= -->
-
-    <section class="dashboard-panel">
-
-      <div class="about-solution">
-
-        <div>
-
-          <span class="eyebrow">
-            OUR SOLUTION
-          </span>
-
-          <h2>
-            One simple question:
-            <span>“Did you understand?”</span>
-          </h2>
-
-          <p>
-            ClassPulse gives students a simple way to report their
-            understanding topic by topic. Teachers then receive
-            meaningful class-level insights that help them decide
-            what needs revision.
-          </p>
-
-        </div>
-
-
-        <div class="solution-flow">
-
-          <div>
-            <span>01</span>
-            <strong>Student Review</strong>
-            <small>Students rate their understanding.</small>
-          </div>
-
-          <div class="flow-arrow">
-            →
-          </div>
-
-          <div>
-            <span>02</span>
-            <strong>Class Analytics</strong>
-            <small>Feedback becomes useful data.</small>
-          </div>
-
-          <div class="flow-arrow">
-            →
-          </div>
-
-          <div>
-            <span>03</span>
-            <strong>Better Revision</strong>
-            <small>Teachers focus where needed.</small>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ================= HOW IT WORKS ================= -->
-
-    <section class="section">
-
-      <div class="section-heading">
-
-        <div>
-
-          <span class="eyebrow">
-            HOW IT WORKS
-          </span>
-
-          <h2>
-            From classroom feedback
-            <span>to action.</span>
-          </h2>
-
-        </div>
-
-        <p>
-          ClassPulse keeps the process simple for both students
-          and teachers.
-        </p>
-
-      </div>
-
-
-      <div class="steps">
-
-
-        <div class="step-card">
-
-          <div class="step-number">
-            01
-          </div>
-
-          <h3>
-            Choose the subject
-          </h3>
-
-          <p>
-            Students select the engineering subject and
-            chapter they want to review.
-          </p>
-
-        </div>
-
-
-
-        <div class="step-card">
-
-          <div class="step-number">
-            02
-          </div>
-
-          <h3>
-            Rate each subtopic
-          </h3>
-
-          <p>
-            Students choose 0%, 25%, 50%, 75% or 100%
-            based on their understanding.
-          </p>
-
-        </div>
-
-
-
-        <div class="step-card">
-
-          <div class="step-number">
-            03
-          </div>
-
-          <h3>
-            Share confusion
-          </h3>
-
-          <p>
-            Students can optionally explain what they found
-            difficult or confusing.
-          </p>
-
-        </div>
-
-
-
-        <div class="step-card">
-
-          <div class="step-number">
-            04
-          </div>
-
-          <h3>
-            Teacher gets insight
-          </h3>
-
-          <p>
-            The dashboard highlights weak areas and
-            recommended revision priorities.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ================= FEATURES ================= -->
-
-    <section class="dashboard-panel">
-
-      <div class="panel-header">
-
-        <div>
-
-          <span class="eyebrow">
-            KEY FEATURES
-          </span>
-
-          <h2>
-            Built around the classroom.
-          </h2>
-
-        </div>
-
-      </div>
-
-
-      <div class="feature-grid">
-
-
-        <div class="feature-card">
-
-          <span>📊</span>
-
-          <h3>
-            Topic-wise Analytics
-          </h3>
-
-          <p>
-            Understand exactly which topics are strong
-            and which need attention.
-          </p>
-
-        </div>
-
-
-
-        <div class="feature-card">
-
-          <span>🔒</span>
-
-          <h3>
-            Anonymous Feedback
-          </h3>
-
-          <p>
-            Students can share honest feedback without
-            their identity being displayed normally.
-          </p>
-
-        </div>
-
-
-
-        <div class="feature-card">
-
-          <span>📈</span>
-
-          <h3>
-            Before → After
-          </h3>
-
-          <p>
-            Compare understanding before and after
-            revision to measure improvement.
-          </p>
-
-        </div>
-
-
-
-        <div class="feature-card">
-
-          <span>⚡</span>
-
-          <h3>
-            Quick Reviews
-          </h3>
-
-          <p>
-            Designed to take only a short time so feedback
-            can become part of the normal classroom routine.
-          </p>
-
-        </div>
-
-
-
-        <div class="feature-card">
-
-          <span>🔎</span>
-
-          <h3>
-            Smart Filtering
-          </h3>
-
-          <p>
-            Teachers can find recently reviewed, weak or
-            high-performing topics quickly.
-          </p>
-
-        </div>
-
-
-
-        <div class="feature-card">
-
-          <span>💡</span>
-
-          <h3>
-            Recommended Action
-          </h3>
-
-          <p>
-            ClassPulse highlights where teachers should
-            focus their next revision.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ================= DESIGN THINKING ================= -->
-
-    <section class="dashboard-panel">
-
-      <div class="panel-header">
-
-        <div>
-
-          <span class="eyebrow">
-            DESIGN THINKING
-          </span>
-
-          <h2>
-            Built using the Design Thinking process.
-          </h2>
-
-        </div>
-
-      </div>
-
-
-      <div class="design-thinking">
-
-
-        <div class="dt-card">
-
-          <span>01</span>
-
-          <h3>
-            Empathize
-          </h3>
-
-          <p>
-            Understand students' difficulty in expressing
-            confusion and teachers' difficulty in identifying
-            weak areas.
-          </p>
-
-        </div>
-
-
-
-        <div class="dt-card">
-
-          <span>02</span>
-
-          <h3>
-            Define
-          </h3>
-
-          <p>
-            Define the core problem: teachers need a simple
-            way to see what students actually understand.
-          </p>
-
-        </div>
-
-
-
-        <div class="dt-card">
-
-          <span>03</span>
-
-          <h3>
-            Ideate
-          </h3>
-
-          <p>
-            Explore topic ratings, anonymous feedback,
-            analytics and revision tracking.
-          </p>
-
-        </div>
-
-
-
-        <div class="dt-card">
-
-          <span>04</span>
-
-          <h3>
-            Prototype
-          </h3>
-
-          <p>
-            Build a working digital platform connecting
-            student feedback with teacher insights.
-          </p>
-
-        </div>
-
-
-
-        <div class="dt-card">
-
-          <span>05</span>
-
-          <h3>
-            Test
-          </h3>
-
-          <p>
-            Test the platform with real classroom users
-            and improve the experience using their feedback.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ================= PRIVACY ================= -->
-
-    <section class="privacy-section">
-
-      <div class="privacy-card">
-
-        <div class="privacy-icon">
-          🔒
-        </div>
-
-        <div>
-
-          <h3>
-            Privacy is part of the design.
-          </h3>
-
-          <p>
-            ClassPulse is designed around anonymous classroom
-            analytics. Student identity and learning feedback
-            should remain separated during normal use.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ================= FUTURE SCOPE ================= -->
-
-    <section class="dashboard-panel">
-
-      <div class="panel-header">
-
-        <div>
-
-          <span class="eyebrow">
-            FUTURE SCOPE
-          </span>
-
-          <h2>
-            Where ClassPulse can go next.
-          </h2>
-
-        </div>
-
-      </div>
-
-
-      <div class="future-grid">
-
-
-        <div class="future-card">
-
-          <span>01</span>
-
-          <h3>
-            Real-time Cloud Data
-          </h3>
-
-          <p>
-            Connect students and teachers through a secure
-            central database for live classroom feedback.
-          </p>
-
-        </div>
-
-
-
-        <div class="future-card">
-
-          <span>02</span>
-
-          <h3>
-            QR Classroom Sessions
-          </h3>
-
-          <p>
-            Teachers can create a session and students can
-            join instantly by scanning a QR code.
-          </p>
-
-        </div>
-
-
-
-        <div class="future-card">
-
-          <span>03</span>
-
-          <h3>
-            AI-powered Insights
-          </h3>
-
-          <p>
-            Future versions could summarize large amounts
-            of feedback and suggest targeted teaching actions.
-          </p>
-
-        </div>
-
-
-
-        <div class="future-card">
-
-          <span>04</span>
-
-          <h3>
-            Institution Analytics
-          </h3>
-
-          <p>
-            Colleges could compare learning trends across
-            subjects, classes and semesters.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ================= FINAL CTA ================= -->
-
-    <section class="insight-section">
-
-      <div class="insight-card">
-
-        <div class="insight-icon">
-          ✦
-        </div>
-
-        <div>
-
-          <span class="eyebrow">
-            CLASSPULSE
-          </span>
-
-          <h2>
-            Understand. Improve. Learn.
-          </h2>
-
-          <p>
-            Better feedback creates better teaching,
-            and better teaching creates better learning.
-          </p>
-
-        </div>
-
-        <a href="student.html" class="primary-btn">
-          Give a Review →
-        </a>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-
-  <!-- ================= FOOTER ================= -->
-
-  <footer>
-
-    <div>
-
-      <strong>
-        ClassPulse
-      </strong>
-
-      <span>
-        · Understand. Improve. Learn.
-      </span>
-
-    </div>
+    <h2>
+      Teachers can't always see
+      what the whole class understands.
+    </h2>
 
     <p>
-      Learning feedback, made meaningful.
+      In a normal classroom, a teacher may ask,
+      "Is everything clear?"
+      Most students may stay silent even when they
+      are confused about a topic.
     </p>
 
-  </footer>
+  </div>
 
 
+  <div class="about-card problem-list">
 
-  <script src="script.js"></script>
+    <div>
+      <span>01</span>
+
+      <p>
+        Students may hesitate to ask questions.
+      </p>
+    </div>
+
+
+    <div>
+      <span>02</span>
+
+      <p>
+        Teachers may not know which topic needs revision.
+      </p>
+    </div>
+
+
+    <div>
+      <span>03</span>
+
+      <p>
+        Understanding is difficult to measure
+        during a normal lecture.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SOLUTION -->
+<section class="about-solution">
+
+  <div class="section-heading">
+
+    <span class="eyebrow">
+      THE SOLUTION
+    </span>
+
+    <h2>
+      Feedback becomes
+      <span>actionable.</span>
+    </h2>
+
+    <p>
+      ClassPulse turns simple student feedback into
+      topic-level classroom insights.
+    </p>
+
+  </div>
+
+
+  <div class="solution-flow">
+
+    <div class="solution-step">
+
+      <span>01</span>
+
+      <h3>
+        Student Reviews
+      </h3>
+
+      <p>
+        Students rate their understanding of individual
+        topics from 0% to 100%.
+      </p>
+
+    </div>
+
+
+    <div class="flow-arrow">
+      →
+    </div>
+
+
+    <div class="solution-step">
+
+      <span>02</span>
+
+      <h3>
+        Data is Analysed
+      </h3>
+
+      <p>
+        ClassPulse calculates topic-level understanding
+        from the submitted feedback.
+      </p>
+
+    </div>
+
+
+    <div class="flow-arrow">
+      →
+    </div>
+
+
+    <div class="solution-step">
+
+      <span>03</span>
+
+      <h3>
+        Teacher Acts
+      </h3>
+
+      <p>
+        Teachers can identify weak topics and decide
+        what should be revised next.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FEATURES -->
+<section class="about-section">
+
+  <div class="section-heading">
+
+    <span class="eyebrow">
+      KEY FEATURES
+    </span>
+
+    <h2>
+      Built around real classroom needs.
+    </h2>
+
+  </div>
+
+
+  <div class="feature-grid">
+
+    <div class="feature-card">
+
+      <div class="feature-number">
+        01
+      </div>
+
+      <h3>
+        Topic-Level Feedback
+      </h3>
+
+      <p>
+        Students can rate individual topics instead
+        of giving one general classroom rating.
+      </p>
+
+    </div>
+
+
+    <div class="feature-card">
+
+      <div class="feature-number">
+        02
+      </div>
+
+      <h3>
+        Anonymous Feedback
+      </h3>
+
+      <p>
+        Teachers can focus on learning patterns
+        without displaying student identities.
+      </p>
+
+    </div>
+
+
+    <div class="feature-card">
+
+      <div class="feature-number">
+        03
+      </div>
+
+      <h3>
+        Learning Analytics
+      </h3>
+
+      <p>
+        Feedback is converted into understandable
+        topic-level analytics.
+      </p>
+
+    </div>
+
+
+    <div class="feature-card">
+
+      <div class="feature-number">
+        04
+      </div>
+
+      <h3>
+        Difficult Topic Detection
+      </h3>
+
+      <p>
+        Students can directly identify concepts
+        they are struggling with.
+      </p>
+
+    </div>
+
+
+    <div class="feature-card">
+
+      <div class="feature-number">
+        05
+      </div>
+
+      <h3>
+        Revision Priority
+      </h3>
+
+      <p>
+        Lower understanding scores help teachers
+        identify where revision may be needed.
+      </p>
+
+    </div>
+
+
+    <div class="feature-card">
+
+      <div class="feature-number">
+        06
+      </div>
+
+      <h3>
+        Teacher Insights
+      </h3>
+
+      <p>
+        ClassPulse converts feedback into simple,
+        actionable recommendations.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- DESIGN THINKING -->
+<section class="design-thinking">
+
+  <div class="section-heading">
+
+    <span class="eyebrow">
+      DESIGN THINKING
+    </span>
+
+    <h2>
+      Designed around the
+      classroom experience.
+    </h2>
+
+  </div>
+
+
+  <div class="design-grid">
+
+    <div>
+      <span>01</span>
+
+      <h3>
+        Empathize
+      </h3>
+
+      <p>
+        Understand the difficulty students face
+        when they do not fully understand a topic.
+      </p>
+    </div>
+
+
+    <div>
+      <span>02</span>
+
+      <h3>
+        Define
+      </h3>
+
+      <p>
+        Identify the gap between teaching a concept
+        and knowing whether students understood it.
+      </p>
+    </div>
+
+
+    <div>
+      <span>03</span>
+
+      <h3>
+        Ideate
+      </h3>
+
+      <p>
+        Explore a simple feedback system that can
+        work without interrupting classroom learning.
+      </p>
+    </div>
+
+
+    <div>
+      <span>04</span>
+
+      <h3>
+        Prototype
+      </h3>
+
+      <p>
+        Build the ClassPulse student interface,
+        teacher dashboard and analytics system.
+      </p>
+    </div>
+
+
+    <div>
+      <span>05</span>
+
+      <h3>
+        Test
+      </h3>
+
+      <p>
+        Collect real classroom feedback and improve
+        the system based on student and teacher needs.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PRIVACY -->
+<section class="about-grid privacy-section">
+
+  <div class="about-card">
+
+    <span class="eyebrow">
+      PRIVACY BY DESIGN
+    </span>
+
+    <h2>
+      Feedback should feel safe.
+    </h2>
+
+    <p>
+      ClassPulse is designed so that teachers can
+      understand classroom learning patterns without
+      exposing student names on the analytics dashboard.
+    </p>
+
+  </div>
+
+
+  <div class="privacy-features">
+
+    <div>
+      <strong>✓</strong>
+      <span>Anonymous review IDs</span>
+    </div>
+
+    <div>
+      <strong>✓</strong>
+      <span>No student names in analytics</span>
+    </div>
+
+    <div>
+      <strong>✓</strong>
+      <span>Learning-focused data</span>
+    </div>
+
+    <div>
+      <strong>✓</strong>
+      <span>Minimal information collection</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FUTURE SCOPE -->
+<section class="about-section">
+
+  <div class="section-heading">
+
+    <span class="eyebrow">
+      FUTURE SCOPE
+    </span>
+
+    <h2>
+      From prototype to
+      real classroom platform.
+    </h2>
+
+    <p>
+      The current prototype demonstrates the core concept.
+      Future versions can make the system usable across
+      multiple classrooms and devices.
+    </p>
+
+  </div>
+
+
+  <div class="future-grid">
+
+    <div class="future-card">
+
+      <span>01</span>
+
+      <h3>
+        Cloud Database
+      </h3>
+
+      <p>
+        Connect student devices and teacher dashboards
+        through a secure cloud database.
+      </p>
+
+    </div>
+
+
+    <div class="future-card">
+
+      <span>02</span>
+
+      <h3>
+        QR Sessions
+      </h3>
+
+      <p>
+        Teachers can generate a classroom session QR
+        that students scan to submit feedback.
+      </p>
+
+    </div>
+
+
+    <div class="future-card">
+
+      <span>03</span>
+
+      <h3>
+        Real-Time Analytics
+      </h3>
+
+      <p>
+        Teacher dashboards can update automatically
+        as students submit their reviews.
+      </p>
+
+    </div>
+
+
+    <div class="future-card">
+
+      <span>04</span>
+
+      <h3>
+        AI Teaching Suggestions
+      </h3>
+
+      <p>
+        Future versions could suggest revision strategies
+        based on classroom learning patterns.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FINAL CTA -->
+<section class="about-cta">
+
+  <span class="eyebrow">
+    CLASSPULSE
+  </span>
+
+  <h2>
+    Understand first.
+    Teach better.
+  </h2>
+
+  <p>
+    Better feedback can help create better learning.
+  </p>
+
+  <div class="cta-actions">
+
+    <a
+      href="student.html"
+      class="btn primary"
+    >
+      Give Student Feedback
+    </a>
+
+    <a
+      href="dashboard.html"
+      class="btn secondary"
+    >
+      Open Teacher Dashboard
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+
+  <div>
+
+    <strong>
+      ClassPulse
+    </strong>
+
+    <p>
+      Understand the class. Teach smarter.
+    </p>
+
+  </div>
+
+  <p>
+    Design Thinking Project • Engineering
+  </p>
+
+</footer>
 
 </body>
-
-          </html>
+  </html>
