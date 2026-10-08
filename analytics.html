@@ -1,824 +1,3152 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>ClassPulse — Analytics</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
-
   <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
 
-  <!-- ================= NAVBAR ================= -->
+<!-- NAVBAR -->
+<nav class="navbar">
 
-  <header class="navbar">
+  <div class="nav-brand">
+    <span class="brand-mark">CP</span>
+    <span>ClassPulse</span>
+  </div>
 
-    <div class="brand">
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="student.html">Student</a>
+    <a href="dashboard.html">Teacher</a>
+    <a href="analytics.html" class="active">Analytics</a>
+    <a href="about.html">About</a>
+  </div>
 
-      <div class="brand-icon">CP</div>
+</nav>
 
-      <div>
-        <h2>ClassPulse</h2>
-        <span>Understand. Improve. Learn.</span>
+
+<!-- HEADER -->
+<section class="analytics-header">
+
+  <div>
+    <span class="eyebrow">CLASSPULSE ANALYTICS</span>
+
+    <h1>Understand the bigger picture.</h1>
+
+    <p>
+      Turn student feedback into clear insights about
+      learning, difficult topics and revision priorities.
+    </p>
+  </div>
+
+</section>
+
+
+<!-- FILTERS -->
+<section class="dashboard-panel analytics-filters">
+
+  <div class="filter-group">
+
+    <label for="subjectFilter">
+      Subject
+    </label>
+
+    <select id="subjectFilter" onchange="updateAnalytics()">
+
+      <option value="ALL">
+        All Subjects
+      </option>
+
+      <option value="Engineering Mathematics I">
+        Engineering Mathematics I
+      </option>
+
+      <option value="Engineering Mechanics">
+        Engineering Mechanics
+      </option>
+
+      <option value="Basic Electrical Engineering">
+        Basic Electrical Engineering
+      </option>
+
+      <option value="Engineering Chemistry">
+        Engineering Chemistry
+      </option>
+
+      <option value="Fundamentals of Programming">
+        Fundamentals of Programming
+      </option>
+
+      <option value="Professional Communication Skills">
+        Professional Communication Skills
+      </option>
+
+    </select>
+
+  </div>
+
+
+  <div class="filter-group">
+
+    <label for="chapterFilter">
+      Chapter
+    </label>
+
+    <select id="chapterFilter" onchange="updateAnalytics()">
+
+      <option value="ALL">
+        All Chapters
+      </option>
+
+    </select>
+
+  </div>
+
+</section>
+
+
+<!-- MAIN STATS -->
+<section class="dashboard-grid">
+
+  <div class="stat-card">
+
+    <span class="stat-label">
+      Class Understanding
+    </span>
+
+    <strong id="overallScore">
+      —
+    </strong>
+
+    <p id="overallDescription">
+      Waiting for feedback
+    </p>
+
+  </div>
+
+
+  <div class="stat-card">
+
+    <span class="stat-label">
+      Reviews Received
+    </span>
+
+    <strong id="reviewCount">
+      0
+    </strong>
+
+    <p>
+      Student submissions
+    </p>
+
+  </div>
+
+
+  <div class="stat-card">
+
+    <span class="stat-label">
+      Strongest Topic
+    </span>
+
+    <strong id="strongestTopic">
+      —
+    </strong>
+
+    <p id="strongestScore">
+      No data yet
+    </p>
+
+  </div>
+
+
+  <div class="stat-card">
+
+    <span class="stat-label">
+      Weakest Topic
+    </span>
+
+    <strong id="weakestTopic">
+      —
+    </strong>
+
+    <p id="weakestScore">
+      No data yet
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- CLASS INSIGHT -->
+<section class="dashboard-panel insight-panel">
+
+  <div>
+
+    <span class="eyebrow">
+      CLASSPULSE INSIGHT
+    </span>
+
+    <h2 id="insightTitle">
+      Waiting for student feedback
+    </h2>
+
+    <p id="insightText">
+      Analytics will appear after students submit
+      their first reviews.
+    </p>
+
+  </div>
+
+  <div class="insight-icon">
+    ✦
+  </div>
+
+</section>
+
+
+<!-- TOPIC COMPARISON -->
+<section class="dashboard-panel chart-card">
+
+  <div class="panel-header">
+
+    <div>
+
+      <span class="eyebrow">
+        TOPIC COMPARISON
+      </span>
+
+      <h2>
+        Understanding by Topic
+      </h2>
+
+    </div>
+
+  </div>
+
+
+  <div id="topicComparison">
+
+    <div class="empty-state">
+
+      <div class="empty-icon">
+        ◌
       </div>
+
+      <h3>
+        No Topic Data Yet
+      </h3>
+
+      <p>
+        Topic analytics will appear after student reviews.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- UNDERSTANDING DISTRIBUTION -->
+<section class="dashboard-panel chart-card">
+
+  <div class="panel-header">
+
+    <div>
+
+      <span class="eyebrow">
+        UNDERSTANDING DISTRIBUTION
+      </span>
+
+      <h2>
+        How the class is doing
+      </h2>
+
+    </div>
+
+  </div>
+
+
+  <div id="distributionChart" class="analytics-bars">
+
+    <div class="empty-state">
+
+      <div class="empty-icon">
+        ◌
+      </div>
+
+      <h3>
+        No Data Yet
+      </h3>
+
+      <p>
+        Submit student feedback to generate analytics.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- DIFFICULT TOPICS -->
+<section class="dashboard-panel">
+
+  <div class="panel-header">
+
+    <div>
+
+      <span class="eyebrow">
+        STUDENT DIFFICULTIES
+      </span>
+
+      <h2>
+        Most Reported Difficult Topics
+      </h2>
+
+    </div>
+
+  </div>
+
+
+  <div id="difficultTopics" class="comparison-list">
+
+    <div class="empty-state">
+
+      <div class="empty-icon">
+        ◌
+      </div>
+
+      <h3>
+        No Difficult Topics Reported
+      </h3>
+
+      <p>
+        Student-selected difficult topics will appear here.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- REVISION IMPACT -->
+<section class="dashboard-panel">
+
+  <div class="panel-header">
+
+    <div>
+
+      <span class="eyebrow">
+        REVISION IMPACT
+      </span>
+
+      <h2>
+        Before → After Revision
+      </h2>
+
+    </div>
+
+  </div>
+
+
+  <div class="comparison-grid">
+
+    <div class="comparison-card">
+
+      <span>
+        Before Revision
+      </span>
+
+      <strong id="beforeScore">
+        —
+      </strong>
+
+      <small>
+        First review session
+      </small>
 
     </div>
 
 
-    <nav>
-
-      <a href="index.html">Home</a>
-
-      <a href="student.html">Student</a>
-
-      <a href="dashboard.html">Teacher</a>
-
-      <a href="analytics.html" class="active">Analytics</a>
-
-      <a href="about.html">About</a>
-
-    </nav>
-
-  </header>
+    <div class="comparison-arrow">
+      →
+    </div>
 
 
+    <div class="comparison-card">
 
-  <main>
+      <span>
+        After Revision
+      </span>
 
-    <!-- ================= PAGE HEADER ================= -->
+      <strong id="afterScore">
+        —
+      </strong>
 
-    <section class="section analytics-header">
+      <small>
+        Later review session
+      </small>
 
-      <div class="section-heading">
+    </div>
 
-        <div>
+  </div>
 
-          <span class="eyebrow">CLASS ANALYTICS</span>
 
-          <h1>
-            See how your
-            <span>class is learning.</span>
-          </h1>
+  <p class="comparison-note">
+    Revision comparison will appear when the same topic
+    receives feedback across multiple review sessions.
+  </p>
 
+</section>
+
+
+<!-- RECOMMENDED ACTION -->
+<section class="dashboard-panel insight-panel">
+
+  <div>
+
+    <span class="eyebrow">
+      RECOMMENDED ACTION
+    </span>
+
+    <h2 id="actionTitle">
+      No recommendation yet
+    </h2>
+
+    <p id="actionText">
+      Once enough feedback is collected, ClassPulse will
+      suggest what the teacher should focus on next.
+    </p>
+
+  </div>
+
+  <div class="insight-icon">
+    →
+  </div>
+
+</section>
+
+
+<!-- PRIVACY -->
+<section class="dashboard-panel privacy-panel">
+
+  <div>
+
+    <span class="eyebrow">
+      PRIVACY
+    </span>
+
+    <h2>
+      Analytics stay focused on learning.
+    </h2>
+
+    <p>
+      This dashboard uses aggregated feedback.
+      Student names and roll numbers are not displayed.
+    </p>
+
+  </div>
+
+  <div class="privacy-lock">
+    🔒
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+
+  <div>
+
+    <strong>
+      ClassPulse
+    </strong>
+
+    <p>
+      Understand the class. Teach smarter.
+    </p>
+
+  </div>
+
+  <p>
+    Design Thinking Project • Engineering
+  </p>
+
+</footer>
+
+
+<script>
+
+/* ==========================================
+   CLASSPULSE ANALYTICS
+========================================== */
+
+const STORAGE_KEY = "classpulse_reviews";
+
+let reviews = [];
+
+
+/* ==========================================
+   LOAD REVIEWS
+========================================== */
+
+function loadReviews() {
+
+  try {
+
+    const stored =
+      localStorage.getItem(STORAGE_KEY);
+
+    reviews =
+      stored
+        ? JSON.parse(stored)
+        : [];
+
+    if (!Array.isArray(reviews)) {
+      reviews = [];
+    }
+
+  } catch (error) {
+
+    console.error(
+      "Could not load reviews:",
+      error
+    );
+
+    reviews = [];
+
+  }
+
+}
+
+
+/* ==========================================
+   CHAPTER FILTER
+========================================== */
+
+function updateChapterOptions() {
+
+  const subject =
+    document.getElementById(
+      "subjectFilter"
+    ).value;
+
+
+  const chapterFilter =
+    document.getElementById(
+      "chapterFilter"
+    );
+
+
+  const chapters = [
+    ...new Set(
+
+      reviews
+        .filter(review => {
+
+          return (
+            subject === "ALL" ||
+            review.subject === subject
+          );
+
+        })
+
+        .map(review => review.chapter)
+
+        .filter(Boolean)
+
+    )
+  ];
+
+
+  const oldValue =
+    chapterFilter.value;
+
+
+  chapterFilter.innerHTML =
+    `<option value="ALL">
+      All Chapters
+    </option>`;
+
+
+  chapters
+    .sort()
+    .forEach(chapter => {
+
+      const option =
+        document.createElement(
+          "option"
+        );
+
+      option.value =
+        chapter;
+
+      option.textContent =
+        chapter;
+
+      chapterFilter.appendChild(
+        option
+      );
+
+    });
+
+
+  if (
+    chapters.includes(oldValue)
+  ) {
+
+    chapterFilter.value =
+      oldValue;
+
+  } else {
+
+    chapterFilter.value =
+      "ALL";
+
+  }
+
+}
+
+
+/* ==========================================
+   FILTER REVIEWS
+========================================== */
+
+function getFilteredReviews() {
+
+  const subject =
+    document.getElementById(
+      "subjectFilter"
+    ).value;
+
+
+  const chapter =
+    document.getElementById(
+      "chapterFilter"
+    ).value;
+
+
+  return reviews.filter(review => {
+
+    const subjectMatch =
+      subject === "ALL" ||
+      review.subject === subject;
+
+
+    const chapterMatch =
+      chapter === "ALL" ||
+      review.chapter === chapter;
+
+
+    return (
+      subjectMatch &&
+      chapterMatch
+    );
+
+  });
+
+}
+
+
+/* ==========================================
+   TOPIC DATA
+========================================== */
+
+function getTopicData() {
+
+  const filtered =
+    getFilteredReviews();
+
+
+  const topics = {};
+
+
+  filtered.forEach(review => {
+
+    if (!review.ratings) return;
+
+
+    Object.entries(
+      review.ratings
+    ).forEach(
+      ([topic, rating]) => {
+
+        const score =
+          Number(rating);
+
+
+        if (
+          !Number.isFinite(score)
+        ) {
+          return;
+        }
+
+
+        if (!topics[topic]) {
+
+          topics[topic] = {
+
+            total: 0,
+
+            count: 0,
+
+            latest: null
+
+          };
+
+        }
+
+
+        topics[topic].total +=
+          score;
+
+
+        topics[topic].count +=
+          1;
+
+
+        const date =
+          new Date(
+            review.submittedAt || 0
+          );
+
+
+        if (
+          !topics[topic].latest ||
+          date >
+          topics[topic].latest
+        ) {
+
+          topics[topic].latest =
+            date;
+
+        }
+
+      }
+
+    );
+
+  });
+
+
+  return Object.entries(
+    topics
+  ).map(
+    ([topic, data]) => {
+
+      return {
+
+        topic,
+
+        score:
+          Math.round(
+            data.total /
+            data.count
+          ),
+
+        count:
+          data.count,
+
+        latest:
+          data.latest
+
+      };
+
+    }
+  );
+
+}
+
+
+/* ==========================================
+   OVERALL SCORE
+========================================== */
+
+function calculateOverall() {
+
+  const filtered =
+    getFilteredReviews();
+
+
+  const values = [];
+
+
+  filtered.forEach(review => {
+
+    if (!review.ratings) return;
+
+
+    Object.values(
+      review.ratings
+    ).forEach(value => {
+
+      const score =
+        Number(value);
+
+
+      if (
+        Number.isFinite(score)
+      ) {
+
+        values.push(score);
+
+      }
+
+    });
+
+  });
+
+
+  if (!values.length) {
+    return null;
+  }
+
+
+  return Math.round(
+
+    values.reduce(
+      (sum, value) =>
+        sum + value,
+      0
+    ) / values.length
+
+  );
+
+}
+
+
+/* ==========================================
+   UPDATE MAIN STATS
+========================================== */
+
+function updateStats() {
+
+  const filtered =
+    getFilteredReviews();
+
+
+  const topics =
+    getTopicData();
+
+
+  const overall =
+    calculateOverall();
+
+
+  document.getElementById(
+    "reviewCount"
+  ).textContent =
+    filtered.length;
+
+
+  if (overall === null) {
+
+    document.getElementById(
+      "overallScore"
+    ).textContent =
+      "—";
+
+
+    document.getElementById(
+      "overallDescription"
+    ).textContent =
+      "Waiting for feedback";
+
+
+    document.getElementById(
+      "strongestTopic"
+    ).textContent =
+      "—";
+
+
+    document.getElementById(
+      "weakestTopic"
+    ).textContent =
+      "—";
+
+
+    document.getElementById(
+      "strongestScore"
+    ).textContent =
+      "No data yet";
+
+
+    document.getElementById(
+      "weakestScore"
+    ).textContent =
+      "No data yet";
+
+
+    return;
+
+  }
+
+
+  document.getElementById(
+    "overallScore"
+  ).textContent =
+    overall + "%";
+
+
+  document.getElementById(
+    "overallDescription"
+  ).textContent =
+    scoreDescription(overall);
+
+
+  if (!topics.length) {
+    return;
+  }
+
+
+  const strongest =
+    [...topics].sort(
+      (a, b) =>
+        b.score - a.score
+    )[0];
+
+
+  const weakest =
+    [...topics].sort(
+      (a, b) =>
+        a.score - b.score
+    )[0];
+
+
+  document.getElementById(
+    "strongestTopic"
+  ).textContent =
+    strongest.topic;
+
+
+  document.getElementById(
+    "strongestScore"
+  ).textContent =
+    strongest.score +
+    "% understanding";
+
+
+  document.getElementById(
+    "weakestTopic"
+  ).textContent =
+    weakest.topic;
+
+
+  document.getElementById(
+    "weakestScore"
+  ).textContent =
+    weakest.score +
+    "% understanding";
+
+}
+
+
+/* ==========================================
+   SCORE DESCRIPTION
+========================================== */
+
+function scoreDescription(score) {
+
+  if (score < 50) {
+
+    return "High revision priority";
+
+  }
+
+
+  if (score < 70) {
+
+    return "Some concepts need attention";
+
+  }
+
+
+  if (score < 85) {
+
+    return "Good understanding";
+
+  }
+
+
+  return "Strong class understanding";
+
+}
+
+
+/* ==========================================
+   INSIGHT
+========================================== */
+
+function updateInsight() {
+
+  const topics =
+    getTopicData();
+
+
+  const title =
+    document.getElementById(
+      "insightTitle"
+    );
+
+
+  const text =
+    document.getElementById(
+      "insightText"
+    );
+
+
+  if (!topics.length) {
+
+    title.textContent =
+      "Waiting for student feedback";
+
+
+    text.textContent =
+      "Analytics will appear after students submit their first reviews.";
+
+    return;
+
+  }
+
+
+  const weakest =
+    [...topics].sort(
+      (a, b) =>
+        a.score - b.score
+    )[0];
+
+
+  const strongest =
+    [...topics].sort(
+      (a, b) =>
+        b.score - a.score
+    )[0];
+
+
+  if (weakest.score < 50) {
+
+    title.textContent =
+      "Immediate revision recommended";
+
+
+    text.textContent =
+      `"${weakest.topic}" has ${weakest.score}% understanding and should be prioritised.`;
+
+  }
+
+  else if (weakest.score < 70) {
+
+    title.textContent =
+      "A topic needs more attention";
+
+
+    text.textContent =
+      `"${weakest.topic}" currently has the lowest understanding at ${weakest.score}%.`;
+
+  }
+
+  else {
+
+    title.textContent =
+      "Class is progressing well";
+
+
+    text.textContent =
+      `The strongest topic is "${strongest.topic}" at ${strongest.score}%. Keep monitoring lower-scoring topics.`;
+
+  }
+
+}
+
+
+/* ==========================================
+   TOPIC COMPARISON
+========================================== */
+
+function renderTopicComparison() {
+
+  const container =
+    document.getElementById(
+      "topicComparison"
+    );
+
+
+  const topics =
+    getTopicData()
+      .sort(
+        (a, b) =>
+          a.score - b.score
+      );
+
+
+  if (!topics.length) {
+
+    container.innerHTML = `
+
+      <div class="empty-state">
+
+        <div class="empty-icon">
+          ◌
         </div>
 
+        <h3>
+          No Topic Data Yet
+        </h3>
+
         <p>
-          Turn student feedback into clear trends,
-          comparisons and actionable teaching insights.
+          Topic analytics will appear after student reviews.
         </p>
 
       </div>
 
+    `;
 
-      <div class="analytics-filters">
+    return;
 
-        <select id="subjectFilter" onchange="changeSubject()">
-
-          <option value="all">
-            All Subjects
-          </option>
-
-          <option value="maths">
-            Engineering Mathematics I
-          </option>
-
-          <option value="mechanics">
-            Engineering Mechanics
-          </option>
-
-          <option value="electrical">
-            Basic Electrical Engineering
-          </option>
-
-          <option value="chemistry">
-            Engineering Chemistry
-          </option>
-
-          <option value="programming">
-            Fundamentals of Programming
-          </option>
-
-          <option value="pcs">
-            Professional Communication Skills
-          </option>
-
-        </select>
+  }
 
 
-        <select>
-
-          <option>
-            Last 30 Days
-          </option>
-
-          <option>
-            Last 7 Days
-          </option>
-
-          <option>
-            This Semester
-          </option>
-
-        </select>
-
-      </div>
-
-    </section>
+  container.innerHTML = "";
 
 
+  topics.forEach(item => {
 
-    <!-- ================= MAIN STATS ================= -->
+    const row =
+      document.createElement(
+        "div"
+      );
 
-    <section class="dashboard-grid">
 
-      <div class="stat-card">
+    row.className =
+      "comparison-item";
 
-        <span class="stat-label">
-          Class Understanding
-        </span>
+
+    row.innerHTML = `
+
+      <div>
 
         <strong>
-          72%
+          ${escapeHTML(item.topic)}
         </strong>
 
-        <div class="stat-progress">
-          <div style="width:72%"></div>
-        </div>
-
-        <small class="positive">
-          ↑ 11% improvement
+        <small>
+          ${item.count}
+          ${item.count === 1
+            ? "rating"
+            : "ratings"}
         </small>
 
       </div>
 
 
-      <div class="stat-card">
-
-        <span class="stat-label">
-          Reviews Received
-        </span>
+      <div class="comparison-score">
 
         <strong>
-          184
+          ${item.score}%
         </strong>
 
-        <small>
-          27 this week
-        </small>
+        <div class="topic-bar">
 
-      </div>
-
-
-      <div class="stat-card">
-
-        <span class="stat-label">
-          Strongest Area
-        </span>
-
-        <strong class="small-stat">
-          Programming
-        </strong>
-
-        <small>
-          83% understanding
-        </small>
-
-      </div>
-
-
-      <div class="stat-card danger-stat">
-
-        <span class="stat-label">
-          Weakest Area
-        </span>
-
-        <strong class="small-stat">
-          Mechanics
-        </strong>
-
-        <small>
-          58% understanding
-        </small>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ================= TREND ================= -->
-
-    <section class="dashboard-panel">
-
-      <div class="panel-header">
-
-        <div>
-
-          <span class="eyebrow">
-            IMPROVEMENT TREND
-          </span>
-
-          <h2>
-            Understanding over time
-          </h2>
-
-        </div>
-
-        <span class="trend-badge">
-          +18% overall
-        </span>
-
-      </div>
-
-
-      <div class="chart-card">
-
-        <div class="chart-y-axis">
-
-          <span>100%</span>
-          <span>80%</span>
-          <span>60%</span>
-          <span>40%</span>
-          <span>20%</span>
-          <span>0%</span>
-
-        </div>
-
-
-        <div class="chart-area">
-
-          <div class="chart-grid-lines">
-
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-
-          </div>
-
-
-          <div class="chart-line">
-
-            <div class="chart-point" style="left:5%; bottom:35%;">
-              <span>52%</span>
-            </div>
-
-            <div class="chart-point" style="left:22%; bottom:42%;">
-              <span>58%</span>
-            </div>
-
-            <div class="chart-point" style="left:39%; bottom:50%;">
-              <span>64%</span>
-            </div>
-
-            <div class="chart-point" style="left:56%; bottom:57%;">
-              <span>69%</span>
-            </div>
-
-            <div class="chart-point" style="left:73%; bottom:64%;">
-              <span>74%</span>
-            </div>
-
-            <div class="chart-point" style="left:90%; bottom:70%;">
-              <span>78%</span>
-            </div>
-
-          </div>
-
-
-          <div class="chart-labels">
-
-            <span>Week 1</span>
-            <span>Week 2</span>
-            <span>Week 3</span>
-            <span>Week 4</span>
-            <span>Week 5</span>
-            <span>Week 6</span>
-
-          </div>
+          <span
+            style="width:${item.score}%"
+          ></span>
 
         </div>
 
       </div>
 
-    </section>
+    `;
 
 
+    container.appendChild(row);
 
-    <!-- ================= TOPIC COMPARISON ================= -->
+  });
 
-    <section class="dashboard-panel">
+}
 
-      <div class="panel-header">
 
-        <div>
+/* ==========================================
+   DISTRIBUTION
+========================================== */
 
-          <span class="eyebrow">
-            TOPIC COMPARISON
-          </span>
+function renderDistribution() {
 
-          <h2>
-            Strong vs weak areas
-          </h2>
+  const container =
+    document.getElementById(
+      "distributionChart"
+    );
 
-        </div>
 
-      </div>
+  const filtered =
+    getFilteredReviews();
 
 
-      <div class="comparison-list">
+  const buckets = {
 
+    "0–25%": 0,
 
-        <div class="comparison-row">
+    "26–50%": 0,
 
-          <div class="comparison-info">
+    "51–75%": 0,
 
-            <strong>
-              Equilibrium
-            </strong>
+    "76–100%": 0
 
-            <span>
-              Engineering Mechanics
-            </span>
+  };
 
-          </div>
 
-          <div class="comparison-bar">
+  filtered.forEach(review => {
 
-            <div style="width:84%"></div>
+    if (!review.ratings) return;
 
-          </div>
 
-          <strong>
-            84%
-          </strong>
+    Object.values(
+      review.ratings
+    ).forEach(value => {
 
-        </div>
+      const score =
+        Number(value);
 
 
-
-        <div class="comparison-row">
-
-          <div class="comparison-info">
-
-            <strong>
-              Force Components
-            </strong>
-
-            <span>
-              Engineering Mechanics
-            </span>
-
-          </div>
-
-          <div class="comparison-bar">
-
-            <div style="width:76%"></div>
-
-          </div>
-
-          <strong>
-            76%
-          </strong>
-
-        </div>
-
-
-
-        <div class="comparison-row">
-
-          <div class="comparison-info">
-
-            <strong>
-              Resultant Force
-            </strong>
-
-            <span>
-              Engineering Mechanics
-            </span>
-
-          </div>
-
-          <div class="comparison-bar">
-
-            <div style="width:64%"></div>
-
-          </div>
-
-          <strong>
-            64%
-          </strong>
-
-        </div>
-
-
-
-        <div class="comparison-row">
-
-          <div class="comparison-info">
-
-            <strong>
-              Friction
-            </strong>
-
-            <span>
-              Engineering Mechanics
-            </span>
-
-          </div>
-
-          <div class="comparison-bar">
-
-            <div style="width:59%"></div>
-
-          </div>
-
-          <strong>
-            59%
-          </strong>
-
-        </div>
-
-
-
-        <div class="comparison-row">
-
-          <div class="comparison-info">
-
-            <strong>
-              Resolution of Forces
-            </strong>
-
-            <span>
-              Engineering Mechanics
-            </span>
-
-          </div>
-
-          <div class="comparison-bar">
-
-            <div style="width:43%"></div>
-
-          </div>
-
-          <strong>
-            43%
-          </strong>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ================= BEFORE AFTER ================= -->
-
-    <section class="dashboard-panel">
-
-      <div class="panel-header">
-
-        <div>
-
-          <span class="eyebrow">
-            REVISION IMPACT
-          </span>
-
-          <h2>
-            Did revision actually help?
-          </h2>
-
-        </div>
-
-      </div>
-
-
-      <div class="comparison-grid">
-
-
-        <div class="comparison-card">
-
-          <span>
-            Before Revision
-          </span>
-
-          <strong>
-            48%
-          </strong>
-
-          <small>
-            Average understanding
-          </small>
-
-        </div>
-
-
-        <div class="comparison-arrow">
-          →
-        </div>
-
-
-        <div class="comparison-card improved">
-
-          <span>
-            After Revision
-          </span>
-
-          <strong>
-            71%
-          </strong>
-
-          <small>
-            +23% improvement
-          </small>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ================= COMMON DOUBTS ================= -->
-
-    <section class="dashboard-panel">
-
-      <div class="panel-header">
-
-        <div>
-
-          <span class="eyebrow">
-            STUDENT FEEDBACK
-          </span>
-
-          <h2>
-            Common confusion areas
-          </h2>
-
-        </div>
-
-        <span class="new-badge">
-          64 RESPONSES
-        </span>
-
-      </div>
-
-
-      <div class="doubt-grid">
-
-
-        <div class="doubt-card">
-
-          <div class="doubt-number">
-            01
-          </div>
-
-          <h3>
-            Choosing the correct angle
-          </h3>
-
-          <p>
-            Students are confused about which angle
-            should be used while resolving forces.
-          </p>
-
-          <span>
-            28 students
-          </span>
-
-        </div>
-
-
-
-        <div class="doubt-card">
-
-          <div class="doubt-number">
-            02
-          </div>
-
-          <h3>
-            Sign convention
-          </h3>
-
-          <p>
-            Students frequently make mistakes while
-            assigning positive and negative directions.
-          </p>
-
-          <span>
-            21 students
-          </span>
-
-        </div>
-
-
-
-        <div class="doubt-card">
-
-          <div class="doubt-number">
-            03
-          </div>
-
-          <h3>
-            Numerical application
-          </h3>
-
-          <p>
-            Students understand the theory but struggle
-            when applying formulas to numerical problems.
-          </p>
-
-          <span>
-            15 students
-          </span>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ================= RECOMMENDATION ================= -->
-
-    <section class="insight-section">
-
-      <div class="insight-card">
-
-        <div class="insight-icon">
-          ✦
-        </div>
-
-
-        <div>
-
-          <span class="eyebrow">
-            RECOMMENDED ACTION
-          </span>
-
-          <h2>
-            Revise Resolution of Forces.
-          </h2>
-
-          <p>
-            Start with angle selection and sign convention,
-            then solve 2–3 numerical examples with the class.
-          </p>
-
-        </div>
-
-
-        <div class="insight-result">
-
-          <span>
-            EXPECTED IMPACT
-          </span>
-
-          <strong>
-            High
-          </strong>
-
-          <small>
-            43% → target 70%
-          </small>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ================= PRIVACY ================= -->
-
-    <section class="privacy-section">
-
-      <div class="privacy-card">
-
-        <div class="privacy-icon">
-          🔒
-        </div>
-
-        <div>
-
-          <h3>
-            Analytics protect student privacy.
-          </h3>
-
-          <p>
-            ClassPulse focuses on aggregate learning patterns.
-            Individual identities are not displayed in normal analytics.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-
-  <!-- ================= FOOTER ================= -->
-
-  <footer>
-
-    <div>
-
-      <strong>
-        ClassPulse
-      </strong>
-
-      <span>
-        · Understand. Improve. Learn.
-      </span>
-
-    </div>
-
-    <p>
-      Learning feedback, made meaningful.
-    </p>
-
-  </footer>
-
-
-
-  <!-- ================= SCRIPT ================= -->
-
-  <script src="script.js"></script>
-
-
-  <script>
-
-    function changeSubject() {
-
-      const subject =
-        document.getElementById("subjectFilter").value;
-
-
-      if (subject === "all") {
-
-        alert(
-          "Showing analytics for all subjects."
-        );
-
+      if (!Number.isFinite(score))
         return;
+
+
+      if (score <= 25) {
+
+        buckets["0–25%"]++;
 
       }
 
+      else if (score <= 50) {
 
-      const names = {
+        buckets["26–50%"]++;
 
-        maths:
-          "Engineering Mathematics I",
+      }
 
-        mechanics:
-          "Engineering Mechanics",
+      else if (score <= 75) {
 
-        electrical:
-          "Basic Electrical Engineering",
+        buckets["51–75%"]++;
 
-        chemistry:
-          "Engineering Chemistry",
+      }
 
-        programming:
-          "Fundamentals of Programming",
+      else {
 
-        pcs:
-          "Professional Communication Skills"
+        buckets["76–100%"]++;
 
-      };
+      }
+
+    });
+
+  });
 
 
-      alert(
-        "Analytics selected for " +
-        names[subject] +
-        "."
+  const total =
+    Object.values(buckets)
+      .reduce(
+        (sum, value) =>
+          sum + value,
+        0
       );
+
+
+  if (!total) {
+
+    container.innerHTML = `
+
+      <div class="empty-state">
+
+        <div class="empty-icon">
+          ◌
+        </div>
+
+        <h3>
+          No Data Yet
+        </h3>
+
+        <p>
+          Submit student feedback to generate analytics.
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  container.innerHTML = "";
+
+
+  Object.entries(
+    buckets
+  ).forEach(
+    ([label, count]) => {
+
+      const percentage =
+        Math.round(
+          (count / total) * 100
+        );
+
+
+      const row =
+        document.createElement(
+          "div"
+        );
+
+
+      row.className =
+        "analytics-bar-row";
+
+
+      row.innerHTML = `
+
+        <div class="analytics-bar-label">
+
+          <span>
+            ${label}
+          </span>
+
+          <strong>
+            ${count}
+          </strong>
+
+        </div>
+
+
+        <div class="analytics-bar">
+
+          <span
+            style="width:${percentage}%"
+          ></span>
+
+        </div>
+
+
+        <small>
+          ${percentage}% of ratings
+        </small>
+
+      `;
+
+
+      container.appendChild(row);
+
+    }
+  );
+
+}
+
+
+/* ==========================================
+   DIFFICULT TOPICS
+========================================== */
+
+function renderDifficultTopics() {
+
+  const container =
+    document.getElementById(
+      "difficultTopics"
+    );
+
+
+  const filtered =
+    getFilteredReviews();
+
+
+  const topicCount = {};
+
+
+  filtered.forEach(review => {
+
+    if (
+      !Array.isArray(
+        review.difficultTopics
+      )
+    ) {
+
+      return;
 
     }
 
-  </script>
 
+    review.difficultTopics
+      .forEach(topic => {
+
+        if (!topicCount[topic]) {
+
+          topicCount[topic] =
+            0;
+
+        }
+
+
+        topicCount[topic]++;
+
+      });
+
+  });
+
+
+  const topics =
+    Object.entries(topicCount)
+      .sort(
+        (a, b) =>
+          b[1] - a[1]
+      );
+
+
+  if (!topics.length) {
+
+    container.innerHTML = `
+
+      <div class="empty-state">
+
+        <div class="empty-icon">
+          ◌
+        </div>
+
+        <h3>
+          No Difficult Topics Reported
+        </h3>
+
+        <p>
+          Student-selected difficult topics will appear here.
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  container.innerHTML = "";
+
+
+  topics.forEach(
+    ([topic, count], index) => {
+
+      const item =
+        document.createElement(
+          "div"
+        );
+
+
+      item.className =
+        "comparison-item";
+
+
+      item.innerHTML = `
+
+        <div>
+
+          <strong>
+            ${index + 1}.
+            ${escapeHTML(topic)}
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ClassPulse — Analytics</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+  <div class="nav-brand">
+    <span class="brand-mark">CP</span>
+    <span>ClassPulse</span>
+  </div>
+
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="student.html">Student</a>
+    <a href="dashboard.html">Teacher</a>
+    <a href="analytics.html" class="active">Analytics</a>
+    <a href="about.html">About</a>
+  </div>
+
+</nav>
+
+
+<!-- HEADER -->
+<section class="analytics-header">
+
+  <div>
+    <span class="eyebrow">CLASSPULSE ANALYTICS</span>
+
+    <h1>Understand the bigger picture.</h1>
+
+    <p>
+      Turn student feedback into clear insights about
+      learning, difficult topics and revision priorities.
+    </p>
+  </div>
+
+</section>
+
+
+<!-- FILTERS -->
+<section class="dashboard-panel analytics-filters">
+
+  <div class="filter-group">
+
+    <label for="subjectFilter">
+      Subject
+    </label>
+
+    <select id="subjectFilter" onchange="updateAnalytics()">
+
+      <option value="ALL">
+        All Subjects
+      </option>
+
+      <option value="Engineering Mathematics I">
+        Engineering Mathematics I
+      </option>
+
+      <option value="Engineering Mechanics">
+        Engineering Mechanics
+      </option>
+
+      <option value="Basic Electrical Engineering">
+        Basic Electrical Engineering
+      </option>
+
+      <option value="Engineering Chemistry">
+        Engineering Chemistry
+      </option>
+
+      <option value="Fundamentals of Programming">
+        Fundamentals of Programming
+      </option>
+
+      <option value="Professional Communication Skills">
+        Professional Communication Skills
+      </option>
+
+    </select>
+
+  </div>
+
+
+  <div class="filter-group">
+
+    <label for="chapterFilter">
+      Chapter
+    </label>
+
+    <select id="chapterFilter" onchange="updateAnalytics()">
+
+      <option value="ALL">
+        All Chapters
+      </option>
+
+    </select>
+
+  </div>
+
+</section>
+
+
+<!-- MAIN STATS -->
+<section class="dashboard-grid">
+
+  <div class="stat-card">
+
+    <span class="stat-label">
+      Class Understanding
+    </span>
+
+    <strong id="overallScore">
+      —
+    </strong>
+
+    <p id="overallDescription">
+      Waiting for feedback
+    </p>
+
+  </div>
+
+
+  <div class="stat-card">
+
+    <span class="stat-label">
+      Reviews Received
+    </span>
+
+    <strong id="reviewCount">
+      0
+    </strong>
+
+    <p>
+      Student submissions
+    </p>
+
+  </div>
+
+
+  <div class="stat-card">
+
+    <span class="stat-label">
+      Strongest Topic
+    </span>
+
+    <strong id="strongestTopic">
+      —
+    </strong>
+
+    <p id="strongestScore">
+      No data yet
+    </p>
+
+  </div>
+
+
+  <div class="stat-card">
+
+    <span class="stat-label">
+      Weakest Topic
+    </span>
+
+    <strong id="weakestTopic">
+      —
+    </strong>
+
+    <p id="weakestScore">
+      No data yet
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- CLASS INSIGHT -->
+<section class="dashboard-panel insight-panel">
+
+  <div>
+
+    <span class="eyebrow">
+      CLASSPULSE INSIGHT
+    </span>
+
+    <h2 id="insightTitle">
+      Waiting for student feedback
+    </h2>
+
+    <p id="insightText">
+      Analytics will appear after students submit
+      their first reviews.
+    </p>
+
+  </div>
+
+  <div class="insight-icon">
+    ✦
+  </div>
+
+</section>
+
+
+<!-- TOPIC COMPARISON -->
+<section class="dashboard-panel chart-card">
+
+  <div class="panel-header">
+
+    <div>
+
+      <span class="eyebrow">
+        TOPIC COMPARISON
+      </span>
+
+      <h2>
+        Understanding by Topic
+      </h2>
+
+    </div>
+
+  </div>
+
+
+  <div id="topicComparison">
+
+    <div class="empty-state">
+
+      <div class="empty-icon">
+        ◌
+      </div>
+
+      <h3>
+        No Topic Data Yet
+      </h3>
+
+      <p>
+        Topic analytics will appear after student reviews.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- UNDERSTANDING DISTRIBUTION -->
+<section class="dashboard-panel chart-card">
+
+  <div class="panel-header">
+
+    <div>
+
+      <span class="eyebrow">
+        UNDERSTANDING DISTRIBUTION
+      </span>
+
+      <h2>
+        How the class is doing
+      </h2>
+
+    </div>
+
+  </div>
+
+
+  <div id="distributionChart" class="analytics-bars">
+
+    <div class="empty-state">
+
+      <div class="empty-icon">
+        ◌
+      </div>
+
+      <h3>
+        No Data Yet
+      </h3>
+
+      <p>
+        Submit student feedback to generate analytics.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- DIFFICULT TOPICS -->
+<section class="dashboard-panel">
+
+  <div class="panel-header">
+
+    <div>
+
+      <span class="eyebrow">
+        STUDENT DIFFICULTIES
+      </span>
+
+      <h2>
+        Most Reported Difficult Topics
+      </h2>
+
+    </div>
+
+  </div>
+
+
+  <div id="difficultTopics" class="comparison-list">
+
+    <div class="empty-state">
+
+      <div class="empty-icon">
+        ◌
+      </div>
+
+      <h3>
+        No Difficult Topics Reported
+      </h3>
+
+      <p>
+        Student-selected difficult topics will appear here.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- REVISION IMPACT -->
+<section class="dashboard-panel">
+
+  <div class="panel-header">
+
+    <div>
+
+      <span class="eyebrow">
+        REVISION IMPACT
+      </span>
+
+      <h2>
+        Before → After Revision
+      </h2>
+
+    </div>
+
+  </div>
+
+
+  <div class="comparison-grid">
+
+    <div class="comparison-card">
+
+      <span>
+        Before Revision
+      </span>
+
+      <strong id="beforeScore">
+        —
+      </strong>
+
+      <small>
+        First review session
+      </small>
+
+    </div>
+
+
+    <div class="comparison-arrow">
+      →
+    </div>
+
+
+    <div class="comparison-card">
+
+      <span>
+        After Revision
+      </span>
+
+      <strong id="afterScore">
+        —
+      </strong>
+
+      <small>
+        Later review session
+      </small>
+
+    </div>
+
+  </div>
+
+
+  <p class="comparison-note">
+    Revision comparison will appear when the same topic
+    receives feedback across multiple review sessions.
+  </p>
+
+</section>
+
+
+<!-- RECOMMENDED ACTION -->
+<section class="dashboard-panel insight-panel">
+
+  <div>
+
+    <span class="eyebrow">
+      RECOMMENDED ACTION
+    </span>
+
+    <h2 id="actionTitle">
+      No recommendation yet
+    </h2>
+
+    <p id="actionText">
+      Once enough feedback is collected, ClassPulse will
+      suggest what the teacher should focus on next.
+    </p>
+
+  </div>
+
+  <div class="insight-icon">
+    →
+  </div>
+
+</section>
+
+
+<!-- PRIVACY -->
+<section class="dashboard-panel privacy-panel">
+
+  <div>
+
+    <span class="eyebrow">
+      PRIVACY
+    </span>
+
+    <h2>
+      Analytics stay focused on learning.
+    </h2>
+
+    <p>
+      This dashboard uses aggregated feedback.
+      Student names and roll numbers are not displayed.
+    </p>
+
+  </div>
+
+  <div class="privacy-lock">
+    🔒
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+
+  <div>
+
+    <strong>
+      ClassPulse
+    </strong>
+
+    <p>
+      Understand the class. Teach smarter.
+    </p>
+
+  </div>
+
+  <p>
+    Design Thinking Project • Engineering
+  </p>
+
+</footer>
+
+
+<script>
+
+/* ==========================================
+   CLASSPULSE ANALYTICS
+========================================== */
+
+const STORAGE_KEY = "classpulse_reviews";
+
+let reviews = [];
+
+
+/* ==========================================
+   LOAD REVIEWS
+========================================== */
+
+function loadReviews() {
+
+  try {
+
+    const stored =
+      localStorage.getItem(STORAGE_KEY);
+
+    reviews =
+      stored
+        ? JSON.parse(stored)
+        : [];
+
+    if (!Array.isArray(reviews)) {
+      reviews = [];
+    }
+
+  } catch (error) {
+
+    console.error(
+      "Could not load reviews:",
+      error
+    );
+
+    reviews = [];
+
+  }
+
+}
+
+
+/* ==========================================
+   CHAPTER FILTER
+========================================== */
+
+function updateChapterOptions() {
+
+  const subject =
+    document.getElementById(
+      "subjectFilter"
+    ).value;
+
+
+  const chapterFilter =
+    document.getElementById(
+      "chapterFilter"
+    );
+
+
+  const chapters = [
+    ...new Set(
+
+      reviews
+        .filter(review => {
+
+          return (
+            subject === "ALL" ||
+            review.subject === subject
+          );
+
+        })
+
+        .map(review => review.chapter)
+
+        .filter(Boolean)
+
+    )
+  ];
+
+
+  const oldValue =
+    chapterFilter.value;
+
+
+  chapterFilter.innerHTML =
+    `<option value="ALL">
+      All Chapters
+    </option>`;
+
+
+  chapters
+    .sort()
+    .forEach(chapter => {
+
+      const option =
+        document.createElement(
+          "option"
+        );
+
+      option.value =
+        chapter;
+
+      option.textContent =
+        chapter;
+
+      chapterFilter.appendChild(
+        option
+      );
+
+    });
+
+
+  if (
+    chapters.includes(oldValue)
+  ) {
+
+    chapterFilter.value =
+      oldValue;
+
+  } else {
+
+    chapterFilter.value =
+      "ALL";
+
+  }
+
+}
+
+
+/* ==========================================
+   FILTER REVIEWS
+========================================== */
+
+function getFilteredReviews() {
+
+  const subject =
+    document.getElementById(
+      "subjectFilter"
+    ).value;
+
+
+  const chapter =
+    document.getElementById(
+      "chapterFilter"
+    ).value;
+
+
+  return reviews.filter(review => {
+
+    const subjectMatch =
+      subject === "ALL" ||
+      review.subject === subject;
+
+
+    const chapterMatch =
+      chapter === "ALL" ||
+      review.chapter === chapter;
+
+
+    return (
+      subjectMatch &&
+      chapterMatch
+    );
+
+  });
+
+}
+
+
+/* ==========================================
+   TOPIC DATA
+========================================== */
+
+function getTopicData() {
+
+  const filtered =
+    getFilteredReviews();
+
+
+  const topics = {};
+
+
+  filtered.forEach(review => {
+
+    if (!review.ratings) return;
+
+
+    Object.entries(
+      review.ratings
+    ).forEach(
+      ([topic, rating]) => {
+
+        const score =
+          Number(rating);
+
+
+        if (
+          !Number.isFinite(score)
+        ) {
+          return;
+        }
+
+
+        if (!topics[topic]) {
+
+          topics[topic] = {
+
+            total: 0,
+
+            count: 0,
+
+            latest: null
+
+          };
+
+        }
+
+
+        topics[topic].total +=
+          score;
+
+
+        topics[topic].count +=
+          1;
+
+
+        const date =
+          new Date(
+            review.submittedAt || 0
+          );
+
+
+        if (
+          !topics[topic].latest ||
+          date >
+          topics[topic].latest
+        ) {
+
+          topics[topic].latest =
+            date;
+
+        }
+
+      }
+
+    );
+
+  });
+
+
+  return Object.entries(
+    topics
+  ).map(
+    ([topic, data]) => {
+
+      return {
+
+        topic,
+
+        score:
+          Math.round(
+            data.total /
+            data.count
+          ),
+
+        count:
+          data.count,
+
+        latest:
+          data.latest
+
+      };
+
+    }
+  );
+
+}
+
+
+/* ==========================================
+   OVERALL SCORE
+========================================== */
+
+function calculateOverall() {
+
+  const filtered =
+    getFilteredReviews();
+
+
+  const values = [];
+
+
+  filtered.forEach(review => {
+
+    if (!review.ratings) return;
+
+
+    Object.values(
+      review.ratings
+    ).forEach(value => {
+
+      const score =
+        Number(value);
+
+
+      if (
+        Number.isFinite(score)
+      ) {
+
+        values.push(score);
+
+      }
+
+    });
+
+  });
+
+
+  if (!values.length) {
+    return null;
+  }
+
+
+  return Math.round(
+
+    values.reduce(
+      (sum, value) =>
+        sum + value,
+      0
+    ) / values.length
+
+  );
+
+}
+
+
+/* ==========================================
+   UPDATE MAIN STATS
+========================================== */
+
+function updateStats() {
+
+  const filtered =
+    getFilteredReviews();
+
+
+  const topics =
+    getTopicData();
+
+
+  const overall =
+    calculateOverall();
+
+
+  document.getElementById(
+    "reviewCount"
+  ).textContent =
+    filtered.length;
+
+
+  if (overall === null) {
+
+    document.getElementById(
+      "overallScore"
+    ).textContent =
+      "—";
+
+
+    document.getElementById(
+      "overallDescription"
+    ).textContent =
+      "Waiting for feedback";
+
+
+    document.getElementById(
+      "strongestTopic"
+    ).textContent =
+      "—";
+
+
+    document.getElementById(
+      "weakestTopic"
+    ).textContent =
+      "—";
+
+
+    document.getElementById(
+      "strongestScore"
+    ).textContent =
+      "No data yet";
+
+
+    document.getElementById(
+      "weakestScore"
+    ).textContent =
+      "No data yet";
+
+
+    return;
+
+  }
+
+
+  document.getElementById(
+    "overallScore"
+  ).textContent =
+    overall + "%";
+
+
+  document.getElementById(
+    "overallDescription"
+  ).textContent =
+    scoreDescription(overall);
+
+
+  if (!topics.length) {
+    return;
+  }
+
+
+  const strongest =
+    [...topics].sort(
+      (a, b) =>
+        b.score - a.score
+    )[0];
+
+
+  const weakest =
+    [...topics].sort(
+      (a, b) =>
+        a.score - b.score
+    )[0];
+
+
+  document.getElementById(
+    "strongestTopic"
+  ).textContent =
+    strongest.topic;
+
+
+  document.getElementById(
+    "strongestScore"
+  ).textContent =
+    strongest.score +
+    "% understanding";
+
+
+  document.getElementById(
+    "weakestTopic"
+  ).textContent =
+    weakest.topic;
+
+
+  document.getElementById(
+    "weakestScore"
+  ).textContent =
+    weakest.score +
+    "% understanding";
+
+}
+
+
+/* ==========================================
+   SCORE DESCRIPTION
+========================================== */
+
+function scoreDescription(score) {
+
+  if (score < 50) {
+
+    return "High revision priority";
+
+  }
+
+
+  if (score < 70) {
+
+    return "Some concepts need attention";
+
+  }
+
+
+  if (score < 85) {
+
+    return "Good understanding";
+
+  }
+
+
+  return "Strong class understanding";
+
+}
+
+
+/* ==========================================
+   INSIGHT
+========================================== */
+
+function updateInsight() {
+
+  const topics =
+    getTopicData();
+
+
+  const title =
+    document.getElementById(
+      "insightTitle"
+    );
+
+
+  const text =
+    document.getElementById(
+      "insightText"
+    );
+
+
+  if (!topics.length) {
+
+    title.textContent =
+      "Waiting for student feedback";
+
+
+    text.textContent =
+      "Analytics will appear after students submit their first reviews.";
+
+    return;
+
+  }
+
+
+  const weakest =
+    [...topics].sort(
+      (a, b) =>
+        a.score - b.score
+    )[0];
+
+
+  const strongest =
+    [...topics].sort(
+      (a, b) =>
+        b.score - a.score
+    )[0];
+
+
+  if (weakest.score < 50) {
+
+    title.textContent =
+      "Immediate revision recommended";
+
+
+    text.textContent =
+      `"${weakest.topic}" has ${weakest.score}% understanding and should be prioritised.`;
+
+  }
+
+  else if (weakest.score < 70) {
+
+    title.textContent =
+      "A topic needs more attention";
+
+
+    text.textContent =
+      `"${weakest.topic}" currently has the lowest understanding at ${weakest.score}%.`;
+
+  }
+
+  else {
+
+    title.textContent =
+      "Class is progressing well";
+
+
+    text.textContent =
+      `The strongest topic is "${strongest.topic}" at ${strongest.score}%. Keep monitoring lower-scoring topics.`;
+
+  }
+
+}
+
+
+/* ==========================================
+   TOPIC COMPARISON
+========================================== */
+
+function renderTopicComparison() {
+
+  const container =
+    document.getElementById(
+      "topicComparison"
+    );
+
+
+  const topics =
+    getTopicData()
+      .sort(
+        (a, b) =>
+          a.score - b.score
+      );
+
+
+  if (!topics.length) {
+
+    container.innerHTML = `
+
+      <div class="empty-state">
+
+        <div class="empty-icon">
+          ◌
+        </div>
+
+        <h3>
+          No Topic Data Yet
+        </h3>
+
+        <p>
+          Topic analytics will appear after student reviews.
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  container.innerHTML = "";
+
+
+  topics.forEach(item => {
+
+    const row =
+      document.createElement(
+        "div"
+      );
+
+
+    row.className =
+      "comparison-item";
+
+
+    row.innerHTML = `
+
+      <div>
+
+        <strong>
+          ${escapeHTML(item.topic)}
+        </strong>
+
+        <small>
+          ${item.count}
+          ${item.count === 1
+            ? "rating"
+            : "ratings"}
+        </small>
+
+      </div>
+
+
+      <div class="comparison-score">
+
+        <strong>
+          ${item.score}%
+        </strong>
+
+        <div class="topic-bar">
+
+          <span
+            style="width:${item.score}%"
+          ></span>
+
+        </div>
+
+      </div>
+
+    `;
+
+
+    container.appendChild(row);
+
+  });
+
+}
+
+
+/* ==========================================
+   DISTRIBUTION
+========================================== */
+
+function renderDistribution() {
+
+  const container =
+    document.getElementById(
+      "distributionChart"
+    );
+
+
+  const filtered =
+    getFilteredReviews();
+
+
+  const buckets = {
+
+    "0–25%": 0,
+
+    "26–50%": 0,
+
+    "51–75%": 0,
+
+    "76–100%": 0
+
+  };
+
+
+  filtered.forEach(review => {
+
+    if (!review.ratings) return;
+
+
+    Object.values(
+      review.ratings
+    ).forEach(value => {
+
+      const score =
+        Number(value);
+
+
+      if (!Number.isFinite(score))
+        return;
+
+
+      if (score <= 25) {
+
+        buckets["0–25%"]++;
+
+      }
+
+      else if (score <= 50) {
+
+        buckets["26–50%"]++;
+
+      }
+
+      else if (score <= 75) {
+
+        buckets["51–75%"]++;
+
+      }
+
+      else {
+
+        buckets["76–100%"]++;
+
+      }
+
+    });
+
+  });
+
+
+  const total =
+    Object.values(buckets)
+      .reduce(
+        (sum, value) =>
+          sum + value,
+        0
+      );
+
+
+  if (!total) {
+
+    container.innerHTML = `
+
+      <div class="empty-state">
+
+        <div class="empty-icon">
+          ◌
+        </div>
+
+        <h3>
+          No Data Yet
+        </h3>
+
+        <p>
+          Submit student feedback to generate analytics.
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  container.innerHTML = "";
+
+
+  Object.entries(
+    buckets
+  ).forEach(
+    ([label, count]) => {
+
+      const percentage =
+        Math.round(
+          (count / total) * 100
+        );
+
+
+      const row =
+        document.createElement(
+          "div"
+        );
+
+
+      row.className =
+        "analytics-bar-row";
+
+
+      row.innerHTML = `
+
+        <div class="analytics-bar-label">
+
+          <span>
+            ${label}
+          </span>
+
+          <strong>
+            ${count}
+          </strong>
+
+        </div>
+
+
+        <div class="analytics-bar">
+
+          <span
+            style="width:${percentage}%"
+          ></span>
+
+        </div>
+
+
+        <small>
+          ${percentage}% of ratings
+        </small>
+
+      `;
+
+
+      container.appendChild(row);
+
+    }
+  );
+
+}
+
+
+/* ==========================================
+   DIFFICULT TOPICS
+========================================== */
+
+function renderDifficultTopics() {
+
+  const container =
+    document.getElementById(
+      "difficultTopics"
+    );
+
+
+  const filtered =
+    getFilteredReviews();
+
+
+  const topicCount = {};
+
+
+  filtered.forEach(review => {
+
+    if (
+      !Array.isArray(
+        review.difficultTopics
+      )
+    ) {
+
+      return;
+
+    }
+
+
+    review.difficultTopics
+      .forEach(topic => {
+
+        if (!topicCount[topic]) {
+
+          topicCount[topic] =
+            0;
+
+        }
+
+
+        topicCount[topic]++;
+
+      });
+
+  });
+
+
+  const topics =
+    Object.entries(topicCount)
+      .sort(
+        (a, b) =>
+          b[1] - a[1]
+      );
+
+
+  if (!topics.length) {
+
+    container.innerHTML = `
+
+      <div class="empty-state">
+
+        <div class="empty-icon">
+          ◌
+        </div>
+
+        <h3>
+          No Difficult Topics Reported
+        </h3>
+
+        <p>
+          Student-selected difficult topics will appear here.
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  container.innerHTML = "";
+
+
+  topics.forEach(
+    ([topic, count], index) => {
+
+      const item =
+        document.createElement(
+          "div"
+        );
+
+
+      item.className =
+        "comparison-item";
+
+
+      item.innerHTML = `
+
+        <div>
+
+          <strong>
+            ${index + 1}.
+            ${escapeHTML(topic)}
+          </strong>
+
+          <small>
+            Reported by students
+          </small>
+
+        </div>
+
+
+        <div>
+
+          <strong>
+            ${count}
+          </strong>
+
+          <small>
+            ${count === 1
+              ? "report"
+              : "reports"}
+          </small>
+
+        </div>
+
+      `;
+
+
+      container.appendChild(item);
+
+    }
+  );
+
+}
+
+
+/* ==========================================
+   RECOMMENDED ACTION
+========================================== */
+
+function updateRecommendation() {
+
+  const topics =
+    getTopicData();
+
+
+  const title =
+    document.getElementById(
+      "actionTitle"
+    );
+
+
+  const text =
+    document.getElementById(
+      "actionText"
+    );
+
+
+  if (!topics.length) {
+
+    title.textContent =
+      "No recommendation yet";
+
+
+    text.textContent =
+      "Collect student feedback first. ClassPulse will then recommend the next teaching focus.";
+
+    return;
+
+  }
+
+
+  const weakest =
+    [...topics].sort(
+      (a, b) =>
+        a.score - b.score
+    )[0];
+
+
+  if (weakest.score < 50) {
+
+    title.textContent =
+      `Revise "${weakest.topic}" first`;
+
+
+    text.textContent =
+      `This topic has only ${weakest.score}% understanding. Consider spending additional class time on its core concepts and examples.`;
+
+  }
+
+  else if (weakest.score < 70) {
+
+    title.textContent =
+      `Review "${weakest.topic}"`;
+
+
+    text.textContent =
+      `Student understanding is ${weakest.score}%. A short revision or practice activity could help strengthen the concept.`;
+
+  }
+
+  else {
+
+    title.textContent =
+      "Continue monitoring the class";
+
+
+    text.textContent =
+      `The lowest topic is still at ${weakest.score}%. Continue collecting feedback and watch for changes after revision.`;
+
+  }
+
+}
+
+
+/* ==========================================
+   REVISION PLACEHOLDER
+========================================== */
+
+function updateRevisionComparison() {
+
+  /*
+    The current Student page stores one rating
+    per review session.
+
+    Therefore we do NOT invent a fake
+    Before/After number.
+
+    This section will become meaningful when
+    multiple sessions are connected.
+  */
+
+  document.getElementById(
+    "beforeScore"
+  ).textContent =
+    "—";
+
+
+  document.getElementById(
+    "afterScore"
+  ).textContent =
+    "—";
+
+}
+
+
+/* ==========================================
+   MAIN UPDATE
+========================================== */
+
+function updateAnalytics() {
+
+  updateChapterOptions();
+
+  updateStats();
+
+  updateInsight();
+
+  renderTopicComparison();
+
+  renderDistribution();
+
+  renderDifficultTopics();
+
+  updateRecommendation();
+
+  updateRevisionComparison();
+
+}
+
+
+/* ==========================================
+   ESCAPE HTML
+========================================== */
+
+function escapeHTML(value) {
+
+  return String(value ?? "")
+
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+
+    .replace(
+      /</g,
+      "&lt;"
+    )
+
+    .replace(
+      />/g,
+      "&gt;"
+    )
+
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+}
+
+
+/* ==========================================
+   INITIAL LOAD
+========================================== */
+
+loadReviews();
+
+updateChapterOptions();
+
+updateAnalytics();
+
+
+/* ==========================================
+   AUTO REFRESH
+========================================== */
+
+setInterval(() => {
+
+  loadReviews();
+
+  updateAnalytics();
+
+}, 3000);
+
+</script>
 
 </body>
-
-            </html>
+</html>
