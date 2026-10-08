@@ -35,15 +35,12 @@ function setupRatingButtons() {
 
             button.addEventListener("click", () => {
 
-                // Sirf isi topic ke buttons unselect karo
                 topic.querySelectorAll(".rating-btn").forEach(btn => {
                     btn.classList.remove("selected");
                 });
 
-                // Clicked button select karo
                 button.classList.add("selected");
 
-                // Rating save karo
                 answers[topicName] =
                     Number(button.dataset.value);
 
@@ -76,14 +73,10 @@ function updateProgress() {
     const progressBar =
         document.querySelector(".progress-bar");
 
-
     if (progressText) {
-
         progressText.textContent =
             `${completedTopics} / ${totalTopics}`;
-
     }
-
 
     if (progressBar && totalTopics > 0) {
 
@@ -92,7 +85,6 @@ function updateProgress() {
 
         progressBar.style.width =
             `${percentage}%`;
-
     }
 
 }
@@ -107,8 +99,6 @@ async function submitFeedback() {
     const topicNames =
         Object.keys(answers);
 
-
-    // At least one topic rating required
     if (topicNames.length === 0) {
 
         alert(
@@ -116,14 +106,8 @@ async function submitFeedback() {
         );
 
         return;
-
     }
 
-
-    /*
-       Subject and chapter are taken from
-       the selected page values.
-    */
 
     const subject =
         window.selectedSubject || "Unknown Subject";
@@ -133,8 +117,7 @@ async function submitFeedback() {
 
 
     /*
-       Convert every topic rating
-       into one database row.
+       One selected topic = one database row
     */
 
     const feedbackRows =
@@ -146,7 +129,7 @@ async function submitFeedback() {
 
                 chapter: chapter,
 
-                topic: topicName,
+                subtopic: topicName,
 
                 rating: answers[topicName],
 
@@ -160,60 +143,48 @@ async function submitFeedback() {
         });
 
 
+    console.log("Sending to Supabase:");
+    console.log(feedbackRows);
+
+
     try {
 
-        /*
-           IMPORTANT:
-           Tera actual Supabase table ka naam
-           "Reviews" hai.
-        */
-
-        const { data, error } =
+        const { error } =
             await supabaseClient
                 .from("Reviews")
-                .insert(feedbackRows)
-                .select();
+                .insert(feedbackRows);
 
 
         if (error) {
 
             console.error(
-                "Supabase Error:",
+                "SUPABASE ERROR:",
                 error
             );
 
             alert(
-                "Feedback save nahi hua.\n\n" +
+                "❌ Feedback save nahi hua.\n\n" +
                 error.message
             );
 
             return;
-
         }
 
 
         console.log(
-            "Feedback successfully saved:",
-            data
+            "Feedback successfully saved!"
         );
-
-
-        /* =========================
-           SUCCESS
-        ========================= */
 
         alert(
-            "Feedback successfully submitted! ✅"
+            "✅ Feedback successfully submitted!"
         );
 
 
-        // Clear answers
         Object.keys(answers).forEach(key => {
             delete answers[key];
         });
 
 
-        // Remove selected buttons
         document
             .querySelectorAll(".rating-btn.selected")
             .forEach(button => {
@@ -225,16 +196,15 @@ async function submitFeedback() {
 
         updateProgress();
 
-
     } catch (error) {
 
         console.error(
-            "Connection Error:",
+            "CONNECTION ERROR:",
             error
         );
 
         alert(
-            "Supabase se connection nahi ho paaya.\n\n" +
+            "❌ Supabase connection error.\n\n" +
             error.message
         );
 
@@ -260,7 +230,6 @@ function setupSubmitButton() {
         );
 
         return;
-
     }
 
 
