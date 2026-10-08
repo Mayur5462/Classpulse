@@ -1,605 +1,1018 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ClassPulse — Teacher Dashboard</title>
+  <title>ClassPulse — Teacher Dashboard</title>
 
-    <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 
 <body>
 
-<header class="topbar">
+  <!-- ================= NAVBAR ================= -->
+
+  <header class="navbar">
 
     <div class="brand">
 
-        <div class="brand-icon">
-            CP
+      <div class="brand-icon">CP</div>
+
+      <div>
+        <h2>ClassPulse</h2>
+        <span>Understand. Improve. Learn.</span>
+      </div>
+
+    </div>
+
+
+    <nav>
+
+      <a href="index.html">Home</a>
+
+      <a href="student.html">Student</a>
+
+      <a href="dashboard.html" class="active">Teacher</a>
+
+      <a href="analytics.html">Analytics</a>
+
+      <a href="about.html">About</a>
+
+    </nav>
+
+  </header>
+
+
+
+  <main>
+
+    <!-- ================= HEADER ================= -->
+
+    <section class="section dashboard-header">
+
+      <div class="section-heading">
+
+        <div>
+
+          <span class="eyebrow">TEACHER DASHBOARD</span>
+
+          <h1>
+            Your class,
+            <span>at a glance.</span>
+          </h1>
+
+        </div>
+
+
+        <p>
+          Monitor student understanding, identify weak areas,
+          and decide what your class should learn next.
+        </p>
+
+      </div>
+
+
+      <div class="dashboard-actions">
+
+        <button class="secondary-btn" onclick="showQR()">
+          ▣ QR Session
+        </button>
+
+        <button class="primary-btn" onclick="exportReport()">
+          Export Report ↓
+        </button>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ================= SESSION BAR ================= -->
+
+    <section class="session-bar">
+
+      <div>
+
+        <span class="session-status">
+          <span class="live-dot"></span>
+          SESSION ACTIVE
+        </span>
+
+        <strong>Engineering Mechanics</strong>
+
+        <small>
+          Students can submit reviews now
+        </small>
+
+      </div>
+
+
+      <div class="session-stats">
+
+        <div>
+          <strong>32 / 45</strong>
+          <span>Responses</span>
         </div>
 
         <div>
-            <h2>ClassPulse</h2>
-            <span>Teacher Dashboard</span>
+          <strong>71%</strong>
+          <span>Coverage</span>
         </div>
 
-    </div>
+        <button onclick="closeSession()">
+          Close Session
+        </button>
 
-    <div class="anonymous-badge">
-        📊 Live Insights
-    </div>
-
-</header>
-
-
-<main class="container">
-
-    <section class="hero">
-
-        <p class="eyebrow">
-            TEACHER DASHBOARD
-        </p>
-
-        <h1>
-            Understanding, at a glance.
-        </h1>
-
-        <p class="hero-text">
-            See which concepts your class understands and where revision is needed.
-        </p>
+      </div>
 
     </section>
 
 
-    <!-- Overall Stats -->
 
-    <section class="lesson-card">
+    <!-- ================= OVERVIEW CARDS ================= -->
 
-        <div class="lesson-info">
+    <section class="dashboard-grid">
 
-            <span class="subject">
-                ENGINEERING MECHANICS
-            </span>
+      <div class="stat-card">
 
-            <h2>
-                Force &amp; Resultant
-            </h2>
+        <span class="stat-label">
+          Overall Understanding
+        </span>
 
-            <p>
-                Anonymous student understanding report
-            </p>
+        <strong>68%</strong>
 
+        <div class="stat-progress">
+          <div style="width:68%"></div>
         </div>
 
+        <small>
+          +8% since last review
+        </small>
 
-        <div class="dashboard-stats">
-
-            <div class="stat-card">
-
-                <span>Class Understanding</span>
-
-                <strong id="overallScore">
-                    0%
-                </strong>
-
-            </div>
+      </div>
 
 
-            <div class="stat-card">
+      <div class="stat-card">
 
-                <span>Responses</span>
+        <span class="stat-label">
+          Total Reviews
+        </span>
 
-                <strong id="responseCount">
-                    0
-                </strong>
+        <strong>42</strong>
 
-            </div>
+        <small class="positive">
+          ↑ 12 new reviews
+        </small>
+
+      </div>
 
 
-            <div class="stat-card">
+      <div class="stat-card">
 
-                <span>Weakest Topic</span>
+        <span class="stat-label">
+          Strongest Topic
+        </span>
 
-                <strong id="weakestTopic">
-                    —
-                </strong>
+        <strong class="small-stat">
+          Equilibrium
+        </strong>
 
-            </div>
+        <small>
+          84% understanding
+        </small>
 
-        </div>
+      </div>
+
+
+      <div class="stat-card danger-stat">
+
+        <span class="stat-label">
+          Needs Revision
+        </span>
+
+        <strong class="small-stat">
+          Resolution of Forces
+        </strong>
+
+        <small>
+          43% understanding
+        </small>
+
+      </div>
 
     </section>
 
 
-    <!-- Topic Understanding -->
 
-    <section class="dashboard-card">
+    <!-- ================= INSIGHT ================= -->
 
-        <div class="dashboard-heading">
+    <section class="insight-section">
+
+      <div class="insight-card">
+
+        <div class="insight-icon">
+          ✦
+        </div>
+
+
+        <div>
+
+          <span class="eyebrow">
+            CLASSPULSE INSIGHT
+          </span>
+
+          <h2>
+            What should I teach next?
+          </h2>
+
+          <p>
+            Most students understand Equilibrium well,
+            but Resolution of Forces is currently the
+            weakest topic and should be revised first.
+          </p>
+
+        </div>
+
+
+        <div class="insight-result">
+
+          <span>HIGHEST PRIORITY</span>
+
+          <strong>
+            Resolution of Forces
+          </strong>
+
+          <small>
+            43% understanding
+          </small>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ================= FILTERS ================= -->
+
+    <section class="dashboard-panel">
+
+      <div class="panel-header">
+
+        <div>
+
+          <span class="eyebrow">
+            TOPIC PERFORMANCE
+          </span>
+
+          <h2>
+            Understanding by topic
+          </h2>
+
+        </div>
+
+
+        <select id="sortSelect" onchange="sortTopics()">
+
+          <option value="lowest">
+            Lowest Understanding
+          </option>
+
+          <option value="highest">
+            Highest Understanding
+          </option>
+
+          <option value="recent">
+            Recently Reviewed
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="topic-table" id="topicTable">
+
+
+        <!-- TOPIC 1 -->
+
+        <div
+          class="topic-row"
+          data-score="43"
+          data-recent="5"
+        >
+
+          <div class="topic-main">
+
+            <div class="topic-rank">
+              01
+            </div>
 
             <div>
-                <p class="eyebrow">
-                    SUBTOPIC ANALYSIS
-                </p>
 
-                <h2>
-                    Understanding by concept
-                </h2>
+              <strong>
+                Resolution of Forces
+              </strong>
+
+              <span>
+                Engineering Mechanics
+              </span>
+
             </div>
+
+          </div>
+
+
+          <div class="topic-score">
+
+            <strong>
+              43%
+            </strong>
+
+            <div class="topic-bar">
+              <div style="width:43%"></div>
+            </div>
+
+          </div>
+
+
+          <div class="topic-review">
+            12 Reviews
+          </div>
+
+
+          <span class="priority high">
+            High Priority
+          </span>
 
         </div>
 
 
-        <div id="topicResults">
 
-            <div class="dashboard-topic">
+        <!-- TOPIC 2 -->
 
-                <div class="topic-title">
+        <div
+          class="topic-row"
+          data-score="56"
+          data-recent="4"
+        >
 
-                    <span>
-                        Force Components
-                    </span>
+          <div class="topic-main">
 
-                    <strong>
-                        0%
-                    </strong>
+            <div class="topic-rank">
+              02
+            </div>
 
-                </div>
+            <div>
 
-                <div class="dashboard-bar">
-                    <div style="width: 0%"></div>
-                </div>
+              <strong>
+                Resultant Force
+              </strong>
+
+              <span>
+                Engineering Mechanics
+              </span>
 
             </div>
 
+          </div>
 
-            <div class="dashboard-topic">
 
-                <div class="topic-title">
+          <div class="topic-score">
 
-                    <span>
-                        Resultant Force
-                    </span>
+            <strong>
+              56%
+            </strong>
 
-                    <strong>
-                        0%
-                    </strong>
-
-                </div>
-
-                <div class="dashboard-bar">
-                    <div style="width: 0%"></div>
-                </div>
-
+            <div class="topic-bar">
+              <div style="width:56%"></div>
             </div>
 
-
-            <div class="dashboard-topic">
-
-                <div class="topic-title">
-
-                    <span>
-                        Parallelogram Law
-                    </span>
-
-                    <strong>
-                        0%
-                    </strong>
-
-                </div>
-
-                <div class="dashboard-bar">
-                    <div style="width: 0%"></div>
-                </div>
-
-            </div>
+          </div>
 
 
-            <div class="dashboard-topic">
-
-                <div class="topic-title">
-
-                    <span>
-                        Resolution of Forces
-                    </span>
-
-                    <strong>
-                        0%
-                    </strong>
-
-                </div>
-
-                <div class="dashboard-bar">
-                    <div style="width: 0%"></div>
-                </div>
-
-            </div>
+          <div class="topic-review">
+            18 Reviews
+          </div>
 
 
-            <div class="dashboard-topic">
-
-                <div class="topic-title">
-
-                    <span>
-                        Equilibrium
-                    </span>
-
-                    <strong>
-                        0%
-                    </strong>
-
-                </div>
-
-                <div class="dashboard-bar">
-                    <div style="width: 0%"></div>
-                </div>
-
-            </div>
+          <span class="priority medium">
+            Review
+          </span>
 
         </div>
 
+
+
+        <!-- TOPIC 3 -->
+
+        <div
+          class="topic-row"
+          data-score="64"
+          data-recent="3"
+        >
+
+          <div class="topic-main">
+
+            <div class="topic-rank">
+              03
+            </div>
+
+            <div>
+
+              <strong>
+                Force Components
+              </strong>
+
+              <span>
+                Engineering Mechanics
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="topic-score">
+
+            <strong>
+              64%
+            </strong>
+
+            <div class="topic-bar">
+              <div style="width:64%"></div>
+            </div>
+
+          </div>
+
+
+          <div class="topic-review">
+            21 Reviews
+          </div>
+
+
+          <span class="priority medium">
+            Monitor
+          </span>
+
+        </div>
+
+
+
+        <!-- TOPIC 4 -->
+
+        <div
+          class="topic-row"
+          data-score="76"
+          data-recent="2"
+        >
+
+          <div class="topic-main">
+
+            <div class="topic-rank">
+              04
+            </div>
+
+            <div>
+
+              <strong>
+                Parallelogram Law
+              </strong>
+
+              <span>
+                Engineering Mechanics
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="topic-score">
+
+            <strong>
+              76%
+            </strong>
+
+            <div class="topic-bar">
+              <div style="width:76%"></div>
+            </div>
+
+          </div>
+
+
+          <div class="topic-review">
+            19 Reviews
+          </div>
+
+
+          <span class="priority good">
+            Good
+          </span>
+
+        </div>
+
+
+
+        <!-- TOPIC 5 -->
+
+        <div
+          class="topic-row"
+          data-score="84"
+          data-recent="1"
+        >
+
+          <div class="topic-main">
+
+            <div class="topic-rank">
+              05
+            </div>
+
+            <div>
+
+              <strong>
+                Equilibrium
+              </strong>
+
+              <span>
+                Engineering Mechanics
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="topic-score">
+
+            <strong>
+              84%
+            </strong>
+
+            <div class="topic-bar">
+              <div style="width:84%"></div>
+            </div>
+
+          </div>
+
+
+          <div class="topic-review">
+            24 Reviews
+          </div>
+
+
+          <span class="priority excellent">
+            Strong
+          </span>
+
+        </div>
+
+      </div>
+
     </section>
 
 
-    <!-- Attention Required -->
 
-    <section class="dashboard-card attention-card">
+    <!-- ================= BEFORE AFTER ================= -->
 
-        <p class="eyebrow">
-            ATTENTION REQUIRED
-        </p>
+    <section class="dashboard-panel">
 
-        <h2 id="attentionTitle">
-            Waiting for student feedback
-        </h2>
+      <div class="panel-header">
 
-        <p id="attentionText">
-            Once students submit their feedback, ClassPulse will identify the topic that needs the most attention.
-        </p>
+        <div>
 
-    </section>
-
-
-    <!-- Before After -->
-
-    <section class="dashboard-card">
-
-        <p class="eyebrow">
+          <span class="eyebrow">
             REVISION IMPACT
-        </p>
+          </span>
 
-        <h2>
+          <h2>
             Before → After Revision
-        </h2>
-
-        <p class="dashboard-description">
-            Track whether revision improved student understanding.
-        </p>
-
-
-        <div class="revision-box">
-
-            <div class="revision-item">
-
-                <span>
-                    Before Revision
-                </span>
-
-                <strong>
-                    43%
-                </strong>
-
-            </div>
-
-
-            <div class="revision-arrow">
-                →
-            </div>
-
-
-            <div class="revision-item">
-
-                <span>
-                    After Revision
-                </span>
-
-                <strong>
-                    79%
-                </strong>
-
-            </div>
-
-
-            <div class="improvement">
-                +36 percentage points
-            </div>
+          </h2>
 
         </div>
+
+      </div>
+
+
+      <div class="comparison-grid">
+
+
+        <div class="comparison-card">
+
+          <span>
+            Before Revision
+          </span>
+
+          <strong>
+            43%
+          </strong>
+
+          <small>
+            Resolution of Forces
+          </small>
+
+        </div>
+
+
+        <div class="comparison-arrow">
+          →
+        </div>
+
+
+        <div class="comparison-card improved">
+
+          <span>
+            After Revision
+          </span>
+
+          <strong>
+            67%
+          </strong>
+
+          <small>
+            +24% improvement
+          </small>
+
+        </div>
+
+      </div>
 
     </section>
 
 
-    <div class="dashboard-actions">
 
-        <a href="index.html" class="submit-btn">
-            ← Student Feedback
-        </a>
+    <!-- ================= RECENT REVIEWS ================= -->
+
+    <section class="dashboard-panel">
+
+      <div class="panel-header">
+
+        <div>
+
+          <span class="eyebrow">
+            RECENT FEEDBACK
+          </span>
+
+          <h2>
+            Latest student reviews
+          </h2>
+
+        </div>
+
+        <span class="new-badge">
+          3 NEW
+        </span>
+
+      </div>
+
+
+      <div class="review-list">
+
+
+        <div class="review-card">
+
+          <div class="review-top">
+
+            <div>
+
+              <strong>
+                Anonymous Review
+              </strong>
+
+              <span>
+                CP-8F31 · 4 min ago
+              </span>
+
+            </div>
+
+            <span class="review-status">
+              NEW
+            </span>
+
+          </div>
+
+
+          <p>
+            I understand the basic concept, but I get confused
+            when deciding which angle to use while resolving forces.
+          </p>
+
+
+          <div class="review-bottom">
+
+            <span>
+              Resolution of Forces
+            </span>
+
+            <span>
+              Understanding: 50%
+            </span>
+
+            <button onclick="flagReview(this)">
+              ⚑ Flag
+            </button>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="review-card">
+
+          <div class="review-top">
+
+            <div>
+
+              <strong>
+                Anonymous Review
+              </strong>
+
+              <span>
+                CP-42A7 · 18 min ago
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <p>
+            Resultant force is understandable, but numerical
+            problems take me more time.
+          </p>
+
+
+          <div class="review-bottom">
+
+            <span>
+              Resultant Force
+            </span>
+
+            <span>
+              Understanding: 50%
+            </span>
+
+            <button onclick="flagReview(this)">
+              ⚑ Flag
+            </button>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="review-card">
+
+          <div class="review-top">
+
+            <div>
+
+              <strong>
+                Anonymous Review
+              </strong>
+
+              <span>
+                CP-1C92 · 1 hr ago
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <p>
+            The explanation of equilibrium was clear and easy to follow.
+          </p>
+
+
+          <div class="review-bottom">
+
+            <span>
+              Equilibrium
+            </span>
+
+            <span>
+              Understanding: 100%
+            </span>
+
+            <button onclick="flagReview(this)">
+              ⚑ Flag
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ================= PRIVACY ================= -->
+
+    <section class="privacy-section">
+
+      <div class="privacy-card">
+
+        <div class="privacy-icon">
+          🔒
+        </div>
+
+        <div>
+
+          <h3>
+            Anonymous by default
+          </h3>
+
+          <p>
+            Teachers normally see anonymous review IDs instead of
+            student identities. Identity access should only be used
+            for genuine misuse or flagged cases.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <div>
+
+      <strong>ClassPulse</strong>
+
+      <span>
+        · Understand. Improve. Learn.
+      </span>
 
     </div>
 
-</main>
-
-
-<footer>
-
     <p>
-        ClassPulse © 2026
+      Learning feedback, made meaningful.
     </p>
 
-    <span>
-        Anonymous • Privacy First
-    </span>
-
-</footer>
+  </footer>
 
 
-<style>
 
-.dashboard-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-top: 22px;
-}
+  <!-- ================= DASHBOARD SCRIPT ================= -->
 
-.stat-card {
-    background: rgba(2, 6, 23, 0.5);
-    border: 1px solid rgba(148, 163, 184, 0.12);
-    border-radius: 16px;
-    padding: 16px;
-}
-
-.stat-card span {
-    display: block;
-    color: var(--muted);
-    font-size: 10px;
-    margin-bottom: 5px;
-}
-
-.stat-card strong {
-    font-size: 22px;
-}
-
-.dashboard-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    backdrop-filter: blur(18px);
-    border-radius: 22px;
-    padding: 25px;
-    margin-bottom: 16px;
-}
-
-.dashboard-card h2 {
-    margin-top: 5px;
-    font-size: 22px;
-}
-
-.dashboard-topic {
-    margin-top: 22px;
-}
-
-.topic-title {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    font-size: 13px;
-}
-
-.topic-title strong {
-    color: var(--blue);
-}
-
-.dashboard-bar {
-    height: 9px;
-    background: rgba(148, 163, 184, 0.1);
-    border-radius: 20px;
-    overflow: hidden;
-    margin-top: 8px;
-}
-
-.dashboard-bar div {
-    height: 100%;
-    border-radius: inherit;
-    background: linear-gradient(90deg, var(--blue-dark), var(--blue));
-    transition: width 0.5s ease;
-}
-
-.attention-card {
-    border-color: rgba(234, 179, 8, 0.2);
-}
-
-.dashboard-description {
-    color: var(--muted);
-    font-size: 13px;
-    margin-top: 5px;
-}
-
-.revision-box {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.revision-item {
-    flex: 1;
-    min-width: 130px;
-    background: rgba(2, 6, 23, 0.5);
-    padding: 18px;
-    border-radius: 15px;
-    text-align: center;
-}
-
-.revision-item span {
-    display: block;
-    color: var(--muted);
-    font-size: 11px;
-}
-
-.revision-item strong {
-    display: block;
-    font-size: 30px;
-    margin-top: 4px;
-}
-
-.revision-arrow {
-    font-size: 25px;
-    color: var(--blue);
-}
-
-.improvement {
-    width: 100%;
-    text-align: center;
-    color: var(--green);
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.dashboard-actions {
-    margin-top: 20px;
-}
-
-.dashboard-actions a {
-    display: block;
-    text-align: center;
-    text-decoration: none;
-}
-
-@media (max-width: 600px) {
-
-    .dashboard-stats {
-        grid-template-columns: 1fr;
-    }
-
-    .revision-arrow {
-        width: 100%;
-        text-align: center;
-    }
-
-}
-
-</style>
+  <script src="script.js"></script>
 
 
-<script>
+  <script>
 
-const savedFeedback =
-    localStorage.getItem("classpulseFeedback");
+    function sortTopics() {
 
+      const table = document.getElementById("topicTable");
 
-if (savedFeedback) {
+      const rows = Array.from(
+        table.querySelectorAll(".topic-row")
+      );
 
-    const feedback =
-        JSON.parse(savedFeedback);
-
-    const answers =
-        feedback.answers || {};
-
-
-    const topics = [
-        "Force Components",
-        "Resultant Force",
-        "Parallelogram Law",
-        "Resolution of Forces",
-        "Equilibrium"
-    ];
+      const option =
+        document.getElementById("sortSelect").value;
 
 
-    let total = 0;
+      rows.sort(function(a, b) {
 
-    let weakest = null;
+        if (option === "lowest") {
 
-    let weakestScore = Infinity;
-
-
-    topics.forEach((topic, index) => {
-
-        const score =
-            Number(answers[topic] || 0);
-
-        total += score;
-
-
-        if (score < weakestScore) {
-
-            weakestScore = score;
-
-            weakest = topic;
+          return (
+            Number(a.dataset.score) -
+            Number(b.dataset.score)
+          );
 
         }
 
 
-        const topicBlocks =
-            document.querySelectorAll(".dashboard-topic");
+        if (option === "highest") {
 
-
-        if (topicBlocks[index]) {
-
-            const scoreText =
-                topicBlocks[index].querySelector("strong");
-
-            const bar =
-                topicBlocks[index].querySelector(".dashboard-bar div");
-
-
-            scoreText.textContent =
-                `${score}%`;
-
-            bar.style.width =
-                `${score}%`;
+          return (
+            Number(b.dataset.score) -
+            Number(a.dataset.score)
+          );
 
         }
 
-    });
+
+        if (option === "recent") {
+
+          return (
+            Number(b.dataset.recent) -
+            Number(a.dataset.recent)
+          );
+
+        }
+
+      });
 
 
-    const overall =
-        Math.round(total / topics.length);
+      rows.forEach(function(row) {
+
+        table.appendChild(row);
+
+      });
+
+    }
 
 
-    document.getElementById("overallScore")
-        .textContent = `${overall}%`;
+
+    function flagReview(button) {
+
+      const card =
+        button.closest(".review-card");
 
 
-    document.getElementById("responseCount")
-        .textContent = "1";
+      card.classList.add("flagged");
 
 
-    document.getElementById("weakestTopic")
-        .textContent = weakest;
+      button.innerText = "⚑ Flagged";
 
 
-    document.getElementById("attentionTitle")
-        .textContent =
-        `${weakest} needs attention`;
+      alert(
+        "Review flagged for teacher attention."
+      );
+
+    }
 
 
-    document.getElementById("attentionText")
-        .textContent =
-        `Students reported ${weakestScore}% understanding of this concept. Consider revising this topic before moving ahead.`;
 
-}
+    function closeSession() {
 
-</script>
+      const confirmed =
+        confirm(
+          "Are you sure you want to close this review session?"
+        );
+
+
+      if (confirmed) {
+
+        const status =
+          document.querySelector(".session-status");
+
+        status.innerHTML =
+          "● SESSION CLOSED";
+
+
+        status.style.color =
+          "#9ca3af";
+
+
+        alert(
+          "The review session has been closed."
+        );
+
+      }
+
+    }
+
+
+
+    function showQR() {
+
+      alert(
+        "QR Session\n\nStudents can scan the ClassPulse session QR code to submit their learning review.\n\nQR generation will be connected to the backend in the next stage."
+      );
+
+    }
+
+
+
+    function exportReport() {
+
+      alert(
+        "Report export will generate a teacher-friendly summary of class understanding, weak topics, reviews and revision improvement."
+      );
+
+    }
+
+  </script>
 
 
 </body>
-</html>
+
+            </html>
