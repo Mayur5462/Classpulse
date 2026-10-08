@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,532 +9,877 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
 
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ================= STUDENT PAGE FIXES ================= */
+
+    .student-form {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .student-input-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 25px;
+    }
+
+    .student-input {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .student-input label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #aab4d0;
+    }
+
+    .student-input input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 15px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.035);
+      color: #fff;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .student-input input:focus {
+      border-color: #4d8dff;
+      box-shadow: 0 0 0 3px rgba(77,141,255,0.12);
+    }
+
+    .subject-card.student-subject {
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.08);
+      color: white;
+    }
+
+    .subject-card.student-subject.selected {
+      border-color: #4d8dff;
+      background: rgba(50,100,220,0.16);
+      box-shadow: 0 0 25px rgba(60,120,255,0.12);
+    }
+
+    .chapter-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .chapter-list button {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 65px 1fr auto;
+      align-items: center;
+      gap: 15px;
+      padding: 20px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.025);
+      color: white;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .chapter-list button:hover,
+    .chapter-list button.selected {
+      border-color: #4d8dff;
+      background: rgba(50,100,220,0.13);
+    }
+
+    .chapter-number {
+      color: #6da0ff;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .chapter-name {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .chapter-count {
+      color: #7f8aa8;
+      font-size: 13px;
+    }
+
+    .topics-container {
+      display: none;
+    }
+
+    .topics-container.visible {
+      display: block;
+    }
+
+    .topic-rating {
+      padding: 22px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .topic-rating:last-child {
+      border-bottom: none;
+    }
+
+    .topic-title h3 {
+      margin: 0 0 6px;
+    }
+
+    .topic-title p {
+      margin: 0;
+      color: #7f8aa8;
+      font-size: 14px;
+    }
+
+    .rating-options {
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+      margin-top: 17px;
+    }
+
+    .rating-options label {
+      cursor: pointer;
+    }
+
+    .rating-options input {
+      display: none;
+    }
+
+    .rating-options span {
+      display: inline-block;
+      min-width: 58px;
+      padding: 10px 12px;
+      text-align: center;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.09);
+      background: rgba(255,255,255,0.035);
+      color: #aab4d0;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .rating-options input:checked + span {
+      background: #2563eb;
+      border-color: #5b96ff;
+      color: white;
+      box-shadow: 0 0 18px rgba(37,99,235,0.25);
+    }
+
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 18px 0 25px;
+    }
+
+    .checkbox-grid label {
+      padding: 13px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.07);
+      color: #c7cee1;
+      cursor: pointer;
+    }
+
+    .checkbox-grid input {
+      margin-right: 8px;
+    }
+
+    .review-label {
+      display: block;
+      margin-bottom: 9px;
+      color: #aab4d0;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .review-textarea {
+      width: 100%;
+      min-height: 130px;
+      box-sizing: border-box;
+      resize: vertical;
+      padding: 16px;
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,0.09);
+      background: rgba(255,255,255,0.035);
+      color: white;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .review-textarea:focus {
+      border-color: #4d8dff;
+    }
+
+    .privacy-note {
+      margin-top: 20px;
+      padding: 14px;
+      border-radius: 12px;
+      background: rgba(50,100,220,0.07);
+      color: #8995b3;
+      font-size: 13px;
+    }
+
+    .submit-review {
+      margin-top: 22px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .empty-message {
+      padding: 20px;
+      border-radius: 15px;
+      background: rgba(255,255,255,0.025);
+      color: #7f8aa8;
+      text-align: center;
+    }
+
+    @media (max-width: 650px) {
+      .student-input-group {
+        grid-template-columns: 1fr;
+      }
+
+      .checkbox-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .chapter-list button {
+        grid-template-columns: 48px 1fr;
+      }
+
+      .chapter-count {
+        grid-column: 2;
+      }
+
+      .rating-options {
+        gap: 6px;
+      }
+
+      .rating-options span {
+        min-width: 48px;
+        padding: 9px 7px;
+      }
+    }
+  </style>
+
 </head>
+
 
 <body>
 
-  <!-- NAVBAR -->
-  <header class="navbar">
+<header class="navbar">
 
-    <div class="brand">
-      <div class="brand-icon">CP</div>
+  <div class="brand">
 
-      <div>
-        <h2>ClassPulse</h2>
-        <span>Understand. Improve. Learn.</span>
-      </div>
-    </div>
-
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="student.html" class="active">Student</a>
-      <a href="dashboard.html">Teacher</a>
-      <a href="analytics.html">Analytics</a>
-      <a href="about.html">About</a>
-    </nav>
-
-  </header>
-
-
-  <main>
-
-    <!-- PAGE HEADER -->
-    <section class="section">
-
-      <div class="section-heading">
-
-        <div>
-          <span class="eyebrow">STUDENT LEARNING REVIEW</span>
-
-          <h1>
-            Tell us what you
-            <span>understood.</span>
-          </h1>
-        </div>
-
-        <p>
-          Your feedback helps teachers understand which topics
-          need more explanation or revision.
-        </p>
-
-      </div>
-
-
-      <!-- SUBJECT SELECTION -->
-      <div class="step-card">
-
-        <div class="step-number">01</div>
-
-        <h2>Select Subject</h2>
-
-        <p>Choose the engineering subject you want to review.</p>
-
-        <div class="subjects-grid">
-
-          <button class="subject-card student-subject" onclick="selectSubject('Engineering Mathematics I', this)">
-            <div class="subject-icon">M¹</div>
-
-            <div class="subject-info">
-              <h3>Engineering Mathematics I</h3>
-              <p>Mathematics</p>
-            </div>
-          </button>
-
-
-          <button class="subject-card student-subject" onclick="selectSubject('Engineering Mechanics', this)">
-            <div class="subject-icon">EM</div>
-
-            <div class="subject-info">
-              <h3>Engineering Mechanics</h3>
-              <p>Mechanics</p>
-            </div>
-          </button>
-
-
-          <button class="subject-card student-subject" onclick="selectSubject('Basic Electrical Engineering', this)">
-            <div class="subject-icon">BE</div>
-
-            <div class="subject-info">
-              <h3>Basic Electrical Engineering</h3>
-              <p>Electrical</p>
-            </div>
-          </button>
-
-
-          <button class="subject-card student-subject" onclick="selectSubject('Engineering Chemistry', this)">
-            <div class="subject-icon">CH</div>
-
-            <div class="subject-info">
-              <h3>Engineering Chemistry</h3>
-              <p>Chemistry</p>
-            </div>
-          </button>
-
-
-          <button class="subject-card student-subject" onclick="selectSubject('Fundamentals of Programming', this)">
-            <div class="subject-icon">FP</div>
-
-            <div class="subject-info">
-              <h3>Fundamentals of Programming</h3>
-              <p>Programming</p>
-            </div>
-          </button>
-
-
-          <button class="subject-card student-subject" onclick="selectSubject('Professional Communication Skills', this)">
-            <div class="subject-icon">PCS</div>
-
-            <div class="subject-info">
-              <h3>Professional Communication Skills</h3>
-              <p>Communication</p>
-            </div>
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <!-- CHAPTER SELECTION -->
-      <div class="step-card">
-
-        <div class="step-number">02</div>
-
-        <h2>Select Chapter / Lesson</h2>
-
-        <p>Choose the chapter you want to give feedback about.</p>
-
-        <div class="chapter-list">
-
-          <button onclick="selectChapter('Force Systems', this)">
-            <span>01</span>
-            <strong>Force Systems</strong>
-            <small>5 Subtopics</small>
-          </button>
-
-          <button onclick="selectChapter('Resultant of Forces', this)">
-            <span>02</span>
-            <strong>Resultant of Forces</strong>
-            <small>5 Subtopics</small>
-          </button>
-
-          <button onclick="selectChapter('Equilibrium', this)">
-            <span>03</span>
-            <strong>Equilibrium</strong>
-            <small>4 Subtopics</small>
-          </button>
-
-          <button onclick="selectChapter('Friction', this)">
-            <span>04</span>
-            <strong>Friction</strong>
-            <small>5 Subtopics</small>
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <!-- SUBTOPIC RATINGS -->
-      <div class="step-card">
-
-        <div class="step-number">03</div>
-
-        <h2>Rate Your Understanding</h2>
-
-        <p>
-          Rate each subtopic honestly. Your response can be anonymous.
-        </p>
-
-
-        <!-- SUBTOPIC 1 -->
-        <div class="topic-rating">
-
-          <div class="topic-title">
-            <div>
-              <h3>Force Components</h3>
-              <p>Understanding of resolving a force into components.</p>
-            </div>
-          </div>
-
-          <div class="rating-options">
-
-            <label>
-              <input type="radio" name="force_components" value="0">
-              <span>0%</span>
-            </label>
-
-            <label>
-              <input type="radio" name="force_components" value="25">
-              <span>25%</span>
-            </label>
-
-            <label>
-              <input type="radio" name="force_components" value="50">
-              <span>50%</span>
-            </label>
-
-            <label>
-              <input type="radio" name="force_components" value="75">
-              <span>75%</span>
-            </label>
-
-            <label>
-              <input type="radio" name="force_components" value="100">
-              <span>100%</span>
-            </label>
-
-          </div>
-
-        </div>
-
-
-        <!-- SUBTOPIC 2 -->
-        <div class="topic-rating">
-
-          <div class="topic-title">
-            <div>
-              <h3>Resultant Force</h3>
-              <p>Finding the magnitude and direction of resultant force.</p>
-            </div>
-          </div>
-
-          <div class="rating-options">
-
-            <label>
-              <input type="radio" name="resultant_force" value="0">
-              <span>0%</span>
-            </label>
-
-            <label>
-              <input type="radio" name="resultant_force" value="25">
-              <span>25%</span>
-            </label>
-
-            <label>
-              <input type="radio" name="resultant_force" value="50">
-              <span>50%</span>
-            </label>
-
-            <label>
-              <input type="radio" name="resultant_force" value="75">
-              <span>75%</span>
-            </label>
-
-            <label>
-              <input type="radio" name="resultant_force" value="100">
-              <span>100%</span>
-            </label>
-
-          </div>
-
-        </div>
-
-
-        <!-- SUBTOPIC 3 -->
-        <div class="topic-rating">
-
-          <div class="topic-title">
-            <div>
-              <h3>Parallelogram Law</h3>
-              <p>Understanding the parallelogram law of forces.</p>
-            </div>
-          </div>
-
-          <div class="rating-options">
-
-            <label>
-              <input type="radio" name="parallelogram_law" value="0">
-              <span>0%</span>
-            </label>
-
-            <label>
-              <input type="radio" name="parallelogram_law" value="25">
-              <span>25%</span>
-            </label>
-
-            <label>
-              <input type="radio" name="parallelogram_law" value="50">
-              <span>50%</span>
-            </label>
-
-            <label>
-              <input type="radio" name="parallelogram_law" value="75">
-              <span>75%</span>
-            </label>
-
-            <label>
-              <input type="radio" name="parallelogram_law" value="100">
-              <span>100%</span>
-            </label>
-
-          </div>
-
-        </div>
-
-
-        <!-- SUBTOPIC 4 -->
-        <div class="topic-rating">
-
-          <div class="topic-title">
-            <div>
-              <h3>Resolution of Forces</h3>
-              <p>Breaking a force into horizontal and vertical components.</p>
-            </div>
-          </div>
-
-          <div class="rating-options">
-
-            <label>
-              <input type="radio" name="resolution_of_forces" value="0">
-              <span>0%</span>
-            </label>
-
-            <label>
-              <input type="radio" name="resolution_of_forces" value="25">
-              <span>25%</span>
-            </label>
-
-            <label>
-              <input type="radio" name="resolution_of_forces" value="50">
-              <span>50%</span>
-            </label>
-
-            <label>
-              <input type="radio" name="resolution_of_forces" value="75">
-              <span>75%</span>
-            </label>
-
-            <label>
-              <input type="radio" name="resolution_of_forces" value="100">
-              <span>100%</span>
-            </label>
-
-          </div>
-
-        </div>
-
-
-        <!-- SUBTOPIC 5 -->
-        <div class="topic-rating">
-
-          <div class="topic-title">
-            <div>
-              <h3>Equilibrium</h3>
-              <p>Understanding conditions required for equilibrium.</p>
-            </div>
-          </div>
-
-          <div class="rating-options">
-
-            <label>
-              <input type="radio" name="equilibrium" value="0">
-              <span>0%</span>
-            </label>
-
-            <label>
-              <input type="radio" name="equilibrium" value="25">
-              <span>25%</span>
-            </label>
-
-            <label>
-              <input type="radio" name="equilibrium" value="50">
-              <span>50%</span>
-            </label>
-
-            <label>
-              <input type="radio" name="equilibrium" value="75">
-              <span>75%</span>
-            </label>
-
-            <label>
-              <input type="radio" name="equilibrium" value="100">
-              <span>100%</span>
-            </label>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- REVIEW -->
-      <div class="step-card">
-
-        <div class="step-number">04</div>
-
-        <h2>Chapter Review</h2>
-
-        <p>Tell your teacher what was difficult or confusing.</p>
-
-
-        <h3>Which topics were difficult?</h3>
-
-        <div class="checkbox-grid">
-
-          <label>
-            <input type="checkbox">
-            Force Components
-          </label>
-
-          <label>
-            <input type="checkbox">
-            Resultant Force
-          </label>
-
-          <label>
-            <input type="checkbox">
-            Parallelogram Law
-          </label>
-
-          <label>
-            <input type="checkbox">
-            Resolution of Forces
-          </label>
-
-          <label>
-            <input type="checkbox">
-            Equilibrium
-          </label>
-
-        </div>
-
-
-        <label class="review-label" for="review">
-          Tell us what confused you (optional)
-        </label>
-
-        <textarea
-          id="review"
-          placeholder="Example: I understand the formula, but I get confused while choosing the correct angle..."
-        ></textarea>
-
-
-        <div class="privacy-note">
-          🔒 Your feedback is used for learning improvement and is normally shown anonymously.
-        </div>
-
-
-        <button class="primary-btn submit-review" onclick="submitReview()">
-          Submit Learning Review →
-        </button>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <footer>
+    <div class="brand-icon">CP</div>
 
     <div>
-      <strong>ClassPulse</strong>
-      <span> · Understand. Improve. Learn.</span>
+      <h2>ClassPulse</h2>
+      <span>Understand. Improve. Learn.</span>
     </div>
 
-    <p>Learning feedback, made meaningful.</p>
+  </div>
 
-  </footer>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="student.html" class="active">Student</a>
+    <a href="dashboard.html">Teacher</a>
+    <a href="analytics.html">Analytics</a>
+    <a href="about.html">About</a>
+  </nav>
 
-
-  <script src="script.js"></script>
-
-  <script>
-
-    let selectedSubject = "";
-    let selectedChapter = "";
-
-
-    function selectSubject(subject, button) {
-
-      selectedSubject = subject;
-
-      document
-        .querySelectorAll(".student-subject")
-        .forEach(item => item.classList.remove("selected"));
-
-      button.classList.add("selected");
-
-    }
+</header>
 
 
-    function selectChapter(chapter, button) {
+<main>
 
-      selectedChapter = chapter;
+<section class="section student-form">
 
-      document
-        .querySelectorAll(".chapter-list button")
-        .forEach(item => item.classList.remove("selected"));
+  <div class="section-heading">
 
-      button.classList.add("selected");
+    <div>
+      <span class="eyebrow">STUDENT LEARNING REVIEW</span>
 
-    }
+      <h1>
+        Tell us what you
+        <span>understood.</span>
+      </h1>
+    </div>
+
+    <p>
+      Your feedback helps teachers understand which topics
+      need more explanation or revision.
+    </p>
+
+  </div>
 
 
-    function submitReview() {
+  <!-- ================= STUDENT DETAILS ================= -->
 
-      if (!selectedSubject) {
-        alert("Please select a subject first.");
-        return;
+  <div class="step-card">
+
+    <div class="step-number">01</div>
+
+    <h2>Your Details</h2>
+
+    <p>
+      Enter your details so your submission can be associated
+      with your class record. Your identity will not normally
+      be shown in teacher analytics.
+    </p>
+
+    <div class="student-input-group">
+
+      <div class="student-input">
+
+        <label for="studentName">
+          Full Name
+        </label>
+
+        <input
+          type="text"
+          id="studentName"
+          placeholder="Enter your name"
+        >
+
+      </div>
+
+
+      <div class="student-input">
+
+        <label for="rollNumber">
+          Roll Number
+        </label>
+
+        <input
+          type="text"
+          id="rollNumber"
+          placeholder="Enter your roll number"
+        >
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= SUBJECT ================= -->
+
+  <div class="step-card">
+
+    <div class="step-number">02</div>
+
+    <h2>Select Subject</h2>
+
+    <p>
+      Choose the engineering subject you want to review.
+    </p>
+
+
+    <div class="subjects-grid">
+
+      <button
+        class="subject-card student-subject"
+        onclick="selectSubject('Engineering Mathematics I', this)"
+      >
+
+        <div class="subject-icon">M¹</div>
+
+        <div class="subject-info">
+          <h3>Engineering Mathematics I</h3>
+          <p>Mathematics</p>
+        </div>
+
+      </button>
+
+
+      <button
+        class="subject-card student-subject"
+        onclick="selectSubject('Engineering Mechanics', this)"
+      >
+
+        <div class="subject-icon">EM</div>
+
+        <div class="subject-info">
+          <h3>Engineering Mechanics</h3>
+          <p>Mechanics</p>
+        </div>
+
+      </button>
+
+
+      <button
+        class="subject-card student-subject"
+        onclick="selectSubject('Basic Electrical Engineering', this)"
+      >
+
+        <div class="subject-icon">BE</div>
+
+        <div class="subject-info">
+          <h3>Basic Electrical Engineering</h3>
+          <p>Electrical</p>
+        </div>
+
+      </button>
+
+
+      <button
+        class="subject-card student-subject"
+        onclick="selectSubject('Engineering Chemistry', this)"
+      >
+
+        <div class="subject-icon">CH</div>
+
+        <div class="subject-info">
+          <h3>Engineering Chemistry</h3>
+          <p>Chemistry</p>
+        </div>
+
+      </button>
+
+
+      <button
+        class="subject-card student-subject"
+        onclick="selectSubject('Fundamentals of Programming', this)"
+      >
+
+        <div class="subject-icon">FP</div>
+
+        <div class="subject-info">
+          <h3>Fundamentals of Programming</h3>
+          <p>Programming</p>
+        </div>
+
+      </button>
+
+
+      <button
+        class="subject-card student-subject"
+        onclick="selectSubject('Professional Communication Skills', this)"
+      >
+
+        <div class="subject-icon">PCS</div>
+
+        <div class="subject-info">
+          <h3>Professional Communication Skills</h3>
+          <p>Communication</p>
+        </div>
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= CHAPTER ================= -->
+
+  <div class="step-card">
+
+    <div class="step-number">03</div>
+
+    <h2>Select Chapter / Lesson</h2>
+
+    <p id="chapterInstruction">
+      First select a subject above.
+    </p>
+
+    <div id="chapterList" class="chapter-list">
+
+      <div class="empty-message">
+        Select a subject to see its chapters.
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= TOPICS ================= -->
+
+  <div class="step-card topics-container" id="topicsSection">
+
+    <div class="step-number">04</div>
+
+    <h2>Rate Your Understanding</h2>
+
+    <p id="topicInstruction">
+      Select a chapter to see its subtopics.
+    </p>
+
+    <div id="topicsContainer"></div>
+
+  </div>
+
+
+  <!-- ================= REVIEW ================= -->
+
+  <div class="step-card topics-container" id="reviewSection">
+
+    <div class="step-number">05</div>
+
+    <h2>Chapter Review</h2>
+
+    <p>
+      Tell your teacher what was difficult or confusing.
+    </p>
+
+
+    <h3>Which topics were difficult?</h3>
+
+    <div
+      class="checkbox-grid"
+      id="difficultTopics"
+    ></div>
+
+
+    <label
+      class="review-label"
+      for="reviewText"
+    >
+      Tell us what confused you (optional)
+    </label>
+
+    <textarea
+      class="review-textarea"
+      id="reviewText"
+      placeholder="Example: I understand the formula, but I get confused while choosing the correct angle..."
+    ></textarea>
+
+
+    <div class="privacy-note">
+      🔒 Your feedback is used for learning improvement.
+      Your identity is not normally displayed in teacher analytics.
+    </div>
+
+
+    <button
+      class="primary-btn submit-review"
+      onclick="submitReview()"
+    >
+      Submit Learning Review →
+    </button>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+  <div>
+    <strong>ClassPulse</strong>
+    <span> · Understand. Improve. Learn.</span>
+  </div>
+
+  <p>Learning feedback, made meaningful.</p>
+
+</footer>
+
+
+<script>
+
+  /* =====================================================
+     CLASSPULSE SUBJECT DATA
+     ===================================================== */
+
+  const courseData = {
+
+    "Engineering Mathematics I": {
+
+      chapters: {
+
+        "Differential Calculus": [
+          ["Functions and Limits", "Understanding functions and limits"],
+          ["Continuity", "Understanding continuity of functions"],
+          ["Differentiation", "Rules and applications of differentiation"],
+          ["Partial Differentiation", "Understanding partial derivatives"],
+          ["Applications of Derivatives", "Applying derivatives to problems"]
+        ],
+
+        "Integral Calculus": [
+          ["Indefinite Integration", "Basic methods of integration"],
+          ["Definite Integration", "Understanding definite integrals"],
+          ["Properties of Integrals", "Important properties of integration"],
+          ["Applications of Integration", "Using integration in problems"]
+        ],
+
+        "Differential Equations": [
+          ["First Order Equations", "Basic differential equations"],
+          ["Variable Separable Equations", "Separating variables"],
+          ["Linear Differential Equations", "Solving linear equations"],
+          ["Applications", "Applying differential equations"]
+        ]
+
       }
 
-      if (!selectedChapter) {
-        alert("Please select a chapter first.");
-        return;
+    },
+
+
+    "Engineering Mechanics": {
+
+      chapters: {
+
+        "Force Systems": [
+          ["Force Components", "Resolving a force into components"],
+          ["Resultant Force", "Finding magnitude and direction of resultant"],
+          ["Parallelogram Law", "Understanding parallelogram law of forces"],
+          ["Resolution of Forces", "Horizontal and vertical components"],
+          ["Equilibrium", "Conditions required for equilibrium"]
+        ],
+
+        "Friction": [
+          ["Laws of Friction", "Basic laws of friction"],
+          ["Coefficient of Friction", "Understanding coefficient of friction"],
+          ["Limiting Friction", "Understanding limiting friction"],
+          ["Angle of Friction", "Relation between friction and angle"],
+          ["Applications of Friction", "Applying friction to problems"]
+        ],
+
+        "Centroid and Centre of Gravity": [
+          ["Centroid", "Understanding centroid"],
+          ["Centre of Gravity", "Understanding centre of gravity"],
+          ["Composite Areas", "Finding centroid of composite areas"],
+          ["Practical Applications", "Applications of centroid"]
+        ],
+
+        "Simple Lifting Machines": [
+          ["Mechanical Advantage", "Understanding mechanical advantage"],
+          ["Velocity Ratio", "Understanding velocity ratio"],
+          ["Efficiency", "Machine efficiency"],
+          ["Law of Machine", "Understanding the law of machine"]
+        ]
+
       }
 
-      alert(
-        "Review submitted successfully! Thank you for helping your teacher understand the class better."
-      );
+    },
+
+
+    "Basic Electrical Engineering": {
+
+      chapters: {
+
+        "DC Circuits": [
+          ["Ohm's Law", "Relationship between voltage, current and resistance"],
+          ["Kirchhoff's Laws", "KCL and KVL"],
+          ["Series Circuits", "Understanding series connections"],
+          ["Parallel Circuits", "Understanding parallel connections"],
+          ["Network Analysis", "Solving basic electrical networks"]
+        ],
+
+        "AC Circuits": [
+          ["AC Voltage", "Understanding alternating voltage"],
+          ["RMS Value", "Understanding RMS quantities"],
+          ["Phase Difference", "Understanding phase relationship"],
+          ["Power Factor", "Understanding power factor"],
+          ["AC Power", "Real and reactive power"]
+        ],
+
+        "Transformers": [
+          ["Transformer Principle", "Working principle"],
+          ["EMF Equation", "Understanding transformer EMF"],
+          ["Transformer Ratio", "Voltage and turns ratio"],
+          ["Losses", "Transformer losses"]
+        ]
+
+      }
+
+    },
+
+
+    "Engineering Chemistry": {
+
+      chapters: {
+
+        "Water Technology": [
+          ["Hardness of Water", "Understanding water hardness"],
+          ["Types of Hardness", "Temporary and permanent hardness"],
+          ["Water Softening", "Methods of softening water"],
+          ["Boiler Problems", "Problems caused by hard water"]
+        ],
+
+        "Corrosion": [
+          ["Electrochemical Corrosion", "Understanding corrosion mechanism"],
+          ["Types of Corrosion", "Different forms of corrosion"],
+          ["Factors Affecting Corrosion", "Conditions affecting corrosion"],
+          ["Corrosion Prevention", "Methods of corrosion control"]
+        ],
+
+        "Fuels": [
+          ["Solid Fuels", "Types and properties"],
+          ["Liquid Fuels", "Petroleum based fuels"],
+          ["Gaseous Fuels", "Types of gaseous fuels"],
+          ["Calorific Value", "Understanding calorific value"]
+        ]
+
+      }
+
+    },
+
+
+    "Fundamentals of Programming": {
+
+      chapters: {
+
+        "Programming Basics": [
+          ["Algorithms", "Understanding algorithms"],
+          ["Flowcharts", "Representing program logic"],
+          ["Variables", "Understanding variables"],
+          ["Data Types", "Understanding basic data types"],
+          ["Operators", "Using programming operators"]
+        ],
+
+        "Control Statements": [
+          ["If Else", "Conditional statements"],
+          ["Nested Conditions", "Multiple conditions"],
+          ["Switch Case", "Multi-option selection"],
+          ["Loops", "Repeating instructions"],
+          ["Break and Continue", "Controlling loops"]
+        ],
+
+        "Functions": [
+          ["Function Basics", "Creating and using functions"],
+          ["Parameters", "Passing values to functions"],
+          ["Return Values", "Returning results"],
+          ["Scope", "Understanding variable scope"]
+        ],
+
+        "Arrays and Strings": [
+          ["One Dimensional Arrays", "Basic arrays"],
+          ["Two Dimensional Arrays", "Matrix-like arrays"],
+          ["Strings", "Working with text"],
+          ["Array Operations", "Searching and processing arrays"]
+        ]
+
+      }
+
+    },
+
+
+    "Professional Communication Skills": {
+
+      chapters: {
+
+        "Communication Basics": [
+          ["Communication Process", "Understanding the communication cycle"],
+          ["Types of Communication", "Verbal and non-verbal communication"],
+          ["Barriers", "Understanding communication barriers"],
+          ["Effective Communication", "Principles of effective communication"]
+        ],
+
+        "Presentation Skills": [
+          ["Presentation Structure", "Organising a presentation"],
+          ["Body Language", "Using effective body language"],
+          ["Voice Modulation", "Using voice effectively"],
+          ["Audience Interaction", "Engaging with an audience"]
+        ],
+
+        "Group Discussion": [
+          ["Introduction", "Understanding group discussions"],
+          ["Speaking Skills", "Expressing ideas clearly"],
+          ["Listening Skills", "Active listening"],
+          ["Team Participation", "Working effectively in a group"]
+        ]
+
+      }
 
     }
 
-  </script>
+  };
 
-</body>
-                                 </html>
+
+  /* =====================================================
+     VARIABLES
+     ===================================================== */
+
+  let selectedSubject = "";
+  let selectedChapter = "";
+  let currentTopics = [];
+
+
+  /* =====================================================
+     SUBJECT SELECTION
+     ===================================================== */
+
+  function selectSubject(subject, button) {
+
+    selectedSubject = subject;
+    selectedChapter = "";
+    currentTopics = [];
+
+    document
+      .querySelectorAll(".student-subject")
+      .forEach(function(item) {
+        item.classList.remove("selected");
+      });
+
+    button.classList.add("selected");
+
+
+    /* Reset chapter area */
+
+    const chapterList =
+      document.getElementById("chapterList");
+
+    chapterList.innerHTML = "";
+
+
+    const chapters =
+      courseData[subject].chapters;
+
+
+    let chapterNumber = 1;
+
+
+    Object.keys(chapters).forEach(function(chapter) {
+
+      const topics =
+        chapters[chapter];
+
+
+      const button =
+        document.createElement("button");
+
+
+      button.type = "button";
+
+
+      button.innerHTML = `
+        <span class="chapter-number">
+          ${String(chapterNumber).padStart(2, "0")}
+        </span>
+
+        <strong class="chapter-name">
+          ${chapter}
+        </strong>
+
+        <small class="chapter-count">
+          ${topics.length} Subtopics
+        </small>
+      `;
+
+
+      button.onclick = function() {
+        selectChapter(chapter, button);
+      };
+
+
+      chapterList.appen
